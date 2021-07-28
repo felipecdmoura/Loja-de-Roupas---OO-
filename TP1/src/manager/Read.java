@@ -15,4 +15,8 @@ public class Read {
 		Scanner read = new Scanner(System.in);
 		return read.nextLine();
 	}
+	public static char getChar() {
+		Scanner read = new Scanner(System.in);
+		return read.next().charAt(0);
+	}
 }
