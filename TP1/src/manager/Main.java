@@ -1,20 +1,22 @@
 package manager;
 
 public class Main {
-	private static Client person[] = new Client[10000];
-    private static Product product[] = new Product[10000];
-	private static int posClient = 0;
-    private static int posProd = 0;
+	private static Client person[] = new Client[10000]; //Criação da classe cliente como array.
+    private static Product product[] = new Product[10000]; //Criação da cçasse produto como array.
+	private static int posClient = 10; //Variavel que guarda a proxima posição do proximo cliente a ser cadastrado .
+    private static int posProd = 10; ///Variavel que guarda a proxima posição do proximo produto a ser cadastrado .
 	
 	public static void main(String[] args) {
 		int opt;
 		
-        for(int count=0;count<10000;count++)
+        for(int count=0;count<10000;count++) //Inicialização do array.
             person[count] = new Client();
 
-        for(int count=0;count<10000;count++)
+        for(int count=0;count<10000;count++) //Inicialização do array.
             product[count] = new Product();
 
+        DefaultData.setDefaultData(person, product); //Puxa o método que define os prod e clientes padrão.
+            
 		do {
             clear();
 			menu();
@@ -56,7 +58,9 @@ public class Main {
         System.out.println("Até a próxima!");
 	}
 
-	private static void menu() {
+//-----------------------MÉTODOS-----------------------------
+
+	private static void menu() { //Método para printar o menu.
 		System.out.println("---Menu---\n\n");
 		System.out.println("Escolha uma das opções a baixo: ");
 		System.out.println("1) Cadastro de Cliente");
@@ -68,14 +72,16 @@ public class Main {
 		System.out.println("7)  Sair");
 	}
 	
-	private static void clear() {
+
+	private static void clear() { //Método para limpar a tela.
 		for(int count=1; count<=25; count++) {
 			System.out.println();
 		}
 	}
 	
-	private static void registerClient() {
-		int qtt;
+
+	private static void registerClient() { //Método para registrar os clientes.
+		int qtt; //Armazena quantos clientes a serem cadastrados.
 		
 		System.out.println("Quantos clientes deseja cadastrar?: ");
 		qtt = Read.getInt();
@@ -91,20 +97,20 @@ public class Main {
 			System.out.println("Digite o telefone do cliente " + (count + 1) + ":");
 			person[count].tel = Read.getString();
 		}
-        posClient += qtt;
+        posClient += qtt; //Atualiza a proxima posição a ser cadastrada.
 	}
 
-    private static void searchClient() {
-        int verifier = 0;
-        int loc = 0;
+    private static void searchClient() { //Método para pesquisar os clientes.
+        int verifier = 0; //Verificador para identificar se o cliente foi encontrado ou não.
+        int loc = 0; //Localização do cliente no array.
         int num = 0;
         char opt = '0';
 
         System.out.println("Insira o nome do cliente a ser pesquisado: ");
         String inputName = Read.getString();
 
-        for(int count=0; count<posClient; count++){
-            if(person[count].name.equals(inputName)){
+        for(int count=0; count<posClient; count++){ //Pesquisa o cliente.
+            if(person[count].name.equalsIgnoreCase(inputName)){
                 verifier = 1;
                 loc = count;
                 break;
@@ -135,7 +141,7 @@ public class Main {
                     }while(num<1 || num>3);
    
                     System.out.println("Nova informação: ");
-                    String newData = Read.getString();
+                    String newData = Read.getString(); //Altera a informação escolhida.
                         
                     switch(num){
                     case 1:
@@ -154,15 +160,15 @@ public class Main {
                     clear();
                     break;
                 }
-            }while(opt != 'S' || opt != 's' || opt != 'N' || opt != 'n');
+            }while(opt != 'S' || opt != 's' || opt != 'N' || opt != 'n'); //Verifica se a opção foi valida.
         }else{
             System.out.println();
             System.out.println("Cliente não encontrado!");;
         } 
     }
 
-    private static void registerProd() {
-		int qtt;
+    private static void registerProd() { //Método para registrar produtos
+		int qtt; //Armazena quantos clientes a serem cadastrados
 		
 		System.out.println("Quantos produtos deseja cadastrar?: ");
 		qtt = Read.getInt();
@@ -176,7 +182,7 @@ public class Main {
 			product[count].descrip = Read.getString();
 
             System.out.println("Digite o valor de compra do produto " + (count + 1) + ":");
-			product[count].price = Read.getFloat();
+			product[count].price = Read.getDouble();
 
             System.out.println("Digite a porcentagem de lucro do produto " + (count + 1) + ":");
 			product[count].profit = Read.getFloat();
@@ -184,20 +190,20 @@ public class Main {
             System.out.println("Digite a quantidade em estoque do produto " + (count + 1) + ":");
 			product[count].stock = Read.getInt();
 		}
-        posProd += qtt;
+        posProd += qtt; //Atualiza a proxima posição a ser cadastrada
 	}
 
-    private static void searchProd() {
-        int verifier = 0;
-        int loc = 0;
+    private static void searchProd() { //Método para pesquisar os produtos
+        int verifier = 0; //Verificador para identificar se o cliente foi encontrado ou não
+        int loc = 0; //Localização do cliente no array
         int num = 0;
         char opt = '0';
 
         System.out.println("Insira o nome do produto a ser pesquisado: ");
         String inputName = Read.getString();
 
-        for(int count=0; count<posProd; count++){
-            if(product[count].name.equals(inputName)){
+        for(int count=0; count<posProd; count++){ //Pesquisa o produto.
+            if(product[count].name.equalsIgnoreCase(inputName)){
                 verifier = 1;
                 loc = count;
                 break;
@@ -229,7 +235,7 @@ public class Main {
                             System.out.println();
                     }while(num<1 || num>5);
                         
-                    switch(num){
+                    switch(num){ //Altera a informação baseada em qual foi selecionada.
                     case 1:
                         System.out.println("Nova informação: ");
                         String newName = Read.getString();
@@ -242,7 +248,7 @@ public class Main {
                         break;
                     case 3:
                         System.out.println("Nova informação: ");
-                        float newPrice = Read.getFloat();
+                        double newPrice = Read.getDouble();
                         product[loc].price = newPrice;
                         break;
                     case 4:
@@ -262,27 +268,27 @@ public class Main {
                     clear();
                     break;
                 }
-            }while(opt != 'S' || opt != 's' || opt != 'N' || opt != 'n');
+            }while(opt != 'S' || opt != 's' || opt != 'N' || opt != 'n'); //Verifica se a opção foi válida.
         }else{
             System.out.println();
             System.out.println("Produto não encontrado!");;
         } 
     }
 
-    public static void registerSell() {
-        int clientChoice;
-        int prodChoice;
-        int sellQtd;
+    public static void registerSell() { //Registra as vendas para clientes.
+        int clientChoice; //Armazena o cliente escolhido.
+        int prodChoice; //Armazena o produto escolhido.
+        int sellQtd; //Armazena quanto foi vendido.
         char opt = '0';
 
         System.out.println("Selecione um dos usuários cadastrados: ");
-        for(int count=0; count<posClient; count++ ) {
+        for(int count=0; count<posClient; count++ ) { //Mostra os clientes cadastrados.
 			System.out.println((count+1) + ") " + person[count].name);
 		}
         clientChoice = Read.getInt();
 
         do{
-            if(clientChoice < 1 || clientChoice > posClient ){
+            if(clientChoice < 1 || clientChoice > posClient ){ //Verifica se o numero corresponde a um dos clientes da lista.
                 System.out.println("Opção Inválida! Digite novamente: ");
                 clientChoice = Read.getInt();
             }
@@ -290,15 +296,15 @@ public class Main {
 
         do{
             clear();
-            System.out.println("Selecione o produto vendido: ");
+            System.out.println("Selecione o produto vendido: "); 
 
-            for(int count=0; count<posProd; count++ ) {
+            for(int count=0; count<posProd; count++ ) { //Mostra os produtos cadastrados.
                 System.out.println((count+1) + ") " + product[count].name);
             }
 
             prodChoice = Read.getInt();
 
-            do{
+            do{ //Verifica a opação.
                 if(prodChoice < 1 || prodChoice > posProd){
                     System.out.println("Opção Inválida! Digite novamente: ");
                     prodChoice = Read.getInt();
@@ -308,14 +314,14 @@ public class Main {
             System.out.println("Quantidade Vendida: ");
             sellQtd = Read.getInt();
             
-            do{
+            do{ //Verifica se a quantidade vendida não excede a quantidade no estoque.
                 if(sellQtd > product[(prodChoice - 1)].stock){
                     System.out.println("A quantidade vendida excede o estoque disponível (" + product[(prodChoice - 1)].stock + " produtos)! Digite novamente: ");
                     sellQtd = Read.getInt();
-                }else{
-                    product[(prodChoice - 1)].stock -= sellQtd;
                 }
             }while(sellQtd > product[(prodChoice - 1)].stock);
+
+            product[(prodChoice - 1)].stock = product[(prodChoice - 1)].stock - sellQtd; //Subtrai o estoque pelo quanto foi vendido.
 
             System.out.println("Deseja cadastrar mais vendas?(S/N): ");
             opt = Read.getChar();
@@ -331,11 +337,11 @@ public class Main {
         }while(opt == 'S' || opt == 's');
     }
 
-    public static void showStock() {
+    public static void showStock() { //Método que mostra o estoque.
         char opt;
         do{
             clear();
-            if (posProd == 0){
+            if (posProd == 0){ //Verifica se algum produto já foi cadastrado.
                 System.out.println("Nenhum produto cadastrado! ");
                 System.out.println();
             }else{
@@ -350,7 +356,7 @@ public class Main {
             System.out.println(opt);
             if(opt == 'S' || opt == 's'){
                 break;
-            }else if(opt != 'S' && opt != 's' && opt != 'N' && opt != 'n'){
+            }else if(opt != 'S' && opt != 's' && opt != 'N' && opt != 'n'){ //Verifica se a opção foi válida.
                 do{
                     System.out.println("Opção Inválida! Digite novamente: ");
                     opt = Read.getChar();
