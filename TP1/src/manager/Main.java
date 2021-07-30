@@ -1,11 +1,10 @@
 package manager;
 
-
 public class Main {
 	private static Client person[] = new Client[10000];
     private static Product product[] = new Product[10000];
 	private static int posClient = 0;
-    private static int posProd =0;
+    private static int posProd = 0;
 	
 	public static void main(String[] args) {
 		int opt;
@@ -17,6 +16,7 @@ public class Main {
             product[count] = new Product();
 
 		do {
+            clear();
 			menu();
 			opt = Read.getInt();
             
@@ -37,29 +37,23 @@ public class Main {
                 clear();
                 searchProd();
                 break;
-			case 5: 
-				clear();
-				for(int count=0; count<posClient; count++ ) {
-					System.out.println(person[count].name);
-					System.out.println(person[count].address);
-					System.out.println(person[count].tel);
-				}
-				break;
+            case 5:
+                clear();
+                registerSell();
+                break;
             case 6:
                 clear();
-                for(int count=0; count<posProd; count++ ) {
-					System.out.println(product[count].name);
-					System.out.println(product[count].descrip);
-					System.out.println(product[count].price);
-                    System.out.println(product[count].profit);
-                    System.out.println(product[count].stock);
-				}
+                showStock();
+                break;
             case 7:
                 break;
 			default:
 				System.out.println("Opção inválida!");
 			}
 		} while (opt != 7);
+
+        clear();
+        System.out.println("Até a próxima!");
 	}
 
 	private static void menu() {
@@ -218,11 +212,11 @@ public class Main {
                 System.out.println("Dados do Produto: " );
                 System.out.println("(1)Nome: " + product[loc].name);
                 System.out.println("(2)Descrição: " + product[loc].descrip);
-                System.out.println("(3)Valor de Compra: " + product[loc].price);
+                System.out.println("(3)Valor de Compra: R$" + product[loc].price);
                 System.out.println("(4)Porcentagem de Lucro: " + "%" + product[loc].profit);
                 System.out.println("(5)Qtd. em Estoque: " + product[loc].stock);
                 System.out.println();
-                System.out.println("Deseja alterar algum dado cadastrado?(S/N)");
+                System.out.println("Deseja alterar algum dado cadastrado?(S/N): ");
                 opt = Read.getChar();
                 
             
@@ -274,4 +268,94 @@ public class Main {
             System.out.println("Produto não encontrado!");;
         } 
     }
+
+    public static void registerSell() {
+        int clientChoice;
+        int prodChoice;
+        int sellQtd;
+        char opt = '0';
+
+        System.out.println("Selecione um dos usuários cadastrados: ");
+        for(int count=0; count<posClient; count++ ) {
+			System.out.println((count+1) + ") " + person[count].name);
+		}
+        clientChoice = Read.getInt();
+
+        do{
+            if(clientChoice < 1 || clientChoice > posClient ){
+                System.out.println("Opção Inválida! Digite novamente: ");
+                clientChoice = Read.getInt();
+            }
+        }while(clientChoice < 1 || clientChoice > posClient );
+
+        do{
+            clear();
+            System.out.println("Selecione o produto vendido: ");
+
+            for(int count=0; count<posProd; count++ ) {
+                System.out.println((count+1) + ") " + product[count].name);
+            }
+
+            prodChoice = Read.getInt();
+
+            do{
+                if(prodChoice < 1 || prodChoice > posProd){
+                    System.out.println("Opção Inválida! Digite novamente: ");
+                    prodChoice = Read.getInt();
+                }
+            }while(prodChoice < 1 || prodChoice > posProd);
+
+            System.out.println("Quantidade Vendida: ");
+            sellQtd = Read.getInt();
+            
+            do{
+                if(sellQtd > product[(prodChoice - 1)].stock){
+                    System.out.println("A quantidade vendida excede o estoque disponível (" + product[(prodChoice - 1)].stock + " produtos)! Digite novamente: ");
+                    sellQtd = Read.getInt();
+                }else{
+                    product[(prodChoice - 1)].stock -= sellQtd;
+                }
+            }while(sellQtd > product[(prodChoice - 1)].stock);
+
+            System.out.println("Deseja cadastrar mais vendas?(S/N): ");
+            opt = Read.getChar();
+
+            if(opt == 'N' || opt == 'n'){
+                break;
+            }else if(opt != 'S' && opt != 's' && opt != 'N' && opt != 'n'){
+                do{
+                    System.out.println("Opção Inválida! Digite novamente: ");
+                    opt = Read.getChar();
+                }while(opt != 'S' && opt != 's' && opt != 'N' && opt != 'n');
+            }
+        }while(opt == 'S' || opt == 's');
+    }
+
+    public static void showStock() {
+        char opt;
+        do{
+            clear();
+            if (posProd == 0){
+                System.out.println("Nenhum produto cadastrado! ");
+                System.out.println();
+            }else{
+                for(int count=0; count<posProd; count++ ) {
+                    System.out.println((count+1) + ") " + product[count].name + " - " + product[count].stock + " em estoque. " );
+                }
+            }
+
+            System.out.println("Deseja voltar?(S/N): ");
+            opt = Read.getChar();
+
+            System.out.println(opt);
+            if(opt == 'S' || opt == 's'){
+                break;
+            }else if(opt != 'S' && opt != 's' && opt != 'N' && opt != 'n'){
+                do{
+                    System.out.println("Opção Inválida! Digite novamente: ");
+                    opt = Read.getChar();
+                }while(opt != 'S' && opt != 's' && opt != 'N' && opt != 'n');
+            }
+        }while((opt == 'N') || (opt == 'n'));
+    } 
 }
