@@ -50,7 +50,7 @@ public class Main {
             case 7:
                 break;
 			default:
-				System.out.println("Opção inválida!");
+				System.out.println("Opção inválida");
 			}
 		} while (opt != 7);
 
