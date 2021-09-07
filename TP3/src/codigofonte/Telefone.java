@@ -1,36 +1,27 @@
+package codigofonte;
+
 
 public class Telefone {
 	
-	public static int cadastrar;
-	int DDD;
-	int numero;
+	private int DDD;
+	private int numero;
 	
-	
-	
-	public Telefone (int id,int num) {
-		DDD = id;
+	public Telefone (int ddd, int num) {
+		DDD = ddd;
 		numero = num;
 	}
-
-	
 
 	public int getDDD() {
 		return DDD;
 	}
 
-
-
 	public void setDDD(int dDD) {
 		DDD = dDD;
 	}
 
-
-
 	public int getNumero() {
 		return numero;
 	}
-
-
 
 	public void setNumero(int numero) {
 		this.numero = numero;

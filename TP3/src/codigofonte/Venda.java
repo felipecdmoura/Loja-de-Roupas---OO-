@@ -1,3 +1,5 @@
+package codigofonte;
+
 
 public class Venda {
 	int valorcompra;

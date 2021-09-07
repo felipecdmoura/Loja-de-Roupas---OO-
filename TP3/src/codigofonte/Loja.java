@@ -1,3 +1,5 @@
+package codigofonte;
+
 
 public class Loja {
 	
@@ -5,9 +7,6 @@ public class Loja {
 	String endereco;
 	int estoque;
 	String nomefilial;
-	
-	
-	
 	
 	
 	public int getCnpj() {
