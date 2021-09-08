@@ -3,16 +3,16 @@ package codigofonte;
 
 public class Loja {
 	
-	int cnpj;
+	String cnpj;
 	String endereco;
-	int estoque;
+	Estoque estoque;
 	String nomefilial;
 	
 	
-	public int getCnpj() {
+	public String getCnpj() {
 		return cnpj;
 	}
-	public void setCnpj(int cnpj) {
+	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
 	public String getEndereco() {
@@ -21,10 +21,10 @@ public class Loja {
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-	public int getEstoque() {
+	public Estoque getEstoque() {
 		return estoque;
 	}
-	public void setEstoque(int estoque) {
+	public void setEstoque(Estoque estoque) {
 		this.estoque = estoque;
 	}
 	public String getNomefilial() {

@@ -6,13 +6,17 @@ public class Main {
         Cliente clientes = new Cliente();
         Funcionario funcionario = new Funcionario();
         Venda venda = new Venda();
+        Estoque estoque = new Estoque();
         opcoes = Read.getInt();
+
 
         switch (opcoes) {
             case 1:
                 //clientes.cadatrarCliente();
-                venda.cadatrarVenda();
-                
+                Telefone telefone = new Telefone(61, 40028922);
+                clientes.setNumtel(telefone);
+                System.out.println(clientes);
+                break;
             case 2:
                 /*System.out.println(clientes.getNome());
                 System.out.println(clientes.getCpf());

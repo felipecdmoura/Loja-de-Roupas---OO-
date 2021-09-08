@@ -3,8 +3,8 @@ package codigofonte;
 public abstract class Roupa {
     protected String nome;
     protected String descricao;
-    protected String genreo;
-    protected int preco;
+    protected char genero;
+    protected float preco;
     protected String marca;
     protected String cor;
 
@@ -24,19 +24,19 @@ public abstract class Roupa {
         this.descricao = descricao;
     }
 
-    public String getGenreo() {
-        return this.genreo;
+    public char getGenero() {
+        return this.genero;
     }
 
-    public void setGenreo(String genreo) {
-        this.genreo = genreo;
+    public void setGenero(char genero) {
+        this.genero = genero;
     }
 
-    public int getPreco() {
+    public float getPreco() {
         return this.preco;
     }
 
-    public void setPreco(int preco) {
+    public void setPreco(Float preco) {
         this.preco = preco;
     }
 
@@ -56,5 +56,12 @@ public abstract class Roupa {
         this.cor = cor;
     }
 
-    
+    public String toString() {
+        return    "Nome: " + nome + "\n"
+                + "Descrição: " + descricao + "\n"
+                + "Gênero: " + genero + "\n"
+                + "Marca: " + marca + "\n"
+                + "Cor: " + cor + "\n"
+                + "Preço: " + preco;
+    }
 }

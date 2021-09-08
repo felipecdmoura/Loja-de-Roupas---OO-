@@ -1,14 +1,14 @@
 package codigofonte;
 
-public class Camisa extends Roupa {
-    private String tamanho;
+public class Calca extends Roupa {
+    private float tamanhocintura;
 
-    public String getTamanho() {
-        return this.tamanho;
+    public float getTamanhocintura() {
+        return this.tamanhocintura;
     }
 
-    public void setTamanho(String tamanho) {
-        this.tamanho = tamanho;
+    public void setTamanhocintura(Float tamanhocintura) {
+        this.tamanhocintura = tamanhocintura;
     }
 
     public String toString() {
@@ -17,8 +17,7 @@ public class Camisa extends Roupa {
                 + "Gênero: " + genero + "\n"
                 + "Marca: " + marca + "\n"
                 + "Cor: " + cor + "\n"
-                + "Tamano: " + tamanho + "\n"
+                + "Tamano da Cintura: " + tamanhocintura + "\n"
                 + "Preço: " + preco;
     }
-
 }

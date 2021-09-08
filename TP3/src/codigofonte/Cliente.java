@@ -43,7 +43,6 @@ public class Cliente extends Pessoa{
 	}
 
 	public String toString() {
-		numtel = new Telefone(61, 998689594);
 
 		return "Nome: " + nome + "\n"
 			   + "Email: " + email + "\n"
