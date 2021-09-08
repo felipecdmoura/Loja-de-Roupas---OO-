@@ -21,10 +21,10 @@ public class Main {
                 System.out.println(clientes.getNumtel());
                
                 System.out.println(funcionario.getNome());*/
-                System.out.println("O nome do cliente e: "+venda.getNome());
-                System.out.println("O valor da venda e R$ "+venda.getValorcompra());
-                System.out.println("O numero de identificação da venda e: "+venda.getNumident());
-                System.out.println(clientes.toString());
+                //System.out.println("O nome do cliente e: "+venda.getNome());
+                //System.out.println("O valor da venda e R$ "+venda.getValorcompra());
+                //System.out.println("O numero de identificação da venda e: "+venda.getNumident());
+                System.out.println(clientes);
 
                 break;
             default:

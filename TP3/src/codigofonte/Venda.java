@@ -4,7 +4,7 @@ package codigofonte;
 public class Venda {
 	private int valorcompra;
 	private int numident;
-	private Pessoa nome,nomef;
+	private Pessoa nome,nomef;//seria o nome do funcionario no caso
 	private Telefone numtel;
 	
 	
@@ -54,8 +54,8 @@ public class Venda {
 	public String toString() {
 		numtel = new Telefone(61, 998689594);
 
-		return "Nome Funcionario: " + nome + "\n"
-			   + "Nome Cliente: " + nome + "\n"
+		return //"Nome Funcionario: " + nomef + "\n"
+			    "Nome Cliente: " + nome + "\n"
 			   + "Valor da compra: " + valorcompra + "\n"
 			   + "Numero de identificação da compra: " + numident + "\n"
 			   + numtel;
