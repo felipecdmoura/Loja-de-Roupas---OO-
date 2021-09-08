@@ -3,13 +3,16 @@ package codigofonte;
 public class Cliente extends Pessoa{
 	private String datanasc;
 	
-	public Cliente(){
-		nome = "felipe";
-		email = "felipe@gmai.com";
-		cpf = "05787415632";
-		datanasc = "17/03/2002";
-		
+	public Cliente(String nome_, String email_, String cpf_, Telefone numtel_, String dNasc){
+		super(nome_, email_, cpf_, numtel_);
+		datanasc = dNasc;
 	}
+
+	public Cliente() {
+		super();
+		datanasc = "17/03/2002";
+	}
+
 	public String getData(){
 		return datanasc;
 	}
@@ -43,7 +46,6 @@ public class Cliente extends Pessoa{
 	}
 
 	public String toString() {
-		numtel = new Telefone(61, 998689594);
 
 		return "Nome: " + nome + "\n"
 			   + "Email: " + email + "\n"
