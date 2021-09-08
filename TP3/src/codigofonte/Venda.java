@@ -2,14 +2,18 @@ package codigofonte;
 
 
 public class Venda {
-	int valorcompra;
-	int numident;
-	public Pessoa nome;
+	private int valorcompra;
+	private int numident;
+	private Pessoa nome,nomef;
+	private Telefone numtel;
+	
+	
+
 	public int getValorcompra() {
 		return valorcompra;
 	}
-	public void setValorcompra(int valorcompra) {
-		this.valorcompra = valorcompra;
+	public void setValorcompra(int string) {
+		this.valorcompra = string;
 	}
 	public int getNumident() {
 		return numident;
@@ -20,10 +24,41 @@ public class Venda {
 	public Pessoa getNome() {
 		return nome;
 	}
-	public void setNome(Pessoa nome) {
-		this.nome = nome;
+	public void setNome(Pessoa string) {
+		this.nome = string;
 	}
-	
 
+	
+	public void cadatrarVenda(){
+		nome = new Cliente();
+		
+
+		System.out.println("Digite o nome do cliente: ");
+		this.nome.setNome(Read.getString());
+
+		//nomef = new Funcionario();
+
+		//System.out.println("Digite o nome do funcionario: ");
+		//this.nomef.setNome(Read.getString());
+
+		System.out.println("Digite o valor da compra: ");
+		this.setValorcompra(Read.getInt());
+
+		System.out.println("Digite o Numero de identificação: ");
+		this.setNumident(Read.getInt());
+
+
+	}
+
+	
+	public String toString() {
+		numtel = new Telefone(61, 998689594);
+
+		return "Nome Funcionario: " + nome + "\n"
+			   + "Nome Cliente: " + nome + "\n"
+			   + "Valor da compra: " + valorcompra + "\n"
+			   + "Numero de identificação da compra: " + numident + "\n"
+			   + numtel;
+	}			
 
 }
