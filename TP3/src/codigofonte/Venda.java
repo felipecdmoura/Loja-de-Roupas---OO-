@@ -4,7 +4,7 @@ package codigofonte;
 public class Venda {
 	private int valorcompra;
 	private int numident;
-	private Pessoa nome,nomef;//seria o nome do funcionario no caso
+	private Cliente nome, nomef;//seria o nome do funcionario no caso
 	private Telefone numtel;
 	
 	
@@ -21,16 +21,17 @@ public class Venda {
 	public void setNumident(int numident) {
 		this.numident = numident;
 	}
-	public Pessoa getNome() {
+	public Cliente getNome() {
 		return nome;
 	}
-	public void setNome(Pessoa string) {
+	public void setNome(Cliente string) {
 		this.nome = string;
 	}
 
 	
 	public void cadatrarVenda(){
-		nome = new Cliente();
+		nome = new Cliente(null, null, null, numtel, null);
+		
 		
 
 		System.out.println("Digite o nome do cliente: ");

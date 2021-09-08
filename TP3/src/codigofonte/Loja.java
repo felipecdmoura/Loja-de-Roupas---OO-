@@ -33,5 +33,12 @@ public class Loja {
 	public void setNomefilial(String nomefilial) {
 		this.nomefilial = nomefilial;
 	}
+	
 
+	public String toString() {
+		return "Nome da Filial: " + nomefilial + "\n" 
+			 + "CNPJ: " + cnpj + "\n" 
+			 + "Endereço: " + endereco + "\n" 
+			 + estoque;
+	}
 }

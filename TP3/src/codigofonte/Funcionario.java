@@ -3,6 +3,16 @@ package codigofonte;
 public class Funcionario extends Pessoa {
 	private String datacontrat;
 
+	public Funcionario(String nome_, String email_, String cpf_, Telefone numtel_, String dContract) {
+		super(nome_, email_, cpf_, numtel_);
+		datacontrat = dContract;
+	}
+
+	public Funcionario() {
+		super();
+		datacontrat = "15/3/2021";
+	}
+
 	public String getDatacontrat() {
 		return this.datacontrat;
 	}
