@@ -347,9 +347,9 @@ public class Main {
                 + "5.Visualizar funcionario\n"
                 + "6.Sair");
 
-            int escolhaloja = Read.getInt();
+            int escolhafuncionario = Read.getInt();
 
-            switch (escolhaloja) {
+            switch (escolhafuncionario) {
                 case 1:
                     Funcionario novofuncionario = new Funcionario();
                     novofuncionario.cadatrarFuncionario();
@@ -476,9 +476,9 @@ public class Main {
                 + "5.Visualizar dados da Venda\n"
                 + "6.Sair");
 
-            int escolhaloja = Read.getInt();
+            int escolhavenda = Read.getInt();
 
-            switch (escolhaloja) {
+            switch (escolhavenda) {
                 case 1:
                     Venda novavenda = new Venda();
                     novavenda.cadatrarVenda();
