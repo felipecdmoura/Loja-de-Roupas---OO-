@@ -3,7 +3,7 @@ package codigofonte;
 import java.util.ArrayList;
 
 public class DadosAleatorios {
-    public static void setDefaultData(ArrayList<Cliente> cliente) { //Método para definir os 10 clientes e produtos padrão
+    public static void setDefaultData(ArrayList<Cliente> cliente,ArrayList<Funcionario> funcionarios,ArrayList<Loja> lojas,ArrayList<Venda> vendas,ArrayList<Calca> calcas,ArrayList<Camisa> camisas) { //Método para definir os 10 clientes e produtos padrão
         Telefone telefone;
 
         cliente.add(new Cliente("Felipe", "felipe@gmail.com", "02938374653", new Telefone(61, 987345643), "17//3/2002"));
@@ -16,68 +16,26 @@ public class DadosAleatorios {
         cliente.add(new Cliente("Maria", "maria@gmail.com", "12648975321", new Telefone(61, 988775321), "11/11/2000"));
         cliente.add(new Cliente("Livia", "livia@gmail.com", "31546879845", new Telefone(61, 998755654), "21/8/1988"));
         cliente.add(new Cliente("Tales", "tales@gmail.com", "21564897546", new Telefone(61, 986588745), "19/9/2002"));
-            
 
-    //-----------PRODUTOS------------
+        funcionarios.add(new Funcionario("Roberto", "robertin@gmail.com", "21567797546", new Telefone(61, 981209235), "19/7/2000"));
+        funcionarios.add(new Funcionario("Claudio", "Claudin@gmail.com", "25564897546", new Telefone(61, 981209235), "19/7/2000"));
 
-        //setNome(nome); dos produtos
-        /*product[0].setNome(nome); = "Carne";
-        product[1].setNome(nome); = "Leite";
-        product[2].setNome(nome); = "Sal";
-        product[3].setNome(nome); = "Ovo";
-        product[4].setNome(nome); = "Iogurte";
-        product[5].setNome(nome); = "Banana";
-        product[6].setNome(nome); = "Maçã";
-        product[7].setNome(nome); = "Uva";
-        product[8].setNome(nome); = "Suco";
-        product[9].setNome(nome); = "Biscoito";
+        lojas.add(new Loja("021.054.932-21","qr 312 cj f loja 315 Gama DF",new Estoque(),"Filial guimarães"));
+        lojas.add(new Loja("021.0123.9432-21","qr 322 cj t loja 125 Santa Maria DF",new Estoque(),"Filial Rosa"));
+
+        calcas.add(new Calca("calça sportwear nike mid","calça voltada para esportes ",'M',123,"nike","preta",54));
+        calcas.add(new Calca("calça casual reserva mid","calça voltada para o dia a dia ",'F',220,"reserva","preta",74));
+        calcas.add(new Calca("calça confort adidas","calça de moletom voltada para conforto ",'M',123,"adidas","preta",64));
+        calcas.add(new Calca("calça street nike ","calça voltada para streetwear ",'M',223,"nike","azul",44));
+        calcas.add(new Calca("calça saruel mid","calça sareul volta para moda ",'F',153,"zara","marrom",54));
+
+        camisas.add(new Camisa("camisa sportwear nike ","camisa voltada para esportes ",'F',153,"nike","preta","G"));
+        camisas.add(new Camisa("camisa moda casual de luxo lacoste","camisa voltada para moda",'M',223,"lacoste","preta","M"));
+        camisas.add(new Camisa("camisa manga longa pool ","camisa voltada para conforto ",'F',85,"pool","azul","GG"));
+        camisas.add(new Camisa("camisa cavada scott","camisa voltada para moda ",'M',192,"scott","branca","P"));
+        camisas.add(new Camisa("camisa streetwear adidas","camisa voltada para streetwear ",'F',180,"adidas","cinza","PP"));
+
+
         
-        //Descrição dos produtos
-        product[0].descrip = "Carne Acém 1,5kg";
-        product[1].descrip = "Leite desnatado piranjuba";
-        product[2].descrip = "Sal de flor para churrasco";
-        product[3].descrip = "Caixa ovo caipira 20un.";
-        product[4].descrip = "Iogurte Batavo Morango";
-        product[5].descrip = "Banana nanica";
-        product[6].descrip = "Maçã gala comun";
-        product[7].descrip = "Caixa uva thompson ";
-        product[8].descrip = "Caixa suco DelValle";
-        product[9].descrip = "Pacote biscoito Oreo";
-
-        //Preço dos produtos
-        product[0].price = 60;
-        product[1].price = 7.49;
-        product[2].price = 4.99;
-        product[3].price = 10.99;
-        product[4].price = 3.49;
-        product[5].price = 4.99;
-        product[6].price = 4.49;
-        product[7].price = 6.49;
-        product[8].price = 3.19;
-        product[9].price = 2.99;
-
-        //Lucro dos produtos
-        product[0].profit = 12;
-        product[1].profit = 20;
-        product[2].profit = 25;
-        product[3].profit = 15;
-        product[4].profit = 20;
-        product[5].profit = 30;
-        product[6].profit = 22;
-        product[7].profit = 24;
-        product[8].profit = 19;
-        product[9].profit = 18;
-
-        //Qtd. em estoque dos produtos
-        product[0].stock = 5;
-        product[1].stock = 17;
-        product[2].stock = 19;
-        product[3].stock = 20;
-        product[4].stock = 25;
-        product[5].stock = 11;
-        product[6].stock = 16;
-        product[7].stock = 30;
-        product[8].stock = 35;
-        product[9].stock = 23;*/
     }
 }

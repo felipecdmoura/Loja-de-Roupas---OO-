@@ -15,7 +15,7 @@ public class Main {
     private static boolean loop = true;;
     public static void main(String[] args) {
         
-        DadosAleatorios.setDefaultData(clientes);
+        DadosAleatorios.setDefaultData(clientes,funcionarios,lojas,vendas,calcas,camisas);
 
         while (true) {
             System.out.println("Selecione uma das abas abaixo\n" 
