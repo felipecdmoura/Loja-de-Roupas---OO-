@@ -47,7 +47,7 @@ public class Cliente extends Pessoa{
 
 	public void editCliente(int seletor){
 
-		numtel = new Telefone();
+		numtel = new Telefone(61,339);
 
 		switch (seletor) {
 			case 1:
@@ -84,13 +84,7 @@ public class Cliente extends Pessoa{
 		}
 	}
 
-	public boolean procurarCliente(String str) {
-		if (nome.equalsIgnoreCase(str)){
-			return true;
-		}else{
-			return false;
-		}
-	}
+
 
 	public String toString() {
 		return "Nome: " + nome + "\n"

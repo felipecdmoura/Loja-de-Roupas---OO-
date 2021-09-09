@@ -23,9 +23,9 @@ public class Funcionario extends Pessoa {
 
 	public void cadatrarFuncionario(){
 
-		numtel = new Telefone(61, 998689594);
+		numtel = new Telefone();
 
-		System.out.println("Digite o nome: ");
+		System.out.println("Digite o nome do funcionario: ");
 		this.setNome(Read.getString());
 
 		System.out.println("Digite o email: ");
@@ -34,7 +34,7 @@ public class Funcionario extends Pessoa {
 		System.out.println("Digite o cpf: ");
 		this.setCpf(Read.getString());
 
-		System.out.println("Digite a data de nascimento: ");
+		System.out.println("Digite a data de contratação: ");
 		this.setDatacontrat(Read.getString());
 
 		System.out.println("Digite o DDD do telefone: ");
@@ -43,6 +43,45 @@ public class Funcionario extends Pessoa {
 		System.out.println("Digite o numero do telefone: ");
 		this.numtel.setNumero(Read.getInt());
 
+	}
+
+	public void editarFuncionario(int seletor){
+
+		numtel = new Telefone(61,339);
+
+		switch (seletor) {
+			case 1:
+				System.out.println("Digite o novo nome do funcionario: ");
+				this.setNome(Read.getString());
+				break;
+
+			case 2:
+				System.out.println("Digite o novo email: ");
+				this.setEmail(Read.getString());
+				break;
+
+			case 3:
+				System.out.println("Digite o novo cpf: ");
+				this.setCpf(Read.getString());
+				break;
+
+			case 4:
+				System.out.println("Digite a data de contrataçao: ");
+				this.setDatacontrat(Read.getString());
+				break;
+
+			case 5:
+				System.out.println("Digite o DDD do telefone: ");
+				this.numtel.setDDD(Read.getInt());
+		
+				System.out.println("Digite o numero do telefone: ");
+				this.numtel.setNumero(Read.getInt());	
+				break;
+		
+			default:
+				System.out.println("Opção Inválida!");
+				break;
+		}
 	}
 
 
