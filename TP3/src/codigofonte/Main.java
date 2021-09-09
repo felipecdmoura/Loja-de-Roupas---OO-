@@ -1,15 +1,17 @@
 package codigofonte;
+
+import java.sql.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Main {
+    private static ArrayList <Cliente> clientes = new ArrayList<Cliente>();
+    private static boolean loop = true;;
     public static void main(String[] args) {
-        Cliente cliente[] = new Cliente[1000];
         
-        boolean loop = true;
-        int clientcout = 0;
+        DadosAleatorios.setDefaultData(clientes);
 
-        for(int count=0;count<1000;count++) //Inicialização do array.
-            cliente[count] = new Cliente();
-
-        while (loop) {
+        while (true) {
             System.out.println("Selecione uma das abas abaixo\n" 
             + "1.Cliente\n"
             + "2.Loja\n" 
@@ -23,41 +25,7 @@ public class Main {
 
             switch (escolha) {
                 case 1:
-                    while (loop) {
-                        clear();
-                        System.out.println(
-                            "Selecione uma das opções abaixo\n" 
-                            + "1.Cadastrar Cliente\n"
-                            + "2.Editar Informaçoes do Cliente\n"
-                            + "3.Pesquisar Cliente\n"
-                            + "4.Deletar Cliente\n" 
-                            + "5.Visualizar Clientes\n"
-                            + "6.Sair");
-
-                        int escolhacliente = Read.getInt();
-
-                        switch (escolhacliente) {
-                            case 1:
-                                cliente[clientcout].cadatrarCliente();
-                                clientcout++;
-                                break;
-                            case 2:// metodo de editar cliente
-                            case 3:// metodo de pesquisar cliente
-                            case 4:// metodo de deletar cliente
-                            case 5:
-                                for(int cout=0; cout<clientcout; cout++){
-                                    System.out.println(cliente[cout]);
-                                    System.out.println();
-                                }
-                                System.out.println("Digite qualquer tecla para voltar!");
-                                char tecla = Read.getChar();
-                            case 6:
-                                loop = false;
-                                break;
-                        }
-                    }
-                    clear();
-                    loop = true;
+                    seccaoCliente();
                     break;
                 case 2:
                     clear();
@@ -206,4 +174,139 @@ public class Main {
 			System.out.println();
 		}
 	}
+
+    private static void pulaLinha(int nlinha) {
+        for (int i = 0; i < nlinha; i++) {
+            System.out.println();
+        }
+    }
+
+    private static void seccaoCliente() {
+        char tecla;
+        int verpesq;
+
+        while (loop) {
+            clear();
+            System.out.println(
+                "Selecione uma das opções abaixo\n" 
+                + "1.Cadastrar Cliente\n"
+                + "2.Editar Informaçoes do Cliente\n"
+                + "3.Pesquisar Cliente\n"
+                + "4.Deletar Cliente\n" 
+                + "5.Visualizar Clientes\n"
+                + "6.Sair");
+
+            int escolhacliente = Read.getInt();
+
+            switch (escolhacliente) {
+                case 1:
+                    Cliente novocCliente = new Cliente();
+                    novocCliente.cadatrarCliente();
+                    clientes.add(novocCliente);
+                    break;
+
+                case 2:
+                    int indexedit = 0;
+                    int infoEdit;
+
+                    clear();
+                    System.out.println("Digite o nome do cliente a ser editado: ");
+                    String posedit = Read.getString();
+                    pulaLinha(1);
+
+                    for (Cliente clienteEdit : clientes) {
+                        if(clienteEdit.getNome().equalsIgnoreCase(posedit)){
+                            break;
+                        }
+                        indexedit++;
+                    }
+                    
+                    if(indexedit >= clientes.size()){
+                        System.out.println("Cliente não encontrado!");
+                        pulaLinha(1);
+                        System.out.println("Digite qualquer tecla para voltar!");
+                        tecla = Read.getChar();
+                    }else{
+                        System.out.println(clientes.get(indexedit));
+                        pulaLinha(1);
+                        System.out.println("Qual informação deseja alterar?: " + "\n"
+                                        +  "1)Nome" + "\n"
+                                        +  "2)Email" + "\n"
+                                        +  "3)CPF" + "\n"
+                                        +  "4)Data de Nascimento" + "\n"
+                                        +  "5)Telefone");
+                        infoEdit = Read.getInt();
+                        pulaLinha(1);
+
+                        
+                        clientes.get(indexedit).editCliente(infoEdit);
+                    }
+                   break;
+
+                case 3:
+                    verpesq = 0;
+
+                    clear();
+                    System.out.println("Digite o nome do cliente: ");
+                    String pesq = Read.getString();
+                    pulaLinha(1);
+
+                    for (Cliente clientePsq : clientes) {
+                        if(clientePsq.getNome().equalsIgnoreCase(pesq)){
+                            System.out.println(clientePsq);
+                            verpesq = 1;
+                        }
+                    }
+
+                    if(verpesq == 0){
+                        System.out.println("Não encontrado!");
+                    }
+
+                    pulaLinha(1);
+                    System.out.println("Digite qualquer tecla para voltar!");
+                    tecla = Read.getChar();
+                    break;
+
+                case 4:
+                    int indexdel = 0;
+
+                    clear();
+                    System.out.println("Digite o nome do cliente a ser editado: ");
+                    String posedel = Read.getString();
+                    pulaLinha(1);
+
+                    for (Cliente clienteEdit : clientes) {
+                        if(clienteEdit.getNome().equalsIgnoreCase(posedel)){
+                            break;
+                        }
+                        indexdel++;
+                    }
+
+                    if(indexdel >= clientes.size()){
+                        System.out.println("Cliente não encontrado!");
+                        pulaLinha(1);
+                        System.out.println("Digite qualquer tecla para voltar!");
+                        tecla = Read.getChar();
+                    }else{
+                        clientes.remove(indexdel);
+                    }
+                    break;
+
+                case 5:
+                    for(int cout=0; cout<clientes.size(); cout++){
+                        System.out.println(clientes.get(cout));
+                        pulaLinha(1);
+                    }
+
+                    System.out.println("Digite qualquer tecla para voltar!");
+                    tecla = Read.getChar();
+                    break;
+                case 6:
+                    loop = false;
+                    break;
+            }
+        }
+        clear();
+        loop = true;
+    }
 }

@@ -23,7 +23,7 @@ public class Cliente extends Pessoa{
 
 	public void cadatrarCliente(){
 
-		numtel = new Telefone(61, 998689594);
+		numtel = new Telefone();
 
 		System.out.println("Digite o nome: ");
 		this.setNome(Read.getString());
@@ -45,8 +45,54 @@ public class Cliente extends Pessoa{
 
 	}
 
-	public String toString() {
+	public void editCliente(int seletor){
 
+		numtel = new Telefone();
+
+		switch (seletor) {
+			case 1:
+				System.out.println("Digite o novo nome: ");
+				this.setNome(Read.getString());
+				break;
+
+			case 2:
+				System.out.println("Digite o novo email: ");
+				this.setEmail(Read.getString());
+				break;
+
+			case 3:
+				System.out.println("Digite o novo cpf: ");
+				this.setCpf(Read.getString());
+				break;
+
+			case 4:
+				System.out.println("Digite a data de nascimento: ");
+				this.setData(Read.getString());
+				break;
+
+			case 5:
+				System.out.println("Digite o DDD do telefone: ");
+				this.numtel.setDDD(Read.getInt());
+		
+				System.out.println("Digite o numero do telefone: ");
+				this.numtel.setNumero(Read.getInt());	
+				break;
+		
+			default:
+				System.out.println("Opção Inválida!");
+				break;
+		}
+	}
+
+	public boolean procurarCliente(String str) {
+		if (nome.equalsIgnoreCase(str)){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public String toString() {
 		return "Nome: " + nome + "\n"
 			   + "Email: " + email + "\n"
 			   + "CPF: " + cpf + "\n"

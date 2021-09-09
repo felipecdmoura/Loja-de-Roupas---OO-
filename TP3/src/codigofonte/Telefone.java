@@ -11,6 +11,11 @@ public class Telefone {
 		numero = num;
 	}
 
+	public Telefone () {
+		DDD = 00;
+		numero = 00000000;
+	}
+
 	public int getDDD() {
 		return DDD;
 	}
