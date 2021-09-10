@@ -1,18 +1,25 @@
 package codigofonte;
 
 public class Cliente extends Pessoa{
+
+	//SUBCLASSE DE PESSOA
+
+	//ATRIBUTOS
 	private String datanasc;
 	
+	//Construtor com parametros
 	public Cliente(String nome_, String email_, String cpf_, Telefone numtel_, String dNasc){
 		super(nome_, email_, cpf_, numtel_);
 		datanasc = dNasc;
 	}
 
+	//Construtor sem parametros
 	public Cliente() {
 		super();
 		datanasc = "";
 	}
 
+	//GETS E SETS
 	public String getData(){
 		return datanasc;
 	}
@@ -21,6 +28,7 @@ public class Cliente extends Pessoa{
 		this.datanasc = datanasc;
 	}
 
+	//Metodo de cadastro de clientes
 	public void cadatrarCliente(){
 
 		numtel = new Telefone();
@@ -45,6 +53,7 @@ public class Cliente extends Pessoa{
 
 	}
 
+	//Metodo de edicao de clientes
 	public void editCliente(int seletor){
 
 		numtel = new Telefone(61,339);
@@ -84,8 +93,7 @@ public class Cliente extends Pessoa{
 		}
 	}
 
-
-
+	//toString de Cliente
 	public String toString() {
 		return "Nome: " + nome + "\n"
 			   + "Email: " + email + "\n"

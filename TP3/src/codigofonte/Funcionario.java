@@ -1,18 +1,25 @@
 package codigofonte;
 
 public class Funcionario extends Pessoa {
+
+	//SUBCLASSE DE PESSOA
+
+	//ATRIBUTOS
 	private String datacontrat;
 
+	//Construtor com parametros
 	public Funcionario(String nome_, String email_, String cpf_, Telefone numtel_, String dContract) {
 		super(nome_, email_, cpf_, numtel_);
 		datacontrat = dContract;
 	}
 
+	//Construtor sem parametros
 	public Funcionario() {
 		super();
 		datacontrat = "";
 	}
 
+	//GETS E SETS
 	public String getDatacontrat() {
 		return this.datacontrat;
 	}
@@ -21,6 +28,7 @@ public class Funcionario extends Pessoa {
 		this.datacontrat = datacontrat;
 	}
 
+	//Metodo de cadastro de funcionarios
 	public void cadatrarFuncionario(){
 
 		numtel = new Telefone();
@@ -45,6 +53,7 @@ public class Funcionario extends Pessoa {
 
 	}
 
+	//Metodo de edicao de funcinario
 	public void editarFuncionario(int seletor){
 
 		numtel = new Telefone(61,339);
@@ -84,10 +93,8 @@ public class Funcionario extends Pessoa {
 		}
 	}
 
-
+	//toString de Funcionario
 	public String toString() {
-		numtel = new Telefone(61, 998689594);
-
 		return "Nome: " + nome + "\n"
 			   + "Email: " + email + "\n"
 			   + "CPF: " + cpf + "\n"

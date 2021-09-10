@@ -1,11 +1,14 @@
 package codigofonte;
 public class Venda {
+
+	//ATRIBUTOS
 	private Cliente cliente;
 	private Roupa produto;
 	private Funcionario funcionario;
 	private float preçoTotal;
 	private String protocolo;
 
+	//Construtor com parametros
 	public Venda (Cliente cliente_, Roupa produto_, Funcionario funcionario_, Float preçoTotal_,  String protocolo_){
 		cliente = cliente_;
 		produto = produto_;
@@ -14,10 +17,11 @@ public class Venda {
 		protocolo = protocolo_;
 	}
 
-	public Venda() {
-		
+	//Construtor sem parametros
+	public Venda() {	
 	}
 
+	//GETS E SETS
 	public Cliente getCliente() {
 		return cliente;
 	}
@@ -58,6 +62,7 @@ public class Venda {
 		this.protocolo = protocolo;
 	}
 	
+	//toString de Venda
 	public String toString() {
 		return    "-----Funcionário-----" + "\n"
 				+ "Nome: " + funcionario.getNome() + "\n"
