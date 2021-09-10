@@ -10,7 +10,7 @@ public class Cliente extends Pessoa{
 
 	public Cliente() {
 		super();
-		datanasc = "17/03/2002";
+		datanasc = "";
 	}
 
 	public String getData(){

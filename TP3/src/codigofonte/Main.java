@@ -6,16 +6,16 @@ import java.util.Arrays;
 
 public class Main {
     private static ArrayList <Cliente> clientes = new ArrayList<Cliente>();
-    private static ArrayList <Loja> lojas = new ArrayList<Loja>();
     private static ArrayList <Funcionario> funcionarios = new ArrayList<Funcionario>();
     private static ArrayList <Venda> vendas = new ArrayList<Venda>();
     private static ArrayList <Camisa> camisas = new ArrayList<Camisa>();
     private static ArrayList <Calca> calcas = new ArrayList<Calca>();
+    private static Loja loja;
 
     private static boolean loop = true;;
     public static void main(String[] args) {
         
-        DadosAleatorios.setDefaultData(clientes,funcionarios,lojas,vendas,calcas,camisas);
+        DadosAleatorios.setDefaultData(clientes, funcionarios, loja, vendas, calcas, camisas);
 
         while (true) {
             System.out.println("Selecione uma das abas abaixo\n" 
@@ -50,9 +50,9 @@ public class Main {
                     seccaoCamisa();
                     break;
                 case 6:
-                clear();
-                seccaoCalca();
-                break;
+                    clear();
+                    seccaoCalca();
+                    break;
                 case 7:
                     System.exit(0);
                 default:
@@ -211,120 +211,43 @@ public class Main {
             clear();
             System.out.println(
                 "Selecione uma das opções abaixo\n" 
-                + "1.Cadastrar loja\n"
-                + "2.Editar Informaçoes da loja\n"
-                + "3.Pesquisar loja\n"
-                + "4.Deletar loja\n" 
-                + "5.Visualizar loja\n"
-                + "6.Sair");
-
+                + "1.Visualizar Loja\n"
+                + "2.Editar Informaçoes da Loja\n"
+                + "3.Sair");
+                
             int escolhaloja = Read.getInt();
 
             switch (escolhaloja) {
                 case 1:
-                    Loja novaLoja = new Loja();
-                    novaLoja.cadastrarLoja();
-                    lojas.add(novaLoja);
+                    System.out.println(loja);
+                    pulaLinha(1);
+                    
+                    System.out.println("Digite qualquer tecla para voltar!");
+                    tecla = Read.getChar();
                     break;
 
                 case 2:
-                    int indexedit = 0;
                     int infoEdit;
-
                     clear();
-                    System.out.println("Digite o nome da filial a ser editada: ");
-                    String posedit = Read.getString();
-                    pulaLinha(1);
-
-                    for (Loja lojaedit : lojas) {
-                        if(lojaedit.getNomefilial().equalsIgnoreCase(posedit)){
-                            break;
-                        }
-                        indexedit++;
-                    }
                     
-                    if(indexedit >= lojas.size()){
-                        System.out.println("Loja não encontrada!");
-                        pulaLinha(1);
-                        System.out.println("Digite qualquer tecla para voltar!");
-                        tecla = Read.getChar();
-                    }else{
-                        System.out.println(clientes.get(indexedit));
-                        pulaLinha(1);
-                        System.out.println("Qual informação deseja alterar?: " + "\n"
-                                        +  "1)Nome filial" + "\n"
-                                        +  "2)Endereço" + "\n"
-                                        +  "3)Estoque calça" + "\n"
-                                        +  "4)Estoque camisa" + "\n"
-                                        +  "5)cnpj");
-                        infoEdit = Read.getInt();
-                        pulaLinha(1);
-
+                    System.out.println(loja);
+                    pulaLinha(1);
+                    System.out.println("Qual informação deseja alterar?: " + "\n"
+                                    +  "1)Nome Filial" + "\n"
+                                    +  "2)Endereço" + "\n"
+                                    +  "3)CNPJ");
+                    infoEdit = Read.getInt();
+                    pulaLinha(1);
                         
-                        lojas.get(indexedit).editarLoja(infoEdit);
-                    }
-                   break;
+                    loja.editarLoja(infoEdit);
+                    break;
 
                 case 3:
-                    verpesq = 0;
-
-                    clear();
-                    System.out.println("Digite o nome da filial: ");
-                    String pesq = Read.getString();
-                    pulaLinha(1);
-
-                    for (Loja lojapesq : lojas) {
-                        if(lojapesq.getNomefilial().equalsIgnoreCase(pesq)){
-                            System.out.println(lojapesq);
-                            verpesq = 1;
-                        }
-                    }
-
-                    if(verpesq == 0){
-                        System.out.println("Não encontrado!");
-                    }
-
-                    pulaLinha(1);
-                    System.out.println("Digite qualquer tecla para voltar!");
-                    tecla = Read.getChar();
-                    break;
-
-                case 4:
-                    int indexdel = 0;
-
-                    clear();
-                    System.out.println("Digite o nome da filial a ser editada: ");
-                    String posedel = Read.getString();
-                    pulaLinha(1);
-
-                    for (Loja lojaedit : lojas) {
-                        if(lojaedit.getNomefilial().equalsIgnoreCase(posedel)){
-                            break;
-                        }
-                        indexdel++;
-                    }
-
-                    if(indexdel >= clientes.size()){
-                        System.out.println("Loja não encontrada!");
-                        pulaLinha(1);
-                        System.out.println("Digite qualquer tecla para voltar!");
-                        tecla = Read.getChar();
-                    }else{
-                        clientes.remove(indexdel);
-                    }
-                    break;
-
-                case 5:
-                    for(int cout=0; cout<lojas.size(); cout++){
-                        System.out.println(lojas.get(cout));
-                        pulaLinha(1);
-                    }
-
-                    System.out.println("Digite qualquer tecla para voltar!");
-                    tecla = Read.getChar();
-                    break;
-                case 6:
                     loop = false;
+                    break;
+
+                default:
+                    System.out.println("Opção Inválida!");
                     break;
             }
         }
@@ -340,11 +263,11 @@ public class Main {
             clear();
             System.out.println(
                 "Selecione uma das opções abaixo\n" 
-                + "1.Cadastrar funcionario\n"
-                + "2.Editar Informaçoes do funcionario\n"
-                + "3.Pesquisar pelo nome do funcionario\n"
-                + "4.Deletar funcionario\n" 
-                + "5.Visualizar funcionario\n"
+                + "1.Cadastrar Funcionario\n"
+                + "2.Editar Informações do Funcionario\n"
+                + "3.Pesquisar Funcionario\n"
+                + "4.Deletar Funcionario\n" 
+                + "5.Visualizar Funcionarios\n"
                 + "6.Sair");
 
             int escolhafuncionario = Read.getInt();
@@ -382,8 +305,8 @@ public class Main {
                         pulaLinha(1);
                         System.out.println("Qual informação deseja alterar?: " + "\n"
                                         +  "1)Nome do funcionario " + "\n"
-                                        +  "2)email" + "\n"
-                                        +  "3)cpf" + "\n"
+                                        +  "2)Email" + "\n"
+                                        +  "3)CPF" + "\n"
                                         +  "4)Data de contrataçao" + "\n"
                                         +  "5)Telefone");
                         infoEdit = Read.getInt();
@@ -469,70 +392,136 @@ public class Main {
             clear();
             System.out.println(
                 "Selecione uma das opções abaixo\n" 
-                + "1.Cadastrar venda\n"
-                + "2.Editar Informaçoes da Venda\n"
-                + "3.Pesquisar pelo numero de identificaçao da Venda\n"
-                + "4.Deletar Venda\n" 
-                + "5.Visualizar dados da Venda\n"
-                + "6.Sair");
+                + "1.Registrar Venda\n"
+                + "2.Pesquisar Venda\n"
+                + "3.Visualizar Vendas\n"
+                + "4.Sair");
 
             int escolhavenda = Read.getInt();
 
             switch (escolhavenda) {
                 case 1:
-                    Venda novavenda = new Venda();
-                    novavenda.cadatrarVenda();
-                    vendas.add(novavenda);
+                    int posfunc = 0;
+                    int poscliente = 0;
+                    int poscamisa = 0;
+                    int poscalca = 0;
+                    float precototal = 0;
+            
+                    clear();
+                    System.out.println("Digite o CPF do funcionário responsável: ");
+                    String pesqfunc = Read.getString();
+                    pulaLinha(1);
+            
+                    for (Funcionario funcionarioindex : funcionarios) {
+                        if(funcionarioindex.getCpf().equalsIgnoreCase(pesqfunc)){
+                            break;
+                        }
+                        posfunc++;
+                    }
+            
+                    if(posfunc >= funcionarios.size()){
+                        System.out.println("Não encontrado!");
+                        break;
+                    }
+            
+                    clear();
+                    System.out.println("Digite o nome do cliente: ");
+                    String pesqcliente = Read.getString();
+                    pulaLinha(1);
+            
+                    for (Cliente clienteindex : clientes) {
+                        if(clienteindex.getNome().equalsIgnoreCase(pesqcliente)){
+                            break;
+                        }
+                        poscliente++;
+                    }
+            
+                    if(poscliente >= clientes.size()){
+                        System.out.println("Cliente não registrado!");
+                        break;
+                    }
+            
+                    clear();
+                    System.out.println("Selecione o tipo do produto vendido: \n"
+                                    +   "1)Camisa\n"
+                                    +   "2)Calça");
+            
+                    int selectprod = Read.getInt();
+            
+                    switch (selectprod) {
+                        case 1:
+                            clear();
+                            System.out.println("Digite o Id do produto: ");
+                            String pesqcamisa = Read.getString();
+            
+                            for (Camisa camisaindex : camisas) {
+                                if(camisaindex.getId().equalsIgnoreCase(pesqcamisa)){
+                                    break;
+                                }
+                                poscamisa++;
+                            }
+            
+                            if(poscamisa >= camisas.size()){
+                                System.out.println("Produto não registrado!");
+                                break;
+                            }
+            
+                            precototal += camisas.get(poscamisa).getPreco();
+                            break;
+                            
+                        case 2:
+                            clear();
+                            System.out.println("Digite o Id do produto: ");
+                            String pesqcalca = Read.getString();
+            
+                            for (Calca calcaindex : calcas) {
+                                if(calcaindex.getId().equalsIgnoreCase(pesqcalca)){
+                                    break;
+                                }
+                                poscalca++;
+                            }
+            
+                            if(poscalca >= calcas.size()){
+                                System.out.println("Produto não registrado!");
+                                break;
+                            }
+            
+                            precototal += calcas.get(poscalca).getPreco();
+                            break;
+            
+                        default:
+                            System.out.println("Opção Inválida!");
+                            break;
+                    }
+                    
+                    clear();
+                    System.out.println("Digite o protocolo da venda: ");
+                    String protoc = Read.getString();
+            
+                    switch (selectprod) {
+                        case 1:
+                            vendas.add(new Venda(clientes.get(poscliente), camisas.get(poscamisa), funcionarios.get(posfunc), precototal, protoc));
+                            break;
+                            
+                        case 2:
+                            vendas.add(new Venda(clientes.get(poscliente), calcas.get(poscalca), funcionarios.get(posfunc), precototal, protoc));
+                            break;
+            
+                        default:
+                            break;
+                    }
                     break;
 
                 case 2:
-                    int indexedit = 0;
-                    int infoEdit;
-
-                    clear();
-                    System.out.println("Digite o nome da venda a ser editada: ");
-                    String posedit = Read.getString();
-                    pulaLinha(1);
-
-                    for (Venda vendaedit : vendas) {
-                        if(vendaedit.getNumident().equalsIgnoreCase(posedit)){
-                            break;
-                        }
-                        indexedit++;
-                    }
-                    
-                    if(indexedit >= funcionarios.size()){
-                        System.out.println("Venda não encontrado(a)!");
-                        pulaLinha(1);
-                        System.out.println("Digite qualquer tecla para voltar!");
-                        tecla = Read.getChar();
-                    }else{
-                        System.out.println(vendas.get(indexedit));
-                        pulaLinha(1);
-                        System.out.println("Qual informação deseja alterar?: " + "\n"
-                                        +  "1)Numero de identificação da venda " + "\n"
-                                        +  "2)Valor da venda" + "\n"
-                                        +  "3)Nome do cliente" + "\n"
-                                        +  "4)Nome do fucionario" + "\n"
-                                        +  "5)Telefone");
-                        infoEdit = Read.getInt();
-                        pulaLinha(1);
-
-                        
-                        vendas.get(indexedit).editarVenda(infoEdit);
-                    }
-                   break;
-
-                case 3:
                     verpesq = 0;
 
                     clear();
-                    System.out.println("Digite o numero de identificação da venda: ");
+                    System.out.println("Digite o numero de protocolo da venda: ");
                     String pesq = Read.getString();
                     pulaLinha(1);
 
                     for (Venda vendapesq : vendas) {
-                        if(vendapesq.getNumident().equalsIgnoreCase(pesq)){
+                        if(vendapesq.getProtocolo().equalsIgnoreCase(pesq)){
                             System.out.println(vendapesq);
                             verpesq = 1;
                         }
@@ -547,32 +536,7 @@ public class Main {
                     tecla = Read.getChar();
                     break;
 
-                case 4:
-                    int indexdel = 0;
-
-                    clear();
-                    System.out.println("Digite o numero de identificação de venda para edita-la: ");
-                    String posedel = Read.getString();
-                    pulaLinha(1);
-
-                    for (Venda vendaedit : vendas) {
-                        if(vendaedit.getNumident().equalsIgnoreCase(posedel)){
-                            break;
-                        }
-                        indexdel++;
-                    }
-
-                    if(indexdel >= vendas.size()){
-                        System.out.println("Venda não encontrada!");
-                        pulaLinha(1);
-                        System.out.println("Digite qualquer tecla para voltar!");
-                        tecla = Read.getChar();
-                    }else{
-                        vendas.remove(indexdel);
-                    }
-                    break;
-
-                case 5:
+                case 3:
                     for(int cout=0; cout<vendas.size(); cout++){
                         System.out.println(vendas.get(cout));
                         pulaLinha(1);
@@ -581,8 +545,13 @@ public class Main {
                     System.out.println("Digite qualquer tecla para voltar!");
                     tecla = Read.getChar();
                     break;
-                case 6:
+
+                case 4:
                     loop = false;
+                    break;
+                
+                default:
+                    System.out.println("Opção Inválida!");
                     break;
             }
         }
@@ -598,11 +567,11 @@ public class Main {
             clear();
             System.out.println(
                 "Selecione uma das opções abaixo\n" 
-                + "1.Cadastrar camisa\n"
-                + "2.Editar Informaçoes da camisa\n"
-                + "3.Pesquisar pelo nome da camisa\n"
-                + "4.Deletar camisa\n" 
-                + "5.Visualizar dados das camisas\n"
+                + "1.Cadastrar Camisa\n"
+                + "2.Editar Camisa\n"
+                + "3.Pesquisar Camisa\n"
+                + "4.Deletar Camisa\n" 
+                + "5.Visualizar Camisas\n"
                 + "6.Sair");
 
             int escolhacamisa = Read.getInt();
@@ -639,13 +608,15 @@ public class Main {
                         System.out.println(camisas.get(indexedit));
                         pulaLinha(1);
                         System.out.println("Qual informação deseja alterar?: " + "\n"
-                                        +  "1)Nome da camisa " + "\n"
-                                        +  "2)Descrição" + "\n"
-                                        +  "3)Genero" + "\n"
-                                        +  "4)preço" + "\n"
-                                        +  "5)Marca"+ "\n"
-                                        +  "6)Cor" + "\n"
-                                        +  "7)Tamanho");
+                                        +  "1)Id da Camisa" + "\n"
+                                        +  "2)Nome da Camisa " + "\n"
+                                        +  "3)Descrição" + "\n"
+                                        +  "4)Genero" + "\n"
+                                        +  "5)preço" + "\n"
+                                        +  "6)Marca"+ "\n"
+                                        +  "7)Cor" + "\n"
+                                        +  "8)Tamanho" + "\n"
+                                        +  "9)Estoque");
                         infoEdit = Read.getInt();
                         pulaLinha(1);
 
@@ -658,12 +629,12 @@ public class Main {
                     verpesq = 0;
 
                     clear();
-                    System.out.println("Digite o nome da camisa: ");
+                    System.out.println("Digite o Id da camisa: ");
                     String pesq = Read.getString();
                     pulaLinha(1);
 
                     for (Camisa camisapesq : camisas) {
-                        if(camisapesq.getNome().equalsIgnoreCase(pesq)){
+                        if(camisapesq.getId().equalsIgnoreCase(pesq)){
                             System.out.println(camisapesq);
                             verpesq = 1;
                         }
@@ -682,12 +653,12 @@ public class Main {
                     int indexdel = 0;
 
                     clear();
-                    System.out.println("Digite o nome da camisa para editar as informações: ");
+                    System.out.println("Digite o Id da camisa para editar as informações: ");
                     String posedel = Read.getString();
                     pulaLinha(1);
 
                     for (Camisa camisaedit : camisas) {
-                        if(camisaedit.getNome().equalsIgnoreCase(posedel)){
+                        if(camisaedit.getId().equalsIgnoreCase(posedel)){
                             break;
                         }
                         indexdel++;
@@ -770,17 +741,18 @@ public class Main {
                         System.out.println(calcas.get(indexedit));
                         pulaLinha(1);
                         System.out.println("Qual informação deseja alterar?: " + "\n"
-                                        +  "1)Nome da calça " + "\n"
-                                        +  "2)Descrição" + "\n"
-                                        +  "3)Genero" + "\n"
-                                        +  "4)preço" + "\n"
-                                        +  "5)Marca"+ "\n"
-                                        +  "6)Cor" + "\n"
-                                        +  "7)Tamanho da cintura");
+                                        +  "1)Id da Calça" + "\n"
+                                        +  "2)Nome da Calça " + "\n"
+                                        +  "3)Descrição" + "\n"
+                                        +  "4)Genero" + "\n"
+                                        +  "5)preço" + "\n"
+                                        +  "6)Marca"+ "\n"
+                                        +  "7)Cor" + "\n"
+                                        +  "8)Tamanho" + "\n"
+                                        +  "9)Estoque");
                         infoEdit = Read.getInt();
                         pulaLinha(1);
 
-                        
                         calcas.get(indexedit).editarCalca(infoEdit);
                     }
                    break;
@@ -789,12 +761,12 @@ public class Main {
                     verpesq = 0;
 
                     clear();
-                    System.out.println("Digite o nome da calça: ");
+                    System.out.println("Digite o Id da calça: ");
                     String pesq = Read.getString();
                     pulaLinha(1);
 
                     for (Calca calcapesq : calcas) {
-                        if(calcapesq.getNome().equalsIgnoreCase(pesq)){
+                        if(calcapesq.getId().equalsIgnoreCase(pesq)){
                             System.out.println(calcapesq);
                             verpesq = 1;
                         }
@@ -813,12 +785,12 @@ public class Main {
                     int indexdel = 0;
 
                     clear();
-                    System.out.println("Digite o nome da camisa para editar as informações: ");
+                    System.out.println("Digite o Id da camisa para editar as informações: ");
                     String posedel = Read.getString();
                     pulaLinha(1);
 
                     for (Calca calcaedit : calcas) {
-                        if(calcaedit.getNome().equalsIgnoreCase(posedel)){
+                        if(calcaedit.getId().equalsIgnoreCase(posedel)){
                             break;
                         }
                         indexdel++;
@@ -851,6 +823,5 @@ public class Main {
         clear();
         loop = true;
     }
-
 
 }

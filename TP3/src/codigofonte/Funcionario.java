@@ -10,7 +10,7 @@ public class Funcionario extends Pessoa {
 
 	public Funcionario() {
 		super();
-		datacontrat = "15/3/2021";
+		datacontrat = "";
 	}
 
 	public String getDatacontrat() {
@@ -61,7 +61,7 @@ public class Funcionario extends Pessoa {
 				break;
 
 			case 3:
-				System.out.println("Digite o novo cpf: ");
+				System.out.println("Digite o novo CPF: ");
 				this.setCpf(Read.getString());
 				break;
 

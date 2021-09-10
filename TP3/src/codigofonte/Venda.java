@@ -1,113 +1,76 @@
 package codigofonte;
-
-
 public class Venda {
-	private String numident;
-	private int valorcompra;
-	private Pessoa nomec;
-	private Pessoa nomef;//seria o nome do funcionario no caso
-	private Telefone numtel;
-	
-	public Venda (int valorcompra_,String numident_,Pessoa nomec_,Pessoa nomef_,Telefone numtel_){
-		valorcompra = valorcompra_;
-		numident = numident_;
-		nomec = nomec_;
-		nomef = nomef_;
-		numtel = numtel_;
+	private Cliente cliente;
+	private Roupa produto;
+	private Funcionario funcionario;
+	private float preçoTotal;
+	private String protocolo;
+
+	public Venda (Cliente cliente_, Roupa produto_, Funcionario funcionario_, Float preçoTotal_,  String protocolo_){
+		cliente = cliente_;
+		produto = produto_;
+		funcionario = funcionario_;
+		preçoTotal = preçoTotal_;
+		protocolo = protocolo_;
 	}
 
 	public Venda() {
-		super();
-	}
-
-
-	public int getValorcompra() {
-		return valorcompra;
-	}
-	public void setValorcompra(int string) {
-		this.valorcompra = string;
-	}
-	public String getNumident() {
-		return this.numident;
-	}
-
-	public void setNumident(String numident) {
-		this.numident = numident;
-	}
-
-
-	public void cadatrarVenda(){
-
-		nomec = new Cliente();
-		nomef = new Funcionario();
-		numtel = new Telefone();
-
-		System.out.println("Digite o numero de identificação da venda: ");
-		this.setNumident(Read.getString());
-
-		System.out.println("Digite o valor da venda: ");
-		this.setValorcompra(Read.getInt());
-
-		System.out.println("Digite o nome do cliente: ");
-		this.nomec.setNome(Read.getString());
-
-		System.out.println("Digite o nome do funcionario: ");
-		this.nomef.setNome(Read.getString());
-
-		System.out.println("Digite o DDD do telefone: ");
-		this.numtel.setDDD(Read.getInt());
-
-		System.out.println("Digite o numero do telefone: ");
-		this.numtel.setNumero(Read.getInt());
-	}
-
-	public void editarVenda(int seletor){
-
-		numtel = new Telefone(61,339);
-
-		switch (seletor) {
-			case 1:
-				System.out.println("Digite o numero de identificação da venda: ");
-				this.setNumident(Read.getString());
-				break;
-
-			case 2:
-				System.out.println("Digite o valor da venda: ");
-				this.setValorcompra(Read.getInt());
-				break;
-
-			case 3:
-				System.out.println("Digite o nome do cliente: ");
-				this.nomec.setNome(Read.getString());
-				break;
-			case 4:
-				System.out.println("Digite o nome do funcionario: ");
-				this.nomef.setNome(Read.getString());
-				break;
-			case 5:
-				System.out.println("Digite o DDD do telefone do cliente: ");
-				this.nomec.numtel.setDDD(Read.getInt());
 		
-				System.out.println("Digite o numero do telefone do cliente: ");
-				this.nomec.numtel.setNumero(Read.getInt());	
-				break;
-		
-			default:
-				System.out.println("Opção Inválida!");
-				break;
-		}
 	}
-	
-	
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public Roupa getProduto() {
+		return produto;
+	}
+
+	public void setProduto(Roupa produto) {
+		this.produto = produto;
+	}
+
+	public Funcionario getFuncionario() {
+		return funcionario;
+	}
+
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
+	}
+
+	public float getPreçoTotal() {
+		return preçoTotal;
+	}
+
+	public void setPreçoTotal(float preçoTotal) {
+		this.preçoTotal = preçoTotal;
+	}
+
+	public String getProtocolo() {
+		return protocolo;
+	}
+
+	public void setProtocolo(String protocolo) {
+		this.protocolo = protocolo;
+	}
 	
 	public String toString() {
-		numtel = new Telefone(61, 998689594);
+		return    "-----Funcionário-----" + "\n"
+				+ "Nome: " + funcionario.getNome() + "\n"
+				+ "CPF: " + funcionario.getCpf() + "\n"
+				+ "-----Cliente-----" + "\n"
+				+ "Nome: " + cliente.getNome() + "\n"
+				+ "CPF: " + cliente.getCpf() + "\n"
+				+ "-----Informações da Compra-----"  + "\n"
+				+ "ID do Produto: " +  produto.getId() + "\n"
+				+ "Nome do Produto: " + produto.getNome() + "\n"
+				+ "Preço Total: " + preçoTotal + "\n"
+				+ "Número de Protocolo: " + protocolo;
 
-		return //"Nome Funcionario: " + nomef + "\n"
-			    "Nome Cliente: " + nomec + "\n"
-			   + "Valor da compra: " + valorcompra + "\n"
-			   + "Numero de identificação da compra: " + numident + "\n"
-			   + numtel;
 	}			
 
 }

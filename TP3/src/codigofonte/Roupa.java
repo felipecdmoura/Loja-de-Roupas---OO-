@@ -1,12 +1,41 @@
 package codigofonte;
 
 public abstract class Roupa {
+    protected String id;
     protected String nome;
     protected String descricao;
     protected char genero;
     protected float preco;
     protected String marca;
     protected String cor;
+
+    public Roupa(String id_, String nome_,String descricao_,char genero_,float preco_,String marca_,String cor_) {
+        id = id_;
+        nome = nome_;
+		descricao = descricao_;
+        genero= genero_;
+		preco = preco_;
+        marca = marca_;
+        cor = cor_;
+    }
+
+    public Roupa() {
+        id = "";
+        nome = "";
+		descricao = "";
+        genero= 'N';
+		preco = 0;
+        marca = "";
+        cor = "";
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return this.nome;

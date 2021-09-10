@@ -16,10 +16,10 @@ public abstract class Pessoa {
 	}
 
 	public Pessoa() {
-		Telefone telefone = new Telefone(61, 998869594);
-		nome = "Felipe";
-		email = "felipe@gmail.com";
-		cpf = "05784232141";
+		Telefone telefone = new Telefone();
+		nome = "";
+		email = "";
+		cpf = "";
 		numtel = telefone;
 	}
 	
