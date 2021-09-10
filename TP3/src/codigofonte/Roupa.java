@@ -1,6 +1,8 @@
 package codigofonte;
 
 public abstract class Roupa {
+
+    //ATRIBUTOS
     protected String id;
     protected String nome;
     protected String descricao;
@@ -9,6 +11,7 @@ public abstract class Roupa {
     protected String marca;
     protected String cor;
 
+    //Construtor com parametros
     public Roupa(String id_, String nome_,String descricao_,char genero_,float preco_,String marca_,String cor_) {
         id = id_;
         nome = nome_;
@@ -19,6 +22,7 @@ public abstract class Roupa {
         cor = cor_;
     }
 
+    //Construtor sem parametros
     public Roupa() {
         id = "";
         nome = "";
@@ -29,6 +33,7 @@ public abstract class Roupa {
         cor = "";
     }
 
+    //GETS E SETS
     public String getId() {
         return id;
     }
@@ -85,6 +90,7 @@ public abstract class Roupa {
         this.cor = cor;
     }
 
+    //toString de Pessoa
     public String toString() {
         return    "Nome: " + nome + "\n"
                 + "Descrição: " + descricao + "\n"

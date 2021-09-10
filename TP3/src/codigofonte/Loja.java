@@ -8,6 +8,7 @@ public class Loja {
 	String nomefilial;
 	
 	public Loja (String cnpj_,String endereco_,String nomefilial_){
+		nomefilial = nomefilial_;
 		cnpj = cnpj_;
 		endereco = endereco_;
 	}
@@ -80,7 +81,7 @@ public class Loja {
 
 	public String toString() {
 		return "Nome da Filial: " + nomefilial + "\n" 
-			 + "CNPJ: " + cnpj + "\n" 
-			 + "Endereço: " + endereco;
+			 + "Endereço: " + endereco + "\n" 
+			 + "CNPJ: " + cnpj ;
 	}
 }
