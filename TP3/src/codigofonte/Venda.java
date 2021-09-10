@@ -1,0 +1,76 @@
+package codigofonte;
+public class Venda {
+	private Cliente cliente;
+	private Roupa produto;
+	private Funcionario funcionario;
+	private float preçoTotal;
+	private String protocolo;
+
+	public Venda (Cliente cliente_, Roupa produto_, Funcionario funcionario_, Float preçoTotal_,  String protocolo_){
+		cliente = cliente_;
+		produto = produto_;
+		funcionario = funcionario_;
+		preçoTotal = preçoTotal_;
+		protocolo = protocolo_;
+	}
+
+	public Venda() {
+		
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public Roupa getProduto() {
+		return produto;
+	}
+
+	public void setProduto(Roupa produto) {
+		this.produto = produto;
+	}
+
+	public Funcionario getFuncionario() {
+		return funcionario;
+	}
+
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
+	}
+
+	public float getPreçoTotal() {
+		return preçoTotal;
+	}
+
+	public void setPreçoTotal(float preçoTotal) {
+		this.preçoTotal = preçoTotal;
+	}
+
+	public String getProtocolo() {
+		return protocolo;
+	}
+
+	public void setProtocolo(String protocolo) {
+		this.protocolo = protocolo;
+	}
+	
+	public String toString() {
+		return    "-----Funcionário-----" + "\n"
+				+ "Nome: " + funcionario.getNome() + "\n"
+				+ "CPF: " + funcionario.getCpf() + "\n"
+				+ "-----Cliente-----" + "\n"
+				+ "Nome: " + cliente.getNome() + "\n"
+				+ "CPF: " + cliente.getCpf() + "\n"
+				+ "-----Informações da Compra-----"  + "\n"
+				+ "ID do Produto: " +  produto.getId() + "\n"
+				+ "Nome do Produto: " + produto.getNome() + "\n"
+				+ "Preço Total: " + preçoTotal + "\n"
+				+ "Número de Protocolo: " + protocolo;
+
+	}			
+
+}
