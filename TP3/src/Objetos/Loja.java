@@ -1,5 +1,6 @@
-package codigofonte;
+package Objetos;
 
+import App.Read;
 
 public class Loja {
 	

@@ -1,4 +1,4 @@
-package codigofonte;
+package Objetos;
 public class Venda {
 
 	//ATRIBUTOS

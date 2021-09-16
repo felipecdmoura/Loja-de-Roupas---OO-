@@ -1,8 +1,11 @@
-package codigofonte;
+package App;
 
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import Objetos.*;
+
 
 public class Main {
     //Delcaração dos e instanciação dos arraylists e do objeto loja

@@ -8,6 +8,13 @@
       "type": "java",
       "name": "Launch Main",
       "request": "launch",
+      "mainClass": "App.Main",
+      "projectName": "TP2-Teste"
+    },
+    {
+      "type": "java",
+      "name": "Launch Main",
+      "request": "launch",
       "mainClass": "codigofonte.Main",
       "projectName": "TP2-Teste"
     },
