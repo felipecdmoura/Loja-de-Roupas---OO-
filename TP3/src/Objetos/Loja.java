@@ -1,5 +1,7 @@
 package Objetos;
 
+import java.sql.Struct;
+
 import App.Read;
 
 public class Loja {
@@ -56,6 +58,7 @@ public class Loja {
 	}
 
 	public void editarLoja(int seletor){
+		String cnpjedit;
 		switch (seletor) {
 			case 1:
 				System.out.println("Digite o novo nome da filial: ");
@@ -68,11 +71,21 @@ public class Loja {
 				break;
 
 			case 3:
-				System.out.println("Digite o novo cnpj: ");
-				this.setCnpj(Read.getString());
+				do{
+					System.out.println("Digite o novo CNPJ(XX.XXX.XXX/0001-XX): ");
+					cnpjedit = Read.getString();
+				
+					if(cnpjedit.length() == 18){ 
+						this.setCnpj(cnpjedit);
+						break;
+					}else{
+						System.out.println();
+						System.out.println("CNPJ Inválido!");
+						System.out.println();
+					}	
+				}while(true);
 				break;
 				
-
 			default:
 				System.out.println("Opção Inválida!");
 				break;

@@ -32,7 +32,7 @@ public class Cliente extends Pessoa{
 
 	//Metodo de cadastro de clientes
 	public void cadatrarCliente(){
-
+		String cpf;
 		numtel = new Telefone();
 
 		System.out.println("Digite o nome: ");
@@ -41,8 +41,19 @@ public class Cliente extends Pessoa{
 		System.out.println("Digite o email: ");
 		this.setEmail(Read.getString());
 
-		System.out.println("Digite o cpf: ");
-		this.setCpf(Read.getString());
+		do{
+			System.out.println("Digite o cpf: ");
+			cpf = Read.getString();
+		
+			if(cpf.length() == 11){ 
+				this.setCpf(cpf);
+				break;
+			}else{
+				System.out.println();
+				System.out.println("Cpf Inválido!");
+				System.out.println();
+			}	
+		}while(true);
 
 		System.out.println("Digite a data de nascimento: ");
 		this.setData(Read.getString());
@@ -57,7 +68,7 @@ public class Cliente extends Pessoa{
 
 	//Metodo de edicao de clientes
 	public void editCliente(int seletor){
-
+		String cpfedit;
 		numtel = new Telefone(61,339);
 
 		switch (seletor) {
@@ -72,8 +83,20 @@ public class Cliente extends Pessoa{
 				break;
 
 			case 3:
-				System.out.println("Digite o novo cpf: ");
-				this.setCpf(Read.getString());
+				do{
+					System.out.println("Digite o novo cpf: ");
+					cpfedit = Read.getString();
+				
+					if(cpfedit.length() == 11){ 
+						this.setCpf(cpfedit);
+						break;
+					}else{
+						System.out.println();
+						System.out.println("Cpf Inválido!");
+						System.out.println();
+					}	
+				}while(true);
+
 				break;
 
 			case 4:
