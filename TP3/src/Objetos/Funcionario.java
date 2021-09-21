@@ -32,7 +32,7 @@ public class Funcionario extends Pessoa {
 
 	//Metodo de cadastro de funcionarios
 	public void cadatrarFuncionario(){
-
+		String cpf;
 		numtel = new Telefone();
 
 		System.out.println("Digite o nome do funcionario: ");
@@ -41,8 +41,19 @@ public class Funcionario extends Pessoa {
 		System.out.println("Digite o email: ");
 		this.setEmail(Read.getString());
 
-		System.out.println("Digite o cpf: ");
-		this.setCpf(Read.getString());
+		do{
+			System.out.println("Digite o cpf: ");
+			cpf = Read.getString();
+		
+			if(cpf.length() == 11){ 
+				this.setCpf(cpf);
+				break;
+			}else{
+				System.out.println();
+				System.out.println("Cpf Inválido!");
+				System.out.println();
+			}	
+		}while(true);
 
 		System.out.println("Digite a data de contratação: ");
 		this.setDatacontrat(Read.getString());
@@ -57,7 +68,7 @@ public class Funcionario extends Pessoa {
 
 	//Metodo de edicao de funcinario
 	public void editarFuncionario(int seletor){
-
+		String cpfedit;
 		numtel = new Telefone(61,339);
 
 		switch (seletor) {
@@ -72,8 +83,19 @@ public class Funcionario extends Pessoa {
 				break;
 
 			case 3:
-				System.out.println("Digite o novo CPF: ");
-				this.setCpf(Read.getString());
+				do{
+					System.out.println("Digite o novo cpf: ");
+					cpfedit = Read.getString();
+				
+					if(cpfedit.length() == 11){ 
+						this.setCpf(cpfedit);
+						break;
+					}else{
+						System.out.println();
+						System.out.println("Cpf Inválido!");
+						System.out.println();
+					}	
+				}while(true);
 				break;
 
 			case 4:
