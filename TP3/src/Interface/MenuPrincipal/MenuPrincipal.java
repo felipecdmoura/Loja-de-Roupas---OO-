@@ -1,57 +1,51 @@
 package Interface.MenuPrincipal;
 
 import javax.swing.*;
+import javax.swing.border.EtchedBorder;
+import javax.swing.plaf.DimensionUIResource;
 
+import java.awt.*;
 public class MenuPrincipal {
-    public static void main(String[] a) {
-        JFrame f = new JFrame("Menu Principal");
-        f.setVisible(true);
+    private JFrame f = new JFrame("Menu Principal");
+    private JPanel menuinicial = new JPanel();
+    private JButton cliente = new JButton("Cliente");
+    private JButton funcionario = new JButton("Funcionario");
+    private JButton venda = new JButton("Venda");
+    private JButton loja = new JButton("Loja");
+    private JButton roupa = new JButton("Roupas");
+    private JButton sair = new JButton("Sair");
 
-        JButton cliente = new JButton("cliente");
-        JButton funcionario = new JButton("Funcionario");
-        JButton venda = new JButton("Venda");
-        JButton loja = new JButton("Loja");
-        JButton roupa = new JButton("Roupas");
-        JButton sair = new JButton("Sair");
-
-
-
-        cliente.setBounds(130, 100, 100, 40);
-        f.add(cliente);
-        f.setSize(400, 500);
-        f.setLayout(null);
-        f.setVisible(true);
-
-        funcionario.setBounds(130, 150, 100, 40);
-        f.add(funcionario);
-        f.setSize(400, 500);
-        f.setLayout(null);
-        f.setVisible(true);
-
+    public MenuPrincipal() {
         
-        venda.setBounds(130, 200, 100, 40);
-        f.add(venda);
-        f.setSize(400, 500);
-        f.setLayout(null);
-        f.setVisible(true);
 
-        loja.setBounds(130, 250, 100, 40);
-        f.add(loja);
-        f.setSize(400, 500);
-        f.setLayout(null);
-        f.setVisible(true);
+        cliente.setBounds(105, 190, 150, 60);
+        
+        loja.setBounds(265, 190, 150, 60);
 
-        roupa.setBounds(130, 300, 100, 40);
-        f.add(roupa);
-        f.setSize(400, 500);
-        f.setLayout(null);
-        f.setVisible(true);
+        funcionario.setBounds(425, 190, 150, 60);
 
-        sair.setBounds(130, 350, 100, 40);
-        f.add(sair);
-        f.setSize(400, 500);
-        f.setLayout(null);
-        f.setVisible(true);
+        venda.setBounds(585, 190, 150, 60); 
 
+        roupa.setBounds(745, 190, 150, 60);
+
+        sair.setBounds(2, 399, 150, 60);
+
+
+        menuinicial.setLayout(null);
+        menuinicial.add(cliente);
+        menuinicial.add(funcionario);
+        menuinicial.add(venda);
+        menuinicial.add( loja);
+        menuinicial.add(roupa);
+        menuinicial.add(sair);
+
+        f.setSize(1000, 500);
+        f.add(menuinicial);
+        f.setResizable(false);
+        f.setVisible(true);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+    public static void main(String[] a) {
+        new MenuPrincipal();
     }
 }
