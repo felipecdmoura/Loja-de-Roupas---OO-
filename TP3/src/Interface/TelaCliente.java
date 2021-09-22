@@ -1,4 +1,4 @@
-package Interface.MenuCliente;
+package Interface;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,10 +10,9 @@ import java.util.ArrayList;
 
 import javax.swing.text.MaskFormatter;
 
-import Interface.MenuPrincipal.MenuPrincipal;
 import Objetos.Cliente;
 
-public class MenuCliente extends JFrame {
+public class TelaCliente extends JFrame {
 
        private static final long serialVersionUID = 1L;
        //private JFrame janela = new JFrame();
@@ -25,7 +24,7 @@ public class MenuCliente extends JFrame {
        private JPanel menucliente = new JPanel();
        private JButton voltar = new JButton("Voltar");
        // tela cadastro cliente
-       public MenuCliente() {
+       public TelaCliente() {
               //janela.getContentPane().removeAll();
               //janela.repaint();
               // Define os rótulos dos botões
@@ -85,7 +84,7 @@ public class MenuCliente extends JFrame {
                      @Override
                      public void actionPerformed(ActionEvent e) {
                             dispose();
-                            new MenuPrincipal();  
+                            new TelaPrincipal();  
                      }
               });
 

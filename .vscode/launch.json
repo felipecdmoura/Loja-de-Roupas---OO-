@@ -6,6 +6,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Launch TelaPessoa",
+      "request": "launch",
+      "mainClass": "Interface.TelaPessoa",
+      "projectName": "TP2-Teste"
+    },
+    {
+      "type": "java",
+      "name": "Launch TelaPrincipal",
+      "request": "launch",
+      "mainClass": "Interface.TelaPrincipal",
+      "projectName": "TP2-Teste"
+    },
+    {
+      "type": "java",
       "name": "Launch ConfigJanela",
       "request": "launch",
       "mainClass": "Interface.MenuPrincipal.ConfigJanela",
