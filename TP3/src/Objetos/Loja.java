@@ -1,7 +1,5 @@
 package Objetos;
 
-import java.sql.Struct;
-
 import App.Read;
 
 public class Loja {

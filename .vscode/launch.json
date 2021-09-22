@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Launch ConfigJanela",
+      "request": "launch",
+      "mainClass": "Interface.MenuPrincipal.ConfigJanela",
+      "projectName": "TP2-Teste"
+    },
+    {
+      "type": "java",
       "name": "Launch MenuCliente",
       "request": "launch",
       "mainClass": "Interface.MenuCliente.MenuCliente",
