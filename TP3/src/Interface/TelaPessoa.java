@@ -134,6 +134,7 @@ public class TelaPessoa implements ActionListener, ListSelectionListener {
         cadastrarfuncionario.addActionListener(this);
         voltar.addActionListener(this);
         pesquisar.addActionListener(this);
+        listafuncionarios.addListSelectionListener(this);
         
     }
         
@@ -150,6 +151,10 @@ public class TelaPessoa implements ActionListener, ListSelectionListener {
                 janela.dispose();
                 new TelaPrincipal().telaPrincipal();
             }
+            if(src == cadastrarfuncionario){
+                janela.dispose();
+                new TelaCadastrar().cadastrofuncionario(funcionariosTelaPessoa);
+            }
         }
 
         @Override
@@ -159,6 +164,10 @@ public class TelaPessoa implements ActionListener, ListSelectionListener {
             if (e.getValueIsAdjusting() && src == listaclientes) {
                 janela.dispose();
                 new TelaEditarVizualizar().editarCliente(clienteTelaPessoa, listaclientes.getSelectedIndex());
+            }
+            if (e.getValueIsAdjusting() && src == listafuncionarios) {
+                janela.dispose();
+                new TelaEditarVizualizar().editarFuncionario(funcionariosTelaPessoa, listafuncionarios.getSelectedIndex());
             }
             
         }
