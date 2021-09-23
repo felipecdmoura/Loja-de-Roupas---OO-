@@ -11,7 +11,7 @@ public class DadosAleatorios {
         //DADOS PRE CARREGADOS
         
         //DADOS DE CLIENTES
-        cliente.add(new Cliente("Felipe", "felipe@gmail.com", "02938374653", new Telefone(61, 987345643), "17//3/2002"));
+        cliente.add(new Cliente("Felipe", "felipe@gmail.com", "02938374653", new Telefone(61, 987345643), "17/3/2002"));
         cliente.add(new Cliente("Marcos", "marcos@gmail.com", "20293847563", new Telefone(61, 982736454), "13/2/2000"));
         cliente.add(new Cliente("Julia", "julia@gmail.com", "10293837452", new Telefone(61, 981224000), "20/4/1999"));
         cliente.add(new Cliente("Renata", "renata@gmail.com", "20392827564", new Telefone(11, 982726345), "29/10/1995"));
