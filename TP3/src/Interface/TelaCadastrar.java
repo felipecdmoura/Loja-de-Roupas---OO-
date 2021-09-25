@@ -261,6 +261,7 @@ public class TelaCadastrar implements ActionListener {
             janela.dispose();
             new TelaPessoa().telaCliente(clienteTeleCadastrar);;
         }
+        
         if (src == cadastrarf) {
             janela.dispose();
             funcionariotelacadastrar.add(new Funcionario(

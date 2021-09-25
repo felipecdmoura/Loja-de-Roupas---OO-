@@ -27,6 +27,8 @@ public class TelaEditarVizualizar implements ActionListener {
 
     private JButton voltarcliente;
     private JButton voltarfuncionario;
+    private JButton deletarcliente;
+    private JButton deletarfuncionario;
 
     private ArrayList<Cliente> clientesTelaEditar;
     private ArrayList<Funcionario> funcionariosEditar;
@@ -51,6 +53,7 @@ public class TelaEditarVizualizar implements ActionListener {
         texttel = new JTextField(String.valueOf(clientes.get(pos).getNumtel().getNumero()));
 
         voltarcliente = new JButton("Voltar");
+        deletarcliente = new JButton("Deletar");
 
         nome.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
         nome.setBounds(10, 5, 150, 50);
@@ -86,6 +89,7 @@ public class TelaEditarVizualizar implements ActionListener {
         texttel.setBounds(235, 313, 160, 40);
 
         voltarcliente.setBounds(2, 399, 150, 60);
+        deletarcliente.setBounds(832, 399, 150, 60);
 
         janela.setLayout(null);
         janela.add(nome);
@@ -100,13 +104,15 @@ public class TelaEditarVizualizar implements ActionListener {
         janela.add(textddd);
         janela.add(texttel);
         janela.add(voltarcliente);
+        janela.add(deletarcliente);
 
         janela.setSize(1000, 500);
-        janela.setResizable(true);
+        janela.setResizable(false);
         janela.setVisible(true);
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         voltarcliente.addActionListener(this);
+        deletarcliente.addActionListener(this);
 
     }
 
@@ -129,6 +135,7 @@ public class TelaEditarVizualizar implements ActionListener {
         texttel = new JTextField(String.valueOf(funcionarios.get(pos).getNumtel().getNumero()));
 
         voltarfuncionario = new JButton("Voltar");
+        deletarfuncionario = new JButton("Deletar");
 
         nome.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
         nome.setBounds(10, 5, 150, 50);
@@ -164,6 +171,7 @@ public class TelaEditarVizualizar implements ActionListener {
         texttel.setBounds(235, 313, 160, 40);
 
         voltarfuncionario.setBounds(2, 399, 150, 60);
+        deletarfuncionario.setBounds(832, 399, 150, 60);
 
         janela.setLayout(null);
         janela.add(nome);
@@ -178,14 +186,15 @@ public class TelaEditarVizualizar implements ActionListener {
         janela.add(textddd);
         janela.add(texttel);
         janela.add(voltarfuncionario);
+        janela.add(deletarfuncionario);
 
         janela.setSize(1000, 500);
-        janela.setResizable(true);
+        janela.setResizable(false);
         janela.setVisible(true);
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         voltarfuncionario.addActionListener(this);
-
+        deletarfuncionario.addActionListener(this);
     }
 
     @Override
@@ -202,6 +211,14 @@ public class TelaEditarVizualizar implements ActionListener {
             
             new TelaPessoa().telaCliente(clientesTelaEditar);
         }
+
+        if(src == deletarcliente){
+            janela.dispose();
+            clientesTelaEditar.remove(posicao);
+
+            new TelaPessoa().telaCliente(clientesTelaEditar);
+        }
+
         if (src == voltarfuncionario) {
             janela.dispose();
             
@@ -212,6 +229,14 @@ public class TelaEditarVizualizar implements ActionListener {
             funcionariosEditar.get(posicao).setNumtel(new Telefone(Integer.parseInt(textddd.getText()), Integer.parseInt(texttel.getText())));
             
             new TelaPessoa().telaFuncionario(funcionariosEditar);
+        }
+
+        if(src == deletarfuncionario){
+            janela.dispose();
+            funcionariosEditar.remove(posicao);
+
+            new TelaPessoa().telaFuncionario(funcionariosEditar);
+
         }
         
     }
