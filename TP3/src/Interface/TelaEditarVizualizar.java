@@ -31,26 +31,34 @@ public class TelaEditarVizualizar implements ActionListener {
     private JButton deletarfuncionario;
 
     private ArrayList<Cliente> clientesTelaEditar;
-    private ArrayList<Funcionario> funcionariosEditar;
+    private ArrayList<Funcionario> funcionariosTelaEditar;
     private int posicao;
 
-    public void editarCliente(ArrayList<Cliente> clientes, int pos) {
-        posicao = pos;
+    public void editarCliente(ArrayList<Cliente> clientes, String nomecliente) {
+        posicao = 0;
+
+        for (Cliente posicaolista : clientes) {
+            if(posicaolista.getNome().equalsIgnoreCase(nomecliente)){
+                break;
+            }
+            posicao++;
+        }
+        
         clientesTelaEditar = clientes;
 
-        janela = new JFrame("Cliente " + clientes.get(pos).getNome());
+        janela = new JFrame("Cliente " + clientes.get(posicao).getNome());
         nome = new JLabel("Nome: ");
         email = new JLabel("Email: ");
         cpf = new JLabel("CPF: ");
         datanac = new JLabel("Data de Nascimento:");
         tel = new JLabel("Telefone: ");
 
-        textnome = new JTextField(clientes.get(pos).getNome());
-        textemail = new JTextField(clientes.get(pos).getEmail());
-        textcpf = new JTextField(clientes.get(pos).getCpf());
-        textdatanasc = new JTextField(clientes.get(pos).getData());
-        textddd = new JTextField(String.valueOf(clientes.get(pos).getNumtel().getDDD()));
-        texttel = new JTextField(String.valueOf(clientes.get(pos).getNumtel().getNumero()));
+        textnome = new JTextField(clientes.get(posicao).getNome());
+        textemail = new JTextField(clientes.get(posicao).getEmail());
+        textcpf = new JTextField(clientes.get(posicao).getCpf());
+        textdatanasc = new JTextField(clientes.get(posicao).getData());
+        textddd = new JTextField(String.valueOf(clientes.get(posicao).getNumtel().getDDD()));
+        texttel = new JTextField(String.valueOf(clientes.get(posicao).getNumtel().getNumero()));
 
         voltarcliente = new JButton("Voltar");
         deletarcliente = new JButton("Deletar");
@@ -116,23 +124,31 @@ public class TelaEditarVizualizar implements ActionListener {
 
     }
 
-    public void editarFuncionario(ArrayList<Funcionario> funcionarios, int pos) {
-        posicao = pos;
-        funcionariosEditar = funcionarios;
+    public void editarFuncionario(ArrayList<Funcionario> funcionarios, String nomefunc) {
+        posicao = 0;
 
-        janela = new JFrame("Funcionario " + funcionarios.get(pos).getNome());
+        for (Funcionario posicaolista : funcionarios) {
+            if(posicaolista.getNome().equalsIgnoreCase(nomefunc)){
+                break;
+            }
+            posicao++;
+        }
+
+        funcionariosTelaEditar = funcionarios;
+
+        janela = new JFrame("Funcionario " + funcionarios.get(posicao).getNome());
         nome = new JLabel("Nome: ");
         email = new JLabel("Email: ");
         cpf = new JLabel("CPF: ");
         datanac = new JLabel("Data de Nascimento:");
         tel = new JLabel("Telefone: ");
 
-        textnome = new JTextField(funcionarios.get(pos).getNome());
-        textemail = new JTextField(funcionarios.get(pos).getEmail());
-        textcpf = new JTextField(funcionarios.get(pos).getCpf());
-        textdatanasc = new JTextField(funcionarios.get(pos).getDatacontrat());
-        textddd = new JTextField(String.valueOf(funcionarios.get(pos).getNumtel().getDDD()));
-        texttel = new JTextField(String.valueOf(funcionarios.get(pos).getNumtel().getNumero()));
+        textnome = new JTextField(funcionarios.get(posicao).getNome());
+        textemail = new JTextField(funcionarios.get(posicao).getEmail());
+        textcpf = new JTextField(funcionarios.get(posicao).getCpf());
+        textdatanasc = new JTextField(funcionarios.get(posicao).getDatacontrat());
+        textddd = new JTextField(String.valueOf(funcionarios.get(posicao).getNumtel().getDDD()));
+        texttel = new JTextField(String.valueOf(funcionarios.get(posicao).getNumtel().getNumero()));
 
         voltarfuncionario = new JButton("Voltar");
         deletarfuncionario = new JButton("Deletar");
@@ -222,20 +238,20 @@ public class TelaEditarVizualizar implements ActionListener {
         if (src == voltarfuncionario) {
             janela.dispose();
             
-            funcionariosEditar.get(posicao).setNome(textnome.getText());
-            funcionariosEditar.get(posicao).setEmail(textemail.getText());
-            funcionariosEditar.get(posicao).setCpf(textcpf.getText());
-            funcionariosEditar.get(posicao).setDatacontrat(textdatanasc.getText());
-            funcionariosEditar.get(posicao).setNumtel(new Telefone(Integer.parseInt(textddd.getText()), Integer.parseInt(texttel.getText())));
+            funcionariosTelaEditar.get(posicao).setNome(textnome.getText());
+            funcionariosTelaEditar.get(posicao).setEmail(textemail.getText());
+            funcionariosTelaEditar.get(posicao).setCpf(textcpf.getText());
+            funcionariosTelaEditar.get(posicao).setDatacontrat(textdatanasc.getText());
+            funcionariosTelaEditar.get(posicao).setNumtel(new Telefone(Integer.parseInt(textddd.getText()), Integer.parseInt(texttel.getText())));
             
-            new TelaPessoa().telaFuncionario(funcionariosEditar);
+            new TelaPessoa().telaFuncionario(funcionariosTelaEditar);
         }
 
         if(src == deletarfuncionario){
             janela.dispose();
-            funcionariosEditar.remove(posicao);
+            funcionariosTelaEditar.remove(posicao);
 
-            new TelaPessoa().telaFuncionario(funcionariosEditar);
+            new TelaPessoa().telaFuncionario(funcionariosTelaEditar);
 
         }
         
