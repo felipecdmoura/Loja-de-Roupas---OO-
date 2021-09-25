@@ -14,7 +14,6 @@ import Objetos.Cliente;
 
 public class TelaCliente extends JFrame {
 
-       private static final long serialVersionUID = 1L;
        //private JFrame janela = new JFrame();
        private JLabel labelnome = new JLabel("Nome: ");
        private JLabel labelemail = new JLabel("Email: ");

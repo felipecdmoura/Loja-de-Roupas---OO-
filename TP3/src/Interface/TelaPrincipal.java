@@ -28,6 +28,7 @@ public class TelaPrincipal extends JFrame implements ActionListener  {
     private JButton sair = new JButton("Sair");
 
     public void telaPrincipal(){
+        setTitle("Menu principal");
 
         cliente.setBounds(105, 190, 150, 60);
         cliente.addActionListener(this);
