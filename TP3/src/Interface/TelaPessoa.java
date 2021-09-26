@@ -5,12 +5,18 @@ import java.util.Arrays;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
+import javax.print.DocFlavor.STRING;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -18,7 +24,7 @@ import javax.swing.event.ListSelectionListener;
 import Objetos.Cliente;
 import Objetos.Funcionario;
 
-public class TelaPessoa implements ActionListener, ListSelectionListener {
+public class TelaPessoa implements ActionListener, ListSelectionListener, MouseListener {
     private JFrame janela;
 
     private JList<String> listaclientes ;
@@ -27,6 +33,9 @@ public class TelaPessoa implements ActionListener, ListSelectionListener {
 
     private JLabel titulo;
 
+    private JTextField pesqcliente;
+    private JTextField pesqfuncionario;
+
     private JButton cadastrarcliente;
     private JButton cadastrarfuncionario;
     private JButton voltar;
@@ -34,23 +43,24 @@ public class TelaPessoa implements ActionListener, ListSelectionListener {
 
     private static ArrayList <Cliente> clienteTelaPessoa;
     private static ArrayList <Funcionario> funcionariosTelaPessoa;
-    private String[] nomesclientes;
-    private String[] nomesfuncionarios;
+    private String[] todosclientes;
+    private String[] todosfunc;
 
     public void telaCliente(ArrayList<Cliente> clientes) {
         clienteTelaPessoa = clientes;
-        nomesclientes = new String[clientes.size()];
+        todosclientes = new String[clientes.size()];
         int count = 0;
 
         for(Cliente cliente : clientes){
-            nomesclientes[count]= cliente.getNome();
+            todosclientes[count]= cliente.getNome();
             count++;
         }
-        
-        listaclientes = new JList<String>(nomesclientes);
-        listascroll = new JScrollPane();
+
         janela = new JFrame("Clientes");
+        listaclientes = new JList<String>(todosclientes);
+        listascroll = new JScrollPane();
         titulo = new JLabel("Clientes Cadastrados");
+        pesqcliente = new JTextField("Pesquisar pelo nome");
         cadastrarcliente = new JButton("Cadastrar");
         voltar = new JButton("Voltar");
         pesquisar = new JButton("Pesquisar");
@@ -58,11 +68,14 @@ public class TelaPessoa implements ActionListener, ListSelectionListener {
         titulo.setFont(new Font("Arial", Font.BOLD, 40));
         titulo.setBounds(300, 10, 500, 30);
 
-        listaclientes.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 40));
+        pesqcliente.setFont(new Font(Font.SANS_SERIF, Font.ITALIC, 20));
+        pesqcliente.setBounds(60, 70, 200, 30);
+
+        listaclientes.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 35));
         listaclientes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         listaclientes.setVisibleRowCount(10);
 
-        listascroll.setBounds(100, 80, 790, 300);
+        listascroll.setBounds(60, 120, 790, 250);
         listascroll.setViewportView(listaclientes);
 
         voltar.setBounds(2, 399, 150, 60);
@@ -71,6 +84,7 @@ public class TelaPessoa implements ActionListener, ListSelectionListener {
 
         janela.setLayout(null);
         janela.add(titulo);
+        janela.add(pesqcliente);
         janela.add(listascroll);
         janela.add(cadastrarcliente);
         janela.add(voltar);
@@ -83,24 +97,28 @@ public class TelaPessoa implements ActionListener, ListSelectionListener {
 
         cadastrarcliente.addActionListener(this);
         voltar.addActionListener(this);
-        pesquisar.addActionListener(this);
+
+        pesqcliente.addMouseListener(this);
+        pesqcliente.addActionListener(this);
+
         listaclientes.addListSelectionListener(this);
     }
 
     public void telaFuncionario(ArrayList<Funcionario> funcionarios) {
         funcionariosTelaPessoa = funcionarios;
-        nomesfuncionarios = new String[funcionarios.size()];
+        todosfunc = new String[funcionarios.size()];
         int count = 0;
 
         for(Funcionario funcionario : funcionarios){
-            nomesfuncionarios[count]= funcionario.getNome();
+            todosfunc[count]= funcionario.getNome();
             count++;
         }
         
-        listafuncionarios = new JList<String>(nomesfuncionarios);
+        listafuncionarios = new JList<String>(todosfunc);
         listascroll = new JScrollPane();
         janela = new JFrame("Funcionarios");
         titulo = new JLabel("Funcionarios Cadastrados");
+        pesqfuncionario = new JTextField("Pesquisar por nome");
         cadastrarfuncionario = new JButton("Cadastrar");
         voltar = new JButton("Voltar");
         pesquisar = new JButton("Pesquisar");
@@ -108,11 +126,14 @@ public class TelaPessoa implements ActionListener, ListSelectionListener {
         titulo.setFont(new Font("Arial", Font.BOLD, 40));
         titulo.setBounds(300, 10, 500, 30);
 
-        listafuncionarios.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 40));
+        pesqfuncionario.setFont(new Font(Font.SANS_SERIF, Font.ITALIC, 20));
+        pesqfuncionario.setBounds(60, 70, 200, 30);
+
+        listafuncionarios.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 35));
         listafuncionarios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         listafuncionarios.setVisibleRowCount(10);
         
-        listascroll.setBounds(100, 80, 790, 300);
+        listascroll.setBounds(60, 120, 790, 250);
         listascroll.setViewportView(listafuncionarios);
 
         voltar.setBounds(2, 399, 150, 60);
@@ -121,6 +142,7 @@ public class TelaPessoa implements ActionListener, ListSelectionListener {
 
         janela.setLayout(null);
         janela.add(titulo);
+        janela.add(pesqfuncionario);
         janela.add(listascroll);
         janela.add(cadastrarfuncionario);
         janela.add(voltar);
@@ -133,10 +155,14 @@ public class TelaPessoa implements ActionListener, ListSelectionListener {
 
         cadastrarfuncionario.addActionListener(this);
         voltar.addActionListener(this);
-        pesquisar.addActionListener(this);
+
+        pesqfuncionario.addMouseListener(this);
+        pesqfuncionario.addActionListener(this);
+
         listafuncionarios.addListSelectionListener(this);
         
     }
+
         
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -147,28 +173,98 @@ public class TelaPessoa implements ActionListener, ListSelectionListener {
                 new TelaCadastrar().cadastroCliente(clienteTelaPessoa);
             }
             
-            if (src == voltar){
-                janela.dispose();
-                new TelaPrincipal().telaPrincipal();
+            if(src == pesqcliente){
+                if(pesqcliente.getText().equals("")){
+                    listaclientes.setListData(todosclientes);
+                }else{
+                    listaclientes.setListData(Pesquisar.pesquisarCliente(clienteTelaPessoa, pesqcliente.getText()));
+                }
             }
+
             if(src == cadastrarfuncionario){
                 janela.dispose();
                 new TelaCadastrar().cadastrofuncionario(funcionariosTelaPessoa);
             }
+
+            if(src == pesqfuncionario){
+                if(src == pesqfuncionario){
+                    if(pesqfuncionario.getText().equals("")){
+                        listafuncionarios.setListData(todosfunc);
+                    }else{
+                        listafuncionarios.setListData(Pesquisar.pesquisarFuncionario(funcionariosTelaPessoa, pesqfuncionario.getText()));
+                    }
+                }
+
+                pesqfuncionario.setText("");
+            }
+
+            if (src == voltar){
+                janela.dispose();
+                new TelaPrincipal().telaPrincipal();
+            }
+            
         }
 
         @Override
         public void valueChanged(ListSelectionEvent e) {
             Object src = e.getSource();
 
-            if (e.getValueIsAdjusting() && src == listaclientes) {
+            try{
+                if (e.getValueIsAdjusting() && src == listaclientes) {
+                    janela.dispose();
+                    new TelaEditarVizualizar().editarCliente(clienteTelaPessoa, listaclientes.getSelectedValue());
+                }
+            }catch(IndexOutOfBoundsException exc){
                 janela.dispose();
-                new TelaEditarVizualizar().editarCliente(clienteTelaPessoa, listaclientes.getSelectedIndex());
+                new TelaPessoa().telaCliente(clienteTelaPessoa);
             }
-            if (e.getValueIsAdjusting() && src == listafuncionarios) {
+
+            try{
+                if (e.getValueIsAdjusting() && src == listafuncionarios) {
+                    janela.dispose();
+                    new TelaEditarVizualizar().editarFuncionario(funcionariosTelaPessoa, listafuncionarios.getSelectedValue());
+                }
+            }catch(IndexOutOfBoundsException exc){
                 janela.dispose();
-                new TelaEditarVizualizar().editarFuncionario(funcionariosTelaPessoa, listafuncionarios.getSelectedIndex());
+                new TelaPessoa().telaFuncionario(funcionariosTelaPessoa);
             }
+            
+        }
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            Object src = e.getSource();
+            
+            if(src == pesqcliente){
+                pesqcliente.setText(null);
+            }
+
+            if(src == pesqfuncionario){
+                pesqfuncionario.setText(null);
+            }
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+            // TODO Auto-generated method stub
+            
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+            // TODO Auto-generated method stub
+            
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            // TODO Auto-generated method stub
+            
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+            // TODO Auto-generated method stub
             
         }
 }
