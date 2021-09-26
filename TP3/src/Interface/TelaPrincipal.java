@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import Interface.TelaCliente.*;
 import Objetos.*;
-import Interface.MenuLoja.MenuLoja;
 import App.DadosAleatorios;
 
 public class TelaPrincipal extends JFrame implements ActionListener  {
@@ -18,7 +17,7 @@ public class TelaPrincipal extends JFrame implements ActionListener  {
     private static ArrayList <Venda> vendasTelaPrincipal = new ArrayList<Venda>();
     private static ArrayList <Camisa> camisasTelaPrincipal = new ArrayList<Camisa>();
     private static ArrayList <Calca> calcasTelaPrincipal = new ArrayList<Calca>();
-    private static Loja lojas  = new Loja("021.054.932-21","qr 312 cj f loja 315 Gama DF", "Filial Guimarães");
+    private static Loja lojaTelaPrincipal  = new Loja("51.882.182/0001-12","qr 312 cj f loja 315 Gama DF", "Filial Guimarães");
 
     private JButton cliente = new JButton("Cliente");
     private JButton funcionario = new JButton("Funcionario");
@@ -31,21 +30,12 @@ public class TelaPrincipal extends JFrame implements ActionListener  {
         setTitle("Menu principal");
 
         cliente.setBounds(105, 190, 150, 60);
-        cliente.addActionListener(this);
-
-        loja.setBounds(265, 190, 150, 60);
-        loja.addActionListener(this);
-
-        funcionario.setBounds(425, 190, 150, 60);
-        funcionario.addActionListener(this);
-
-        venda.setBounds(585, 190, 150, 60); 
-
+        funcionario.setBounds(265, 190, 150, 60);
+        loja.setBounds(425, 190, 150, 60);
+        venda.setBounds(585, 190, 150, 60);
         roupa.setBounds(745, 190, 150, 60);
-
         sair.setBounds(2, 399, 150, 60);
-        sair.addActionListener(this);
-
+        
         setLayout(null);
         add(cliente);
         add(funcionario);
@@ -53,12 +43,18 @@ public class TelaPrincipal extends JFrame implements ActionListener  {
         add(loja);
         add(roupa);
         add(sair);
-
         
         setSize(1000, 500);
         setResizable(false);
+        setLocationRelativeTo(null);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        cliente.addActionListener(this);
+        funcionario.addActionListener(this);
+        loja.addActionListener(this);
+        roupa.addActionListener(this);
+        sair.addActionListener(this);
     }
    
     public static void main(String[] args) {
@@ -79,6 +75,17 @@ public class TelaPrincipal extends JFrame implements ActionListener  {
             dispose();
             new TelaPessoa().telaFuncionario(funcionariosTelaPrincipal);
         }
+
+        if (src == loja) {
+            dispose();
+            new TelaLoja().telaLoja(lojaTelaPrincipal);
+        }
+
+        if(src == roupa){
+            dispose();
+            new TelaRoupa().telaRoupa(camisasTelaPrincipal, calcasTelaPrincipal);
+        }
+
         if(src == sair){
             System.exit(0);
         }

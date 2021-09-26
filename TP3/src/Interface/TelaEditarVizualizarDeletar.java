@@ -10,7 +10,7 @@ import Objetos.Cliente;
 import Objetos.Funcionario;
 import Objetos.Telefone;
 
-public class TelaEditarVizualizar implements ActionListener {
+public class TelaEditarVizualizarDeletar implements ActionListener {
     private JFrame janela;
     private JLabel nome;
     private JLabel email;
@@ -116,6 +116,7 @@ public class TelaEditarVizualizar implements ActionListener {
 
         janela.setSize(1000, 500);
         janela.setResizable(false);
+        janela.setLocationRelativeTo(null);
         janela.setVisible(true);
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -206,6 +207,7 @@ public class TelaEditarVizualizar implements ActionListener {
 
         janela.setSize(1000, 500);
         janela.setResizable(false);
+        janela.setLocationRelativeTo(null);
         janela.setVisible(true);
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -217,14 +219,18 @@ public class TelaEditarVizualizar implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();
         if (src == voltarcliente) {
+            
+            try{
+                clientesTelaEditar.get(posicao).setNome(textnome.getText());
+                clientesTelaEditar.get(posicao).setEmail(textemail.getText());
+                clientesTelaEditar.get(posicao).setCpf(textcpf.getText());
+                clientesTelaEditar.get(posicao).setData(textdatanasc.getText());
+                clientesTelaEditar.get(posicao).setNumtel(new Telefone(Integer.parseInt(textddd.getText()), Integer.parseInt(texttel.getText())));
+            }catch(NumberFormatException exep){
+                JOptionPane.showMessageDialog(null, "Alguma informação está incorreta", "Erro Cadastro", JOptionPane.ERROR_MESSAGE);
+            }
+
             janela.dispose();
-            
-            clientesTelaEditar.get(posicao).setNome(textnome.getText());
-            clientesTelaEditar.get(posicao).setEmail(textemail.getText());
-            clientesTelaEditar.get(posicao).setCpf(textcpf.getText());
-            clientesTelaEditar.get(posicao).setData(textdatanasc.getText());
-            clientesTelaEditar.get(posicao).setNumtel(new Telefone(Integer.parseInt(textddd.getText()), Integer.parseInt(texttel.getText())));
-            
             new TelaPessoa().telaCliente(clientesTelaEditar);
         }
 
@@ -236,14 +242,18 @@ public class TelaEditarVizualizar implements ActionListener {
         }
 
         if (src == voltarfuncionario) {
+            
+            try{
+                funcionariosTelaEditar.get(posicao).setNome(textnome.getText());
+                funcionariosTelaEditar.get(posicao).setEmail(textemail.getText());
+                funcionariosTelaEditar.get(posicao).setCpf(textcpf.getText());
+                funcionariosTelaEditar.get(posicao).setDatacontrat(textdatanasc.getText());
+                funcionariosTelaEditar.get(posicao).setNumtel(new Telefone(Integer.parseInt(textddd.getText()), Integer.parseInt(texttel.getText())));
+            }catch(NumberFormatException exep){
+                JOptionPane.showMessageDialog(null, "Alguma informação está incorreta", "Erro Cadastro", JOptionPane.ERROR_MESSAGE);
+            }
+
             janela.dispose();
-            
-            funcionariosTelaEditar.get(posicao).setNome(textnome.getText());
-            funcionariosTelaEditar.get(posicao).setEmail(textemail.getText());
-            funcionariosTelaEditar.get(posicao).setCpf(textcpf.getText());
-            funcionariosTelaEditar.get(posicao).setDatacontrat(textdatanasc.getText());
-            funcionariosTelaEditar.get(posicao).setNumtel(new Telefone(Integer.parseInt(textddd.getText()), Integer.parseInt(texttel.getText())));
-            
             new TelaPessoa().telaFuncionario(funcionariosTelaEditar);
         }
 
