@@ -39,7 +39,6 @@ public class TelaPessoa implements ActionListener, ListSelectionListener, MouseL
     private JButton cadastrarcliente;
     private JButton cadastrarfuncionario;
     private JButton voltar;
-    private JButton pesquisar;
 
     private static ArrayList <Cliente> clienteTelaPessoa;
     private static ArrayList <Funcionario> funcionariosTelaPessoa;
@@ -63,7 +62,6 @@ public class TelaPessoa implements ActionListener, ListSelectionListener, MouseL
         pesqcliente = new JTextField("Pesquisar pelo nome");
         cadastrarcliente = new JButton("Cadastrar");
         voltar = new JButton("Voltar");
-        pesquisar = new JButton("Pesquisar");
 
         titulo.setFont(new Font("Arial", Font.BOLD, 40));
         titulo.setBounds(300, 10, 500, 30);
@@ -80,7 +78,7 @@ public class TelaPessoa implements ActionListener, ListSelectionListener, MouseL
 
         voltar.setBounds(2, 399, 150, 60);
         cadastrarcliente.setBounds(425, 399, 150, 60);
-        pesquisar.setBounds(832, 399, 150, 60);
+        //pesquisar.setBounds(832, 399, 150, 60);
 
         janela.setLayout(null);
         janela.add(titulo);
@@ -88,10 +86,10 @@ public class TelaPessoa implements ActionListener, ListSelectionListener, MouseL
         janela.add(listascroll);
         janela.add(cadastrarcliente);
         janela.add(voltar);
-        janela.add(pesquisar);
 
         janela.setSize(1000, 500);
         janela.setResizable(false);
+        janela.setLocationRelativeTo(null);
         janela.setVisible(true);
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -121,7 +119,6 @@ public class TelaPessoa implements ActionListener, ListSelectionListener, MouseL
         pesqfuncionario = new JTextField("Pesquisar por nome");
         cadastrarfuncionario = new JButton("Cadastrar");
         voltar = new JButton("Voltar");
-        pesquisar = new JButton("Pesquisar");
 
         titulo.setFont(new Font("Arial", Font.BOLD, 40));
         titulo.setBounds(300, 10, 500, 30);
@@ -138,7 +135,6 @@ public class TelaPessoa implements ActionListener, ListSelectionListener, MouseL
 
         voltar.setBounds(2, 399, 150, 60);
         cadastrarfuncionario.setBounds(425, 399, 150, 60);
-        pesquisar.setBounds(832, 399, 150, 60);
 
         janela.setLayout(null);
         janela.add(titulo);
@@ -146,10 +142,10 @@ public class TelaPessoa implements ActionListener, ListSelectionListener, MouseL
         janela.add(listascroll);
         janela.add(cadastrarfuncionario);
         janela.add(voltar);
-        janela.add(pesquisar);
 
         janela.setSize(1000, 500);
         janela.setResizable(false);
+        janela.setLocationRelativeTo(null);
         janela.setVisible(true);
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -212,7 +208,7 @@ public class TelaPessoa implements ActionListener, ListSelectionListener, MouseL
             try{
                 if (e.getValueIsAdjusting() && src == listaclientes) {
                     janela.dispose();
-                    new TelaEditarVizualizar().editarCliente(clienteTelaPessoa, listaclientes.getSelectedValue());
+                    new TelaEditarVizualizarDeletar().editarCliente(clienteTelaPessoa, listaclientes.getSelectedValue());
                 }
             }catch(IndexOutOfBoundsException exc){
                 janela.dispose();
@@ -222,7 +218,7 @@ public class TelaPessoa implements ActionListener, ListSelectionListener, MouseL
             try{
                 if (e.getValueIsAdjusting() && src == listafuncionarios) {
                     janela.dispose();
-                    new TelaEditarVizualizar().editarFuncionario(funcionariosTelaPessoa, listafuncionarios.getSelectedValue());
+                    new TelaEditarVizualizarDeletar().editarFuncionario(funcionariosTelaPessoa, listafuncionarios.getSelectedValue());
                 }
             }catch(IndexOutOfBoundsException exc){
                 janela.dispose();

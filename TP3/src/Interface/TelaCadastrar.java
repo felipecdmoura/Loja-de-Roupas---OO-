@@ -31,7 +31,7 @@ public class TelaCadastrar implements ActionListener {
     private JTextField textddd;
     private JTextField texttel;
 
-    private JButton cadastrar;
+    private JButton cadastrarc;
     private JButton voltarcliente;
     private JButton cadastrarf;
     private JButton voltarfuncionario;
@@ -60,7 +60,7 @@ public class TelaCadastrar implements ActionListener {
         textddd = new JTextField(2);
         texttel = new JTextField(9);
 
-        cadastrar = new JButton("Cadastrar");
+        cadastrarc = new JButton("Cadastrar");
         voltarcliente = new JButton("Voltar");
 
         nome.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
@@ -108,7 +108,7 @@ public class TelaCadastrar implements ActionListener {
         texttel.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 30));
         texttel.setBounds(235, 313, 160, 40);
 
-        cadastrar.setBounds(425, 400, 150, 60);
+        cadastrarc.setBounds(425, 400, 150, 60);
         voltarcliente.setBounds(2, 399, 150, 60);
 
         janela.setLayout(null);
@@ -127,15 +127,16 @@ public class TelaCadastrar implements ActionListener {
         janela.add(textano);
         janela.add(textddd);
         janela.add(texttel);
-        janela.add(cadastrar);
+        janela.add(cadastrarc);
         janela.add(voltarcliente);
 
         janela.setSize(1000, 500);
         janela.setResizable(true);
+        janela.setLocationRelativeTo(null);
         janela.setVisible(true);
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        cadastrar.addActionListener(this);
+        cadastrarc.addActionListener(this);
         voltarcliente.addActionListener(this);
     }
 
@@ -232,6 +233,7 @@ public class TelaCadastrar implements ActionListener {
 
         janela.setSize(1000, 500);
         janela.setResizable(true);
+        janela.setLocationRelativeTo(null);
         janela.setVisible(true);
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -245,15 +247,19 @@ public class TelaCadastrar implements ActionListener {
         Object src = e.getSource();
         String dataformatada = textdia.getText() + "/" + textmes.getText() + "/" + textano.getText();
 
-        if (src == cadastrar) {
+        if (src == cadastrarc) {
+            try{
+                clienteTeleCadastrar.add(new Cliente(
+                    textnome.getText(), 
+                    textemail.getText(), 
+                    textcpf.getText(), 
+                    new Telefone(Integer.parseInt(textddd.getText()), Integer.parseInt(texttel.getText())), 
+                    dataformatada));
+            }catch(NumberFormatException exep){
+                JOptionPane.showMessageDialog(null, "Alguma informação está incorreta", "Erro Cadastro", JOptionPane.ERROR_MESSAGE);
+            }
+
             janela.dispose();
-            clienteTeleCadastrar.add(new Cliente(
-                textnome.getText(), 
-                textemail.getText(), 
-                textcpf.getText(), 
-                new Telefone(Integer.parseInt(textddd.getText()), Integer.parseInt(texttel.getText())), 
-                dataformatada));
-                
             new TelaPessoa().telaCliente(clienteTeleCadastrar);
         }
         
@@ -263,14 +269,18 @@ public class TelaCadastrar implements ActionListener {
         }
         
         if (src == cadastrarf) {
-            janela.dispose();
+            try{
             funcionariotelacadastrar.add(new Funcionario(
                 textnome.getText(), 
                 textemail.getText(), 
                 textcpf.getText(), 
                 new Telefone(Integer.parseInt(textddd.getText()), Integer.parseInt(texttel.getText())), 
                 dataformatada));
-                
+            }catch(NumberFormatException exep){
+                JOptionPane.showMessageDialog(null, "Alguma informação está incorreta", "Erro Cadastro", JOptionPane.ERROR_MESSAGE);
+            }
+            
+            janela.dispose(); 
             new TelaPessoa().telaFuncionario(funcionariotelacadastrar);
         }
         
