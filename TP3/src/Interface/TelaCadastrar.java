@@ -66,8 +66,8 @@ public class TelaCadastrar implements ActionListener {
     private JButton voltarcalca;
     private ArrayList<Cliente> clienteTeleCadastrar;
     private ArrayList<Funcionario> funcionariotelacadastrar;
-    private ArrayList<Camisa> camisatelacadastrar;
-    private ArrayList<Calca> calcatelacadastrar;
+    private ArrayList<Camisa> camisaTelaCadastrar;
+    private ArrayList<Calca> calcaTelaCadastrar;
 
     public void cadastroCliente(ArrayList<Cliente> clientes) {
         clienteTeleCadastrar = clientes;
@@ -271,8 +271,9 @@ public class TelaCadastrar implements ActionListener {
         voltarfuncionario.addActionListener(this);
     }
 
-    public void cadastroCamisa(ArrayList<Camisa> camisa) {
-        camisatelacadastrar = camisa;
+    public void cadastroCamisa(ArrayList<Camisa> camisas, ArrayList<Calca> calcas) {
+        camisaTelaCadastrar = camisas;
+        calcaTelaCadastrar = calcas;
 
         janela = new JFrame("Cadastrar Camisa");
         id = new JLabel("id: ");
@@ -387,8 +388,9 @@ public class TelaCadastrar implements ActionListener {
         voltarcam.addActionListener(this);
     }
         
-    public void cadastroCalca(ArrayList<Calca> calca) {
-        calcatelacadastrar = calca;
+    public void cadastroCalca(ArrayList<Camisa> camisas, ArrayList<Calca> calcas) {
+        camisaTelaCadastrar = camisas;
+        calcaTelaCadastrar = calcas;
 
         janela = new JFrame("Cadastrar Calça");
         id = new JLabel("id: ");
@@ -508,7 +510,7 @@ public class TelaCadastrar implements ActionListener {
         Object src = e.getSource();
         if(src == cadastrarcam){
             try{
-                camisatelacadastrar.add(new Camisa(
+                camisaTelaCadastrar.add(new Camisa(
                     textid.getText(), 
                     textnomec.getText(), 
                     textdescricao.getText(),
@@ -522,11 +524,11 @@ public class TelaCadastrar implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Alguma informação está incorreta", "Erro Cadastro", JOptionPane.ERROR_MESSAGE);
             }
             janela.dispose();
-            new TelaRoupa().telacamisa(camisatelacadastrar,calcatelacadastrar);
+            new TelaRoupa().telacamisa(camisaTelaCadastrar, calcaTelaCadastrar);
         }
         if (src == voltarcam) {
             janela.dispose();
-            new TelaRoupa().telacamisa(camisatelacadastrar,calcatelacadastrar);;
+            new TelaRoupa().telacamisa(camisaTelaCadastrar, calcaTelaCadastrar);;
         }
         if (src == cadastrarc) {
             String dataformatada = textdia.getText() + "/" + textmes.getText() + "/" + textano.getText();

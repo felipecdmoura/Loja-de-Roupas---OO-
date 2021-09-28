@@ -37,7 +37,6 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
 
     private static ArrayList <Camisa> camisasTelaRoupa;
     private static ArrayList <Calca> calcasTelaRoupa;
-    private static ArrayList <Calca> calcasTelaPrincipal = new ArrayList<Calca>();
     private String[] todascamisas;
     private String[] todascalcas;
 
@@ -106,7 +105,7 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
         listacamisas.addListSelectionListener(this);
     }
 
-    public void telacalca(ArrayList<Camisa> camisas, ArrayList<Calca> calcas) {
+    public void telaCalca(ArrayList<Camisa> camisas, ArrayList<Calca> calcas) {
         camisasTelaRoupa = camisas;
         calcasTelaRoupa = calcas;
         todascalcas = new String[calcas.size()];
@@ -210,15 +209,15 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
         }
         if(src == calca){
             janela.dispose();
-            new TelaRoupa().telacalca(camisasTelaRoupa,calcasTelaRoupa);
+            new TelaRoupa().telaCalca(camisasTelaRoupa, calcasTelaRoupa);
         }
         if(src == cadastrarcamisa){
             janela.dispose();
-            new TelaCadastrar().cadastroCamisa(camisasTelaRoupa);
+            new TelaCadastrar().cadastroCamisa(camisasTelaRoupa, calcasTelaRoupa);
         }
         if(src == cadastrarcalca){
             janela.dispose();
-            new TelaCadastrar().cadastroCalca(calcasTelaRoupa);
+            new TelaCadastrar().cadastroCalca(camisasTelaRoupa, calcasTelaRoupa);
         }
     }
 

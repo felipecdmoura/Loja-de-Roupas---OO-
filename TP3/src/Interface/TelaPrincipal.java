@@ -83,7 +83,7 @@ public class TelaPrincipal extends JFrame implements ActionListener  {
 
         if(src == roupa){
             dispose();
-            new TelaRoupa().telacamisa(camisasTelaPrincipal,calcasTelaPrincipal);
+            new TelaRoupa().telacamisa(camisasTelaPrincipal, calcasTelaPrincipal);
         }
 
         if(src == sair){
