@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import Objetos.*;
 
-public class DadosAleatorios {
+public class DadosAleatorios{ 
     public static void setDefaultData(ArrayList<Cliente> cliente, ArrayList<Funcionario> funcionarios, ArrayList<Venda> vendas, ArrayList<Calca> calcas, ArrayList<Camisa> camisas) { //Método para definir os 10 clientes e produtos padrão
         Telefone telefone;
 

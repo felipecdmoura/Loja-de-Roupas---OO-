@@ -7,9 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Objetos.Cliente;
-import Objetos.Telefone;
-import Objetos.Funcionario;
+import Objetos.*;
 
 public class TelaCadastrar implements ActionListener {
     private JFrame janela;
@@ -31,13 +29,45 @@ public class TelaCadastrar implements ActionListener {
     private JTextField textddd;
     private JTextField texttel;
 
+    //labels Roupa
+    private JLabel id;
+    private JLabel nomec;
+    private JLabel descricao;
+    private JLabel genero;
+    private JLabel preco;
+    private JLabel marca;
+    private JLabel cor;
+    private JLabel tamanho;
+    private JLabel tamanhocintura;
+    private JLabel estoque;
+    private JLabel estoquecalca;
+
+
+    //Texts Roupa
+    private JTextField textid;
+    private JTextField textnomec;
+    private JTextField textdescricao;
+    private JTextField textgenero;
+    private JTextField textpreco;
+    private JTextField textmarca;
+    private JTextField textcor;
+    private JTextField texttamanho;
+    private JTextField texttamanhocintura;
+    private JTextField textestoque;
+    private JTextField textestoquecalca;
+
     private JButton cadastrarc;
     private JButton voltarcliente;
     private JButton cadastrarf;
     private JButton voltarfuncionario;
-
+    private JButton cadastrarcam;
+    private JButton voltarcam;
+    private JButton cadastrarcalca;
+    private JButton voltarcalca;
     private ArrayList<Cliente> clienteTeleCadastrar;
     private ArrayList<Funcionario> funcionariotelacadastrar;
+    private ArrayList<Camisa> camisatelacadastrar;
+    private ArrayList<Calca> calcatelacadastrar;
 
     public void cadastroCliente(ArrayList<Cliente> clientes) {
         clienteTeleCadastrar = clientes;
@@ -241,13 +271,265 @@ public class TelaCadastrar implements ActionListener {
         voltarfuncionario.addActionListener(this);
     }
 
+    public void cadastroCamisa(ArrayList<Camisa> camisa) {
+        camisatelacadastrar = camisa;
+
+        janela = new JFrame("Cadastrar Camisa");
+        id = new JLabel("id: ");
+        nomec = new JLabel("Nome: ");
+        descricao = new JLabel("Descrição: ");
+        genero = new JLabel("Genêro:");
+        preco = new JLabel("Preço: ");
+        marca = new JLabel("Marca: ");
+        cor = new JLabel("Cor: ");
+        tamanho = new JLabel("Tamanho:");
+        estoque = new JLabel("Estoque:");
+
+        textid = new JTextField();
+        textnomec = new JTextField();
+        textdescricao = new JTextField(11);
+        textgenero = new JTextField(2);
+        textpreco = new JTextField(2);
+        textmarca = new JTextField(4);
+        textcor = new JTextField(2);
+        texttamanho = new JTextField(9);
+        textestoque = new JTextField(9);
+
+        cadastrarcam = new JButton("Cadastrar");
+        voltarcam = new JButton("Voltar");
+
+        id.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
+        id.setBounds(10, 5, 150, 50);
+
+        textid.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
+        textid.setBounds(145, 15, 200, 30);
         
+        nomec.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
+        nomec.setBounds(10, 50, 150, 50);
+
+        textnomec.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
+        textnomec.setBounds(145, 60, 200, 30);
+
+        descricao.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
+        descricao.setBounds(10, 95, 150, 50);
+
+        textdescricao.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
+        textdescricao.setBounds(145, 105, 200, 30);
+    
+        genero.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
+        genero.setBounds(10, 140, 350, 50);
+
+        textgenero.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
+        textgenero.setBounds(145, 150, 200, 30);
+
+        preco.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
+        preco.setBounds(10, 185, 350, 50);
+
+        textpreco.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
+        textpreco.setBounds(145, 195, 200, 30);
+
+        marca.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
+        marca.setBounds(10, 230, 350, 50);
+
+        textmarca.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
+        textmarca.setBounds(145, 240, 200, 30);
+
+        cor.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
+        cor.setBounds(10, 275, 350, 50);
+
+        textcor.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
+        textcor.setBounds(145, 285, 200, 30);
+
+        tamanho.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
+        tamanho.setBounds(10, 320, 350, 50);
+
+        texttamanho.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
+        texttamanho.setBounds(145, 330, 200, 30);
+
+        estoque.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
+        estoque.setBounds(10, 365, 350, 50);
+
+        textestoque.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
+        textestoque.setBounds(145, 375, 200, 30);
+        
+        cadastrarcam.setBounds(425, 410, 150, 50);
+        voltarcam.setBounds(2, 410, 150, 50);
+
+        janela.setLayout(null);
+        janela.add(id);
+        janela.add(nomec);
+        janela.add(descricao);
+        janela.add(genero);
+        janela.add(preco);
+        janela.add(marca);
+        janela.add(textid);
+        janela.add(cor);
+        janela.add(tamanho);
+        janela.add(estoque);
+        janela.add(textnomec);
+        janela.add(textdescricao);
+        janela.add(textgenero);
+        janela.add(textpreco);
+        janela.add(textmarca);
+        janela.add(textcor);
+        janela.add(texttamanho);
+        janela.add(textestoque);
+        janela.add(cadastrarcam);
+        janela.add(voltarcam);
+
+        janela.setSize(1000, 500);
+        janela.setResizable(true);
+        janela.setLocationRelativeTo(null);
+        janela.setVisible(true);
+        janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        cadastrarcam.addActionListener(this);
+        voltarcam.addActionListener(this);
+    }
+        
+    public void cadastroCalca(ArrayList<Calca> calca) {
+        calcatelacadastrar = calca;
+
+        janela = new JFrame("Cadastrar Calça");
+        id = new JLabel("id: ");
+        nomec = new JLabel("Nome: ");
+        descricao = new JLabel("Descrição: ");
+        genero = new JLabel("Genêro:");
+        preco = new JLabel("Preço: ");
+        marca = new JLabel("Marca: ");
+        cor = new JLabel("Cor: ");
+        tamanhocintura = new JLabel("Cintura(cm):");
+        estoquecalca = new JLabel("Estoque:");
+
+        textid = new JTextField();
+        textnomec = new JTextField();
+        textdescricao = new JTextField(11);
+        textgenero = new JTextField(2);
+        textpreco = new JTextField(2);
+        textmarca = new JTextField(4);
+        textcor = new JTextField(2);
+        texttamanhocintura = new JTextField(9);
+        textestoquecalca = new JTextField(9);
+
+        cadastrarcalca = new JButton("Cadastrar");
+        voltarcalca = new JButton("Voltar");
+
+        id.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
+        id.setBounds(10, 5, 150, 50);
+
+        textid.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
+        textid.setBounds(145, 15, 200, 30);
+        
+        nomec.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
+        nomec.setBounds(10, 50, 150, 50);
+
+        textnomec.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
+        textnomec.setBounds(145, 60, 200, 30);
+
+        descricao.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
+        descricao.setBounds(10, 95, 150, 50);
+
+        textdescricao.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
+        textdescricao.setBounds(145, 105, 200, 30);
+    
+        genero.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
+        genero.setBounds(10, 140, 350, 50);
+
+        textgenero.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
+        textgenero.setBounds(145, 150, 200, 30);
+
+        preco.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
+        preco.setBounds(10, 185, 350, 50);
+
+        textpreco.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
+        textpreco.setBounds(145, 195, 200, 30);
+
+        marca.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
+        marca.setBounds(10, 230, 350, 50);
+
+        textmarca.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
+        textmarca.setBounds(145, 240, 200, 30);
+
+        cor.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
+        cor.setBounds(10, 275, 350, 50);
+
+        textcor.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
+        textcor.setBounds(145, 285, 200, 30);
+
+        tamanhocintura.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
+        tamanhocintura.setBounds(10, 320, 350, 50);
+
+        texttamanhocintura.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
+        texttamanhocintura.setBounds(145, 330, 200, 30);
+
+        estoquecalca.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
+        estoquecalca.setBounds(10, 365, 350, 50);
+
+        textestoquecalca.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
+        textestoquecalca.setBounds(145, 375, 200, 30);
+        
+        cadastrarcalca.setBounds(425, 410, 150, 50);
+        voltarcalca.setBounds(2, 410, 150, 50);
+
+        janela.setLayout(null);
+        janela.add(id);
+        janela.add(nomec);
+        janela.add(descricao);
+        janela.add(genero);
+        janela.add(preco);
+        janela.add(marca);
+        janela.add(textid);
+        janela.add(cor);
+        janela.add(tamanhocintura);
+        janela.add(estoquecalca);
+        janela.add(textnomec);
+        janela.add(textdescricao);
+        janela.add(textgenero);
+        janela.add(textpreco);
+        janela.add(textmarca);
+        janela.add(textcor);
+        janela.add(texttamanhocintura);
+        janela.add(textestoquecalca);
+        janela.add(cadastrarcalca);
+        janela.add(voltarcalca);
+
+        janela.setSize(1000, 500);
+        janela.setResizable(true);
+        janela.setLocationRelativeTo(null);
+        janela.setVisible(true);
+        janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        cadastrarcalca.addActionListener(this);
+        voltarcalca.addActionListener(this);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();
-        String dataformatada = textdia.getText() + "/" + textmes.getText() + "/" + textano.getText();
-
+        if(src == cadastrarcam){
+            try{
+                camisatelacadastrar.add(new Camisa(
+                    textid.getText(), 
+                    textnomec.getText(), 
+                    textdescricao.getText(),
+                    textgenero.getText().charAt(0),
+                    Float.parseFloat(textpreco.getText()),
+                    textmarca.getText(),
+                    textcor.getText(),
+                    texttamanho.getText(),
+                    Integer.parseInt(textestoque.getText())));
+            }catch(NumberFormatException exep){
+                JOptionPane.showMessageDialog(null, "Alguma informação está incorreta", "Erro Cadastro", JOptionPane.ERROR_MESSAGE);
+            }
+            janela.dispose();
+            new TelaRoupa().telacamisa(camisatelacadastrar,calcatelacadastrar);
+        }
+        if (src == voltarcam) {
+            janela.dispose();
+            new TelaRoupa().telacamisa(camisatelacadastrar,calcatelacadastrar);;
+        }
         if (src == cadastrarc) {
+            String dataformatada = textdia.getText() + "/" + textmes.getText() + "/" + textano.getText();
             try{
                 clienteTeleCadastrar.add(new Cliente(
                     textnome.getText(), 
@@ -269,6 +551,7 @@ public class TelaCadastrar implements ActionListener {
         }
         
         if (src == cadastrarf) {
+            String dataformatada = textdia.getText() + "/" + textmes.getText() + "/" + textano.getText();
             try{
             funcionariotelacadastrar.add(new Funcionario(
                 textnome.getText(), 
