@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 
 import Objetos.*;
 
-
 public class TelaEditarVizualizarDeletar implements ActionListener {
     private JFrame janela;
     private JLabel nome;
@@ -24,32 +23,31 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
     private JTextField textddd;
     private JTextField texttel;
 
-     //labels Roupa
-     private JLabel id;
-     private JLabel nomec;
-     private JLabel descricao;
-     private JLabel genero;
-     private JLabel preco;
-     private JLabel marca;
-     private JLabel cor;
-     private JLabel tamanho;
-     private JLabel tamanhocintura;
-     private JLabel estoque;
-     private JLabel estoquecalca;
- 
- 
-     //Texts Roupa
-     private JTextField textid;
-     private JTextField textnomec;
-     private JTextField textdescricao;
-     private JTextField textgenero;
-     private JTextField textpreco;
-     private JTextField textmarca;
-     private JTextField textcor;
-     private JTextField texttamanho;
-     private JTextField texttamanhocintura;
-     private JTextField textestoque;
-     private JTextField textestoquecalca;
+    // labels Roupa
+    private JLabel id;
+    private JLabel nomec;
+    private JLabel descricao;
+    private JLabel genero;
+    private JLabel preco;
+    private JLabel marca;
+    private JLabel cor;
+    private JLabel tamanho;
+    private JLabel tamanhocintura;
+    private JLabel estoque;
+    private JLabel estoquecalca;
+
+    // Texts Roupa
+    private JTextField textid;
+    private JTextField textnomec;
+    private JTextField textdescricao;
+    private JTextField textgenero;
+    private JTextField textpreco;
+    private JTextField textmarca;
+    private JTextField textcor;
+    private JTextField texttamanho;
+    private JTextField texttamanhocintura;
+    private JTextField textestoque;
+    private JTextField textestoquecalca;
 
     private JButton voltarcliente;
     private JButton voltarfuncionario;
@@ -62,20 +60,20 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
 
     private ArrayList<Cliente> clientesTelaEditar;
     private ArrayList<Funcionario> funcionariosTelaEditar;
-    private ArrayList<Camisa> camisatelaeditar;
-    private ArrayList<Calca> calcatelaeditar;
+    private ArrayList<Camisa> camisaTelaEditar;
+    private ArrayList<Calca> calcaTelaEditar;
     private int posicao;
 
     public void editarCliente(ArrayList<Cliente> clientes, String nomecliente) {
         posicao = 0;
 
         for (Cliente posicaolista : clientes) {
-            if(posicaolista.getNome().equalsIgnoreCase(nomecliente)){
+            if (posicaolista.getNome().equalsIgnoreCase(nomecliente)) {
                 break;
             }
             posicao++;
         }
-        
+
         clientesTelaEditar = clientes;
 
         janela = new JFrame("Cliente " + clientes.get(posicao).getNome());
@@ -100,7 +98,7 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
 
         textnome.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 30));
         textnome.setBounds(145, 13, 450, 40);
-        
+
         email.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
         email.setBounds(10, 80, 150, 50);
 
@@ -112,7 +110,7 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
 
         textcpf.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 30));
         textcpf.setBounds(125, 163, 200, 40);
-    
+
         datanac.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
         datanac.setBounds(10, 230, 350, 50);
 
@@ -161,7 +159,7 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
         posicao = 0;
 
         for (Funcionario posicaolista : funcionarios) {
-            if(posicaolista.getNome().equalsIgnoreCase(nomefunc)){
+            if (posicaolista.getNome().equalsIgnoreCase(nomefunc)) {
                 break;
             }
             posicao++;
@@ -191,7 +189,7 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
 
         textnome.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 30));
         textnome.setBounds(145, 13, 450, 40);
-        
+
         email.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
         email.setBounds(10, 80, 150, 50);
 
@@ -203,7 +201,7 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
 
         textcpf.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 30));
         textcpf.setBounds(125, 163, 200, 40);
-    
+
         datanac.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
         datanac.setBounds(10, 230, 350, 50);
 
@@ -247,17 +245,18 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
         deletarfuncionario.addActionListener(this);
     }
 
-    public void editarCamisa(ArrayList<Camisa> camisas, String nomecamisa) {
+    public void editarCamisa(ArrayList<Camisa> camisas, ArrayList<Calca> calcas, String idcamisa) {
         posicao = 0;
 
         for (Camisa posicaolista : camisas) {
-            if(posicaolista.getNome().equalsIgnoreCase(nomecamisa)){
+            if (posicaolista.getId().equalsIgnoreCase(idcamisa)) {
                 break;
             }
             posicao++;
         }
 
-        camisatelaeditar = camisas;
+        camisaTelaEditar = camisas;
+        calcaTelaEditar = calcas;
 
         janela = new JFrame("Camisa " + camisas.get(posicao).getNome());
         id = new JLabel("id: ");
@@ -273,14 +272,12 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
         textid = new JTextField(camisas.get(posicao).getId());
         textnomec = new JTextField(camisas.get(posicao).getNome());
         textdescricao = new JTextField(camisas.get(posicao).getDescricao());
-        textgenero = new JTextField(camisas.get(posicao).getGenero());
+        textgenero = new JTextField(String.valueOf(camisas.get(posicao).getGenero()));
         textpreco = new JTextField(Float.toString(camisas.get(posicao).getPreco()));
         textmarca = new JTextField(camisas.get(posicao).getMarca());
         textcor = new JTextField(camisas.get(posicao).getCor());
         texttamanho = new JTextField(camisas.get(posicao).getTamanho());
-        textestoque = new JTextField(camisas.get(posicao).getEstoqueCamisa());
-
-
+        textestoque = new JTextField(String.valueOf(camisas.get(posicao).getEstoqueCamisa()));
 
         voltarcam = new JButton("Voltar");
         deletarcam = new JButton("Deletar");
@@ -290,7 +287,7 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
 
         textid.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
         textid.setBounds(145, 15, 200, 30);
-        
+
         nomec.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
         nomec.setBounds(10, 50, 150, 50);
 
@@ -302,7 +299,7 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
 
         textdescricao.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
         textdescricao.setBounds(145, 105, 200, 30);
-    
+
         genero.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
         genero.setBounds(10, 140, 350, 50);
 
@@ -338,7 +335,7 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
 
         textestoque.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
         textestoque.setBounds(145, 375, 200, 30);
-        
+
         deletarcam.setBounds(425, 410, 150, 50);
         voltarcam.setBounds(2, 410, 150, 50);
 
@@ -373,18 +370,19 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
         deletarcam.addActionListener(this);
         voltarcam.addActionListener(this);
     }
-  
-    public void editarCalca(ArrayList<Calca> calcas, String nomecalca) {
+
+    public void editarCalca(ArrayList<Camisa> camisas, ArrayList<Calca> calcas, String nomecalca) {
         posicao = 0;
 
         for (Calca posicaolista : calcas) {
-            if(posicaolista.getNome().equalsIgnoreCase(nomecalca)){
+            if (posicaolista.getNome().equalsIgnoreCase(nomecalca)) {
                 break;
             }
             posicao++;
         }
 
-        calcatelaeditar = calcas;
+        camisaTelaEditar = camisas;
+        calcaTelaEditar = calcas;
 
         janela = new JFrame("Calca" + calcas.get(posicao).getNome());
         id = new JLabel("id: ");
@@ -407,8 +405,6 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
         texttamanhocintura = new JTextField(Float.toString(calcas.get(posicao).getTamanhocintura()));
         textestoquecalca = new JTextField(calcas.get(posicao).getEstoqueCalca());
 
-
-
         deletarcalca = new JButton("Deletar");
         voltarcalca = new JButton("Voltar");
 
@@ -417,7 +413,7 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
 
         textid.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
         textid.setBounds(145, 15, 200, 30);
-        
+
         nomec.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
         nomec.setBounds(10, 50, 150, 50);
 
@@ -429,7 +425,7 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
 
         textdescricao.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
         textdescricao.setBounds(145, 105, 200, 30);
-    
+
         genero.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
         genero.setBounds(10, 140, 350, 50);
 
@@ -465,7 +461,7 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
 
         textestoquecalca.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
         textestoquecalca.setBounds(145, 375, 200, 30);
-        
+
         deletarcalca.setBounds(425, 410, 150, 50);
         voltarcalca.setBounds(2, 410, 150, 50);
 
@@ -500,27 +496,29 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
         deletarcalca.addActionListener(this);
         voltarcalca.addActionListener(this);
     }
-  
+
     @Override
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();
         if (src == voltarcliente) {
-            
-            try{
+
+            try {
                 clientesTelaEditar.get(posicao).setNome(textnome.getText());
                 clientesTelaEditar.get(posicao).setEmail(textemail.getText());
                 clientesTelaEditar.get(posicao).setCpf(textcpf.getText());
                 clientesTelaEditar.get(posicao).setData(textdatanasc.getText());
-                clientesTelaEditar.get(posicao).setNumtel(new Telefone(Integer.parseInt(textddd.getText()), Integer.parseInt(texttel.getText())));
-            }catch(NumberFormatException exep){
-                JOptionPane.showMessageDialog(null, "Alguma informação está incorreta", "Erro Cadastro", JOptionPane.ERROR_MESSAGE);
+                clientesTelaEditar.get(posicao).setNumtel(
+                        new Telefone(Integer.parseInt(textddd.getText()), Integer.parseInt(texttel.getText())));
+            } catch (NumberFormatException exep) {
+                JOptionPane.showMessageDialog(null, "Alguma informação está incorreta", "Erro Cadastro",
+                        JOptionPane.ERROR_MESSAGE);
             }
 
             janela.dispose();
             new TelaPessoa().telaCliente(clientesTelaEditar);
         }
 
-        if(src == deletarcliente){
+        if (src == deletarcliente) {
             janela.dispose();
             clientesTelaEditar.remove(posicao);
 
@@ -528,56 +526,56 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
         }
 
         if (src == voltarfuncionario) {
-            
-            try{
+
+            try {
                 funcionariosTelaEditar.get(posicao).setNome(textnome.getText());
                 funcionariosTelaEditar.get(posicao).setEmail(textemail.getText());
                 funcionariosTelaEditar.get(posicao).setCpf(textcpf.getText());
                 funcionariosTelaEditar.get(posicao).setDatacontrat(textdatanasc.getText());
-                funcionariosTelaEditar.get(posicao).setNumtel(new Telefone(Integer.parseInt(textddd.getText()), Integer.parseInt(texttel.getText())));
-            }catch(NumberFormatException exep){
-                JOptionPane.showMessageDialog(null, "Alguma informação está incorreta", "Erro Cadastro", JOptionPane.ERROR_MESSAGE);
+                funcionariosTelaEditar.get(posicao).setNumtel(
+                        new Telefone(Integer.parseInt(textddd.getText()), Integer.parseInt(texttel.getText())));
+            } catch (NumberFormatException exep) {
+                JOptionPane.showMessageDialog(null, "Alguma informação está incorreta", "Erro Cadastro",
+                        JOptionPane.ERROR_MESSAGE);
             }
 
             janela.dispose();
             new TelaPessoa().telaFuncionario(funcionariosTelaEditar);
         }
 
-        if(src == deletarfuncionario){
+        if (src == deletarfuncionario) {
             janela.dispose();
             funcionariosTelaEditar.remove(posicao);
 
             new TelaPessoa().telaFuncionario(funcionariosTelaEditar);
 
         }
-       
-       /* if (src == voltarcam) {
-            
-            try{
-                camisatelaeditar.get(posicao).setId(textid.getText());
-                camisatelaeditar.get(posicao).setNome(textnomec.getText());
-                camisatelaeditar.get(posicao).setDescricao(textdescricao.getText());
-                camisatelaeditar.get(posicao).setGenero(textgenero.getText().charAt(0));
-                camisatelaeditar.get(posicao).setPreco(Float.parseFloat(textpreco.getText()));
-                camisatelaeditar.get(posicao).setMarca(textmarca.getText());
-                camisatelaeditar.get(posicao).setCor(textcor.getText());
-                camisatelaeditar.get(posicao).setTamanho(texttamanho.getText());
-                camisatelaeditar.get(posicao).setEstoqueCamisa(Integer.parseInt(textestoque.getText()));
 
-            }catch(NumberFormatException exep){
-                JOptionPane.showMessageDialog(null, "Alguma informação está incorreta", "Erro Cadastro", JOptionPane.ERROR_MESSAGE);
+        if (src == voltarcam) {
+            try {
+                camisaTelaEditar.get(posicao).setId(textid.getText());
+                camisaTelaEditar.get(posicao).setNome(textnomec.getText());
+                camisaTelaEditar.get(posicao).setDescricao(textdescricao.getText());
+                camisaTelaEditar.get(posicao).setGenero(textgenero.getText().charAt(0));
+                camisaTelaEditar.get(posicao).setPreco(Float.parseFloat(textpreco.getText()));
+                camisaTelaEditar.get(posicao).setMarca(textmarca.getText());
+                camisaTelaEditar.get(posicao).setCor(textcor.getText());
+                camisaTelaEditar.get(posicao).setTamanho(texttamanho.getText());
+                camisaTelaEditar.get(posicao).setEstoqueCamisa(Integer.parseInt(textestoque.getText()));
+
+            } catch (NumberFormatException exep) {
+                JOptionPane.showMessageDialog(null, "Alguma informação está incorreta", "Erro Cadastro",
+                        JOptionPane.ERROR_MESSAGE);
             }
 
             janela.dispose();
-            new TelaRoupa().telacamisa(camisatelaeditar, calcatelaeditar);
+            new TelaRoupa().telacamisa(camisaTelaEditar, calcaTelaEditar);
         }
-        if(src == deletarcam){
+        if (src == deletarcam) {
             janela.dispose();
-            camisatelaeditar.remove(posicao);
+            camisaTelaEditar.remove(posicao);
 
-            new TelaRoupa().telacamisa(camisatelaeditar, calcatelaeditar);
-
-        }*/
+            new TelaRoupa().telacamisa(camisaTelaEditar, calcaTelaEditar);
+        }
     }
-    
 }

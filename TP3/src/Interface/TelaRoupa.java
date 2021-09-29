@@ -48,7 +48,7 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
         int count = 0;
 
         for(Camisa camisa : camisas){
-            todascamisas[count]= camisa.getNome();
+            todascamisas[count]= camisa.getId();
             count++;
         }
 
@@ -112,7 +112,7 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
         int count = 0;
 
         for(Calca calca : calcas){
-            todascalcas[count]= calca.getNome();
+            todascalcas[count]= calca.getId();
             count++;
         }
 
@@ -208,7 +208,7 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
         try{
             if (e.getValueIsAdjusting() && src == listacamisas) {
                 janela.dispose();
-                new TelaEditarVizualizarDeletar().editarCamisa(camisasTelaRoupa, listacamisas.getSelectedValue());
+                new TelaEditarVizualizarDeletar().editarCamisa(camisasTelaRoupa, calcasTelaRoupa, listacamisas.getSelectedValue());
             }
         }catch(IndexOutOfBoundsException exc){
             janela.dispose();
@@ -218,7 +218,7 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
         try{
             if (e.getValueIsAdjusting() && src == listacalcas) {
                 janela.dispose();
-                new TelaEditarVizualizarDeletar().editarCalca(calcasTelaRoupa, listacalcas.getSelectedValue());
+                new TelaEditarVizualizarDeletar().editarCalca(camisasTelaRoupa, calcasTelaRoupa, listacalcas.getSelectedValue());
             }
         }catch(IndexOutOfBoundsException exc){
             janela.dispose();
