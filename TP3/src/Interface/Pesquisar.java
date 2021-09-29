@@ -2,8 +2,7 @@ package Interface;
 
 import java.util.ArrayList;
 
-import Objetos.Cliente;
-import Objetos.Funcionario;
+import Objetos.*;
 
 public class Pesquisar {
 
@@ -33,5 +32,33 @@ public class Pesquisar {
         }
 
         return nomespesq;
+    }
+
+    public static String[] pesquisarCamisa(ArrayList<Camisa> camisas ,String id) {
+        String [] camisapesq = new String[camisas.size()];
+        int count = 0;
+
+        for (Camisa idpesq : camisas) {
+            if(idpesq.getId().equalsIgnoreCase(id)){
+                camisapesq[count] = idpesq.getId();
+                count++;
+            }
+        }
+
+        return camisapesq;
+    }
+
+    public static String[] pesquisarCalca(ArrayList<Calca> calcas ,String id) {
+        String [] calcapesq = new String[calcas.size()];
+        int count = 0;
+
+        for (Calca idpesq : calcas) {
+            if(idpesq.getId().equalsIgnoreCase(id)){
+                calcapesq[count] = idpesq.getId();
+                count++;
+            }
+        }
+
+        return calcapesq;
     }
 }

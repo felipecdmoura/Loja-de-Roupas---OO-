@@ -530,6 +530,28 @@ public class TelaCadastrar implements ActionListener {
             janela.dispose();
             new TelaRoupa().telacamisa(camisaTelaCadastrar, calcaTelaCadastrar);;
         }
+        if(src == cadastrarcalca){
+            try{
+                calcaTelaCadastrar.add(new Calca(
+                    textid.getText(), 
+                    textnomec.getText(), 
+                    textdescricao.getText(),
+                    textgenero.getText().charAt(0),
+                    Float.parseFloat(textpreco.getText()),
+                    textmarca.getText(),
+                    textcor.getText(),
+                    Float.parseFloat(texttamanhocintura.getText()),
+                    Integer.parseInt(textestoquecalca.getText())));
+            }catch(NumberFormatException exep){
+                JOptionPane.showMessageDialog(null, "Alguma informação está incorreta", "Erro Cadastro", JOptionPane.ERROR_MESSAGE);
+            }
+            janela.dispose();
+            new TelaRoupa().telaCalca(camisaTelaCadastrar, calcaTelaCadastrar);
+        }
+        if (src == voltarcalca) {
+            janela.dispose();
+            new TelaRoupa().telaCalca(camisaTelaCadastrar, calcaTelaCadastrar);;
+        }
         if (src == cadastrarc) {
             String dataformatada = textdia.getText() + "/" + textmes.getText() + "/" + textano.getText();
             try{

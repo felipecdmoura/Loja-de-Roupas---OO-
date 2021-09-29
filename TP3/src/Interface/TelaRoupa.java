@@ -57,7 +57,7 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
         listacamisas = new JList<String>(todascamisas);
         listascroll = new JScrollPane();
         titulo = new JLabel("Camisas Cadastradas");
-        pesqcamisa = new JTextField("Pesquisar nome da camisa");
+        pesqcamisa = new JTextField("id do produto");
         calca = new JButton("Calças");
         cadastrarcamisa = new JButton("Cadastrar");
         voltar = new JButton("Voltar");
@@ -166,9 +166,17 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub
+        Object src = e.getSource();
         
+        if(src == pesqcamisa){
+            pesqcamisa.setText(null);
+        }
+
+        if(src == pesqcalca){
+            pesqcalca.setText(null);
+        }
     }
+
 
     @Override
     public void mousePressed(MouseEvent e) {
@@ -196,8 +204,26 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
 
     @Override
     public void valueChanged(ListSelectionEvent e) {
-        // TODO Auto-generated method stub
-        
+        Object src = e.getSource();
+        try{
+            if (e.getValueIsAdjusting() && src == listacamisas) {
+                janela.dispose();
+                new TelaEditarVizualizarDeletar().editarCamisa(camisasTelaRoupa, listacamisas.getSelectedValue());
+            }
+        }catch(IndexOutOfBoundsException exc){
+            janela.dispose();
+            new TelaRoupa().telacamisa(camisasTelaRoupa, calcasTelaRoupa);
+        }
+
+        try{
+            if (e.getValueIsAdjusting() && src == listacalcas) {
+                janela.dispose();
+                new TelaEditarVizualizarDeletar().editarCalca(calcasTelaRoupa, listacalcas.getSelectedValue());
+            }
+        }catch(IndexOutOfBoundsException exc){
+            janela.dispose();
+            new TelaRoupa().telaCalca(camisasTelaRoupa, calcasTelaRoupa);
+        }
     }
 
     @Override
@@ -215,9 +241,23 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
             janela.dispose();
             new TelaCadastrar().cadastroCamisa(camisasTelaRoupa, calcasTelaRoupa);
         }
+        if(src == pesqcamisa){
+            if(pesqcamisa.getText().equals("")){
+                listacamisas.setListData(todascamisas);
+            }else{
+                listacamisas.setListData(Pesquisar.pesquisarCamisa(camisasTelaRoupa, pesqcamisa.getText()));
+            }
+        }
         if(src == cadastrarcalca){
             janela.dispose();
             new TelaCadastrar().cadastroCalca(camisasTelaRoupa, calcasTelaRoupa);
+        }
+        if(src == pesqcalca){
+            if(pesqcalca.getText().equals("")){
+                listacalcas.setListData(todascalcas);
+            }else{
+                listacalcas.setListData(Pesquisar.pesquisarCalca(calcasTelaRoupa, pesqcalca.getText()));
+            }
         }
     }
 
