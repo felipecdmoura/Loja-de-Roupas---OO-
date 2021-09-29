@@ -48,7 +48,7 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
         int count = 0;
 
         for(Camisa camisa : camisas){
-            todascamisas[count]= camisa.getId();
+            todascamisas[count]= camisa.getId() + "-" + camisa.getNome();
             count++;
         }
 
@@ -208,7 +208,7 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
         try{
             if (e.getValueIsAdjusting() && src == listacamisas) {
                 janela.dispose();
-                new TelaEditarVizualizarDeletar().editarCamisa(camisasTelaRoupa, calcasTelaRoupa, listacamisas.getSelectedValue());
+                new TelaEditarVizualizarDeletar().editarCamisa(camisasTelaRoupa, calcasTelaRoupa, listacamisas.getSelectedValue().substring(0, 2));
             }
         }catch(IndexOutOfBoundsException exc){
             janela.dispose();
@@ -218,7 +218,7 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
         try{
             if (e.getValueIsAdjusting() && src == listacalcas) {
                 janela.dispose();
-                new TelaEditarVizualizarDeletar().editarCalca(camisasTelaRoupa, calcasTelaRoupa, listacalcas.getSelectedValue());
+                new TelaEditarVizualizarDeletar().editarCalca(camisasTelaRoupa, calcasTelaRoupa, listacalcas.getSelectedValue().substring(0, 2));
             }
         }catch(IndexOutOfBoundsException exc){
             janela.dispose();
@@ -245,7 +245,7 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
             if(pesqcamisa.getText().equals("")){
                 listacamisas.setListData(todascamisas);
             }else{
-                listacamisas.setListData(Pesquisar.pesquisarCamisa(camisasTelaRoupa, pesqcamisa.getText()));
+                listacamisas.setListData(Pesquisar.pesquisarCamisa(camisasTelaRoupa, pesqcamisa.getText().substring(0, 2)));
             }
         }
         if(src == cadastrarcalca){
@@ -256,7 +256,7 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
             if(pesqcalca.getText().equals("")){
                 listacalcas.setListData(todascalcas);
             }else{
-                listacalcas.setListData(Pesquisar.pesquisarCalca(calcasTelaRoupa, pesqcalca.getText()));
+                listacalcas.setListData(Pesquisar.pesquisarCalca(calcasTelaRoupa, pesqcalca.getText().substring(0, 2)));
             }
         }
     }

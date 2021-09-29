@@ -34,13 +34,13 @@ public class Pesquisar {
         return nomespesq;
     }
 
-    public static String[] pesquisarCamisa(ArrayList<Camisa> camisas ,String id) {
+    public static String[] pesquisarCamisa(ArrayList<Camisa> camisas , String id) {
         String [] camisapesq = new String[camisas.size()];
         int count = 0;
 
         for (Camisa idpesq : camisas) {
             if(idpesq.getId().equalsIgnoreCase(id)){
-                camisapesq[count] = idpesq.getId();
+                camisapesq[count] = idpesq.getId() + "-" + idpesq.getNome();
                 count++;
             }
         }
