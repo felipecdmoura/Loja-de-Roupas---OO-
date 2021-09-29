@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import Objetos.*;
 
-public class DadosAleatorios {
+public class DadosAleatorios{ 
     public static void setDefaultData(ArrayList<Cliente> cliente, ArrayList<Funcionario> funcionarios, ArrayList<Venda> vendas, ArrayList<Calca> calcas, ArrayList<Camisa> camisas) { //Método para definir os 10 clientes e produtos padrão
         Telefone telefone;
 
@@ -27,11 +27,11 @@ public class DadosAleatorios {
         funcionarios.add(new Funcionario("Claudio", "Claudin@gmail.com", "25564897546", new Telefone(61, 981209235), "19/7/2000"));
        
         //DADOS DE CALCAS
-        calcas.add(new Calca("01", "calça sportwear nike mid", "calça voltada para esportes ", 'M', 123, "nike", "preta", 54, 5));
-        calcas.add(new Calca("02", "calça casual reserva mid", "calça voltada para o dia a dia ", 'F', 220, "reserva", "preta", 74, 4));
-        calcas.add(new Calca("03", "calça confort adidas", "calça de moletom voltada para conforto ", 'M', 123, "adidas", "preta", 64, 6));
-        calcas.add(new Calca("04", "calça street nike ", "calça voltada para streetwear ", 'M',223, "nike", "azul",44, 10));
-        calcas.add(new Calca("05", "calça saruel mid", "calça sareul volta para moda ", 'F',153, "zara", "marrom",54, 3));
+        calcas.add(new Calca("11", "calça sportwear nike mid", "calça voltada para esportes ", 'M', 123, "nike", "preta", 54, 5));
+        calcas.add(new Calca("12", "calça casual reserva mid", "calça voltada para o dia a dia ", 'F', 220, "reserva", "preta", 74, 4));
+        calcas.add(new Calca("13", "calça confort adidas", "calça de moletom voltada para conforto ", 'M', 123, "adidas", "preta", 64, 6));
+        calcas.add(new Calca("14", "calça street nike ", "calça voltada para streetwear ", 'M',223, "nike", "azul",44, 10));
+        calcas.add(new Calca("15", "calça saruel mid", "calça sareul volta para moda ", 'F',153, "zara", "marrom",54, 3));
 
         //DADOS DE CAMISAS
         camisas.add(new Camisa("11", "camisa sportwear nike ", "camisa voltada para esportes ", 'F', 153, "nike", "preta", "G", 5));
