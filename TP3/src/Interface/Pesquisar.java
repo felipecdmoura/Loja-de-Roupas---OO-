@@ -54,7 +54,7 @@ public class Pesquisar {
 
         for (Calca idpesq : calcas) {
             if(idpesq.getId().equalsIgnoreCase(id)){
-                calcapesq[count] = idpesq.getId();
+                calcapesq[count] = idpesq.getId() + "-" + idpesq.getNome();
                 count++;
             }
         }

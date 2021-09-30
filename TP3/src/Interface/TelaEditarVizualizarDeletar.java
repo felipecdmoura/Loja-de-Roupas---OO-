@@ -375,7 +375,7 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
         posicao = 0;
 
         for (Calca posicaolista : calcas) {
-            if (posicaolista.getNome().equalsIgnoreCase(nomecalca)) {
+            if (posicaolista.getId().equalsIgnoreCase(nomecalca)) {
                 break;
             }
             posicao++;
@@ -398,12 +398,12 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
         textid = new JTextField(calcas.get(posicao).getId());
         textnomec = new JTextField(calcas.get(posicao).getNome());
         textdescricao = new JTextField(calcas.get(posicao).getDescricao());
-        textgenero = new JTextField(calcas.get(posicao).getGenero());
+        textgenero = new JTextField(String.valueOf(calcas.get(posicao).getGenero()));
         textpreco = new JTextField(Float.toString(calcas.get(posicao).getPreco()));
         textmarca = new JTextField(calcas.get(posicao).getMarca());
         textcor = new JTextField(calcas.get(posicao).getCor());
         texttamanhocintura = new JTextField(Float.toString(calcas.get(posicao).getTamanhocintura()));
-        textestoquecalca = new JTextField(calcas.get(posicao).getEstoqueCalca());
+        textestoquecalca = new JTextField(String.valueOf(calcas.get(posicao).getEstoqueCalca()));
 
         deletarcalca = new JButton("Deletar");
         voltarcalca = new JButton("Voltar");
@@ -577,5 +577,35 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
 
             new TelaRoupa().telacamisa(camisaTelaEditar, calcaTelaEditar);
         }
+
+
+        if (src == voltarcalca) {
+            try {
+                calcaTelaEditar.get(posicao).setId(textid.getText());
+                calcaTelaEditar.get(posicao).setNome(textnomec.getText());
+                calcaTelaEditar.get(posicao).setDescricao(textdescricao.getText());
+                calcaTelaEditar.get(posicao).setGenero(textgenero.getText().charAt(0));
+                calcaTelaEditar.get(posicao).setPreco(Float.parseFloat(textpreco.getText()));
+                calcaTelaEditar.get(posicao).setMarca(textmarca.getText());
+                calcaTelaEditar.get(posicao).setCor(textcor.getText());
+                calcaTelaEditar.get(posicao).setTamanhocintura(Float.parseFloat(texttamanhocintura.getText()));
+                calcaTelaEditar.get(posicao).setEstoqueCalca(Integer.parseInt(textestoquecalca.getText()));
+
+            } catch (NumberFormatException exep) {
+                JOptionPane.showMessageDialog(null, "Alguma informação está incorreta", "Erro Cadastro",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+
+            janela.dispose();
+            new TelaRoupa().telaCalca(camisaTelaEditar, calcaTelaEditar);
+        }
+        if (src == deletarcalca) {
+            janela.dispose();
+            calcaTelaEditar.remove(posicao);
+
+            new TelaRoupa().telaCalca(camisaTelaEditar, calcaTelaEditar);
+        }
     }
+    
+    
 }

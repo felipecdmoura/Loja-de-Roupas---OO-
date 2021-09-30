@@ -34,6 +34,7 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
     private JButton cadastrarcamisa;
     private JButton cadastrarcalca;
     private JButton voltar;
+    private JButton voltarcalca;
 
     private static ArrayList <Camisa> camisasTelaRoupa;
     private static ArrayList <Calca> calcasTelaRoupa;
@@ -112,7 +113,7 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
         int count = 0;
 
         for(Calca calca : calcas){
-            todascalcas[count]= calca.getId();
+            todascalcas[count]= calca.getId() + "-" + calca.getNome();
             count++;
         }
 
@@ -121,9 +122,9 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
         listacalcas = new JList<String>(todascalcas);
         listascroll = new JScrollPane();
         titulo = new JLabel("Calças Cadastradas");
-        pesqcalca = new JTextField("nome da calça");
+        pesqcalca = new JTextField("id do Produto");
         cadastrarcalca = new JButton("Cadastrar");
-        voltar = new JButton("Voltar");
+        voltarcalca = new JButton("Voltar");
 
         titulo.setFont(new Font("Arial", Font.BOLD, 40));
         titulo.setBounds(300, 10, 500, 30);
@@ -138,7 +139,7 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
         listascroll.setBounds(60, 120, 790, 250);
         listascroll.setViewportView(listacalcas);
 
-        voltar.setBounds(2, 399, 150, 60);
+        voltarcalca.setBounds(2, 399, 150, 60);
         cadastrarcalca.setBounds(425, 399, 150, 60);
 
         janela.setLayout(null);
@@ -146,7 +147,7 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
         janela.add(pesqcalca);
         janela.add(listascroll);
         janela.add(cadastrarcalca);
-        janela.add(voltar);
+        janela.add(voltarcalca);
 
         janela.setSize(1000, 500);
         janela.setResizable(false);
@@ -155,7 +156,7 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         cadastrarcalca.addActionListener(this);
-        voltar.addActionListener(this);
+        voltarcalca.addActionListener(this);
 
         pesqcalca.addMouseListener(this);
         pesqcalca.addActionListener(this);
@@ -236,6 +237,10 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
         if(src == calca){
             janela.dispose();
             new TelaRoupa().telaCalca(camisasTelaRoupa, calcasTelaRoupa);
+        }
+        if (src == voltarcalca){
+            janela.dispose();
+            new TelaRoupa().telacamisa(camisasTelaRoupa, calcasTelaRoupa);
         }
         if(src == cadastrarcamisa){
             janela.dispose();
