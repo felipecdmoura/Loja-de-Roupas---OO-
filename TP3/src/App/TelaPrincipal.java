@@ -1,13 +1,19 @@
-package Interface;
+package App;
 
 import javax.swing.*;
+
+import Interface.TelaLoja;
+import Interface.TelaPessoa;
+import Interface.TelaRoupa;
+import Interface.TelaVenda;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import Objetos.*;
-import App.DadosAleatorios;
+import Interface.*;
 
 public class TelaPrincipal extends JFrame implements ActionListener  {
 

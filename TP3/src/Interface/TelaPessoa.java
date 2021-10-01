@@ -21,6 +21,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import App.TelaPrincipal;
 import Objetos.Cliente;
 import Objetos.Funcionario;
 
