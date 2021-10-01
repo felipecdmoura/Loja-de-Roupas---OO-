@@ -1,4 +1,5 @@
 package Interface;
+//importa as bibliotecas e classes que usaremos.
 
 import java.util.ArrayList;
 import javax.swing.*;
@@ -7,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import Objetos.Loja;
-
+//classe principal que implementa os nossos eventos
 public class TelaLoja implements ActionListener {
 
     private JFrame janela;
@@ -24,8 +25,10 @@ public class TelaLoja implements ActionListener {
     private Loja lojaTelaLoja;
     
     public void telaLoja(Loja loja) {
+        //iguala a arraylist recebida a instanciadas no codigo. 
         lojaTelaLoja = loja;
 
+        //aqui instanciamos nossos componentes da tela e instanciamos suas psoições.
         janela = new JFrame("Informações Loja");
         nomefilial = new JLabel("Nome da Filial: ");
         cnpj = new JLabel("CNPJ: ");
@@ -77,6 +80,7 @@ public class TelaLoja implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        //este evento altera os dados de nossa loja quando alteramos seus textfields.
         try{
             lojaTelaLoja.setNomefilial(textnomefilial.getText());
             lojaTelaLoja.setCnpj(textcnpj.getText());

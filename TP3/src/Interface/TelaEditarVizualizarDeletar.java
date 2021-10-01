@@ -1,4 +1,5 @@
 package Interface;
+//importa as bibliotecas e classes que usaremos.
 
 import java.util.ArrayList;
 import javax.swing.*;
@@ -7,15 +8,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import Objetos.*;
-
+//classe principal que implementa os nossos eventos
 public class TelaEditarVizualizarDeletar implements ActionListener {
     private JFrame janela;
+
+    //Labels Pessoa
     private JLabel nome;
     private JLabel email;
     private JLabel cpf;
     private JLabel datanac;
     private JLabel tel;
 
+    // Texts Pessoa
     private JTextField textnome;
     private JTextField textemail;
     private JTextField textcpf;
@@ -23,7 +27,13 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
     private JTextField textddd;
     private JTextField texttel;
 
-    // labels Roupa
+    //Botoes Pessoa
+    private JButton voltarcliente;
+    private JButton voltarfuncionario;
+    private JButton deletarcliente;
+    private JButton deletarfuncionario;
+
+    // Labels Roupa
     private JLabel id;
     private JLabel nomec;
     private JLabel descricao;
@@ -49,21 +59,30 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
     private JTextField textestoque;
     private JTextField textestoquecalca;
 
-    private JButton voltarcliente;
-    private JButton voltarfuncionario;
-    private JButton deletarcliente;
-    private JButton deletarfuncionario;
+    // Botoes Roupa
     private JButton deletarcam;
     private JButton voltarcam;
     private JButton deletarcalca;
     private JButton voltarcalca;
 
+    // Labels Venda
+    private JLabel protocolo;
+    private JLabel comprador;
+    private JLabel funcresponsavel;
+    private JLabel prodvendido;
+    private JLabel precototal;
+
+    // Botoes venda
+    private JButton voltarvenda;
+
     private ArrayList<Cliente> clientesTelaEditar;
     private ArrayList<Funcionario> funcionariosTelaEditar;
     private ArrayList<Camisa> camisaTelaEditar;
     private ArrayList<Calca> calcaTelaEditar;
+    private ArrayList<Venda> vendaTelaEditar;
     private int posicao;
-
+    
+    //metodo que ira nos mostrar a tela de editar o cliente.Este metodo recebe uma arrayliste uma string como parametros.
     public void editarCliente(ArrayList<Cliente> clientes, String nomecliente) {
         posicao = 0;
 
@@ -73,9 +92,10 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
             }
             posicao++;
         }
-
+        //iguala a arraylist recebida a instanciada no codigo
         clientesTelaEditar = clientes;
 
+        //aqui instanciamos nossos componentes da tela e instanciamos suas psoições.
         janela = new JFrame("Cliente " + clientes.get(posicao).getNome());
         nome = new JLabel("Nome: ");
         email = new JLabel("Email: ");
@@ -155,6 +175,7 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
 
     }
 
+    //metodo que ira nos mostrar a tela de editar o funcionario.Este metodo recebe uma arraylist e uma string como parametros.
     public void editarFuncionario(ArrayList<Funcionario> funcionarios, String nomefunc) {
         posicao = 0;
 
@@ -164,9 +185,11 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
             }
             posicao++;
         }
-
+        
+        //iguala a arraylist recebida a instanciada no codigo
         funcionariosTelaEditar = funcionarios;
 
+        //aqui instanciamos nossos componentes da tela e instanciamos suas psoições.
         janela = new JFrame("Funcionario " + funcionarios.get(posicao).getNome());
         nome = new JLabel("Nome: ");
         email = new JLabel("Email: ");
@@ -245,6 +268,7 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
         deletarfuncionario.addActionListener(this);
     }
 
+       //metodo que ira nos mostrar a tela de editar a Camisa.Este metodo recebe duas arraylists como parametros.
     public void editarCamisa(ArrayList<Camisa> camisas, ArrayList<Calca> calcas, String idcamisa) {
         posicao = 0;
 
@@ -254,12 +278,13 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
             }
             posicao++;
         }
-
+        //iguala as arraylists recebidas a instanciadas no codigo
         camisaTelaEditar = camisas;
         calcaTelaEditar = calcas;
 
+        //aqui instanciamos nossos componentes da tela e instanciamos suas psoições.
         janela = new JFrame("Camisa " + camisas.get(posicao).getNome());
-        id = new JLabel("id: ");
+        id = new JLabel("ID: ");
         nomec = new JLabel("Nome: ");
         descricao = new JLabel("Descrição: ");
         genero = new JLabel("Genêro:");
@@ -371,21 +396,24 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
         voltarcam.addActionListener(this);
     }
 
+       //metodo que ira nos mostrar a tela de editar a Calça.Este metodo recebe duas arraylists como parametros.
     public void editarCalca(ArrayList<Camisa> camisas, ArrayList<Calca> calcas, String nomecalca) {
         posicao = 0;
 
         for (Calca posicaolista : calcas) {
-            if (posicaolista.getNome().equalsIgnoreCase(nomecalca)) {
+            if (posicaolista.getId().equalsIgnoreCase(nomecalca)) {
                 break;
             }
             posicao++;
         }
 
+        //iguala as arraylists recebidas a instanciadas no codigo
         camisaTelaEditar = camisas;
         calcaTelaEditar = calcas;
 
+        //aqui instanciamos nossos componentes da tela e instanciamos suas psoições.
         janela = new JFrame("Calca" + calcas.get(posicao).getNome());
-        id = new JLabel("id: ");
+        id = new JLabel("ID: ");
         nomec = new JLabel("Nome: ");
         descricao = new JLabel("Descrição: ");
         genero = new JLabel("Genêro:");
@@ -398,12 +426,12 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
         textid = new JTextField(calcas.get(posicao).getId());
         textnomec = new JTextField(calcas.get(posicao).getNome());
         textdescricao = new JTextField(calcas.get(posicao).getDescricao());
-        textgenero = new JTextField(calcas.get(posicao).getGenero());
+        textgenero = new JTextField(String.valueOf(calcas.get(posicao).getGenero()));
         textpreco = new JTextField(Float.toString(calcas.get(posicao).getPreco()));
         textmarca = new JTextField(calcas.get(posicao).getMarca());
         textcor = new JTextField(calcas.get(posicao).getCor());
         texttamanhocintura = new JTextField(Float.toString(calcas.get(posicao).getTamanhocintura()));
-        textestoquecalca = new JTextField(calcas.get(posicao).getEstoqueCalca());
+        textestoquecalca = new JTextField(String.valueOf(calcas.get(posicao).getEstoqueCalca()));
 
         deletarcalca = new JButton("Deletar");
         voltarcalca = new JButton("Voltar");
@@ -497,11 +525,73 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
         voltarcalca.addActionListener(this);
     }
 
+    // Apenas vizualiza as infos da venda selecionada.
+    public void vizualizarVenda(ArrayList<Cliente> clientes, ArrayList<Funcionario> funcionarios, ArrayList<Camisa> camisas ,ArrayList<Calca> calcas, ArrayList<Venda> vendas, String protocvenda) {
+        posicao = 0;
+
+        for (Venda posicaolista : vendas) {
+            if (posicaolista.getProtocolo().equalsIgnoreCase(protocvenda)) {
+                break;
+            }
+            posicao++;
+        }
+        //iguala as arraylists recebidas a instanciadas no codigo
+        clientesTelaEditar = clientes;
+        funcionariosTelaEditar = funcionarios;
+        camisaTelaEditar = camisas;
+        calcaTelaEditar = calcas;
+        vendaTelaEditar = vendas;
+
+        //aqui instanciamos nossos componentes da tela e instanciamos suas psoições.
+        janela = new JFrame("Venda " + vendas.get(posicao).getProtocolo());
+        protocolo = new JLabel("Protocolo: " + vendas.get(posicao).getProtocolo());
+        comprador = new JLabel("Cliente: " + vendas.get(posicao).getCliente().getNome());
+        funcresponsavel = new JLabel("Funcionario Responsavel: " + vendas.get(posicao).getFuncionario().getNome());
+        prodvendido = new JLabel("Produto: " + vendas.get(posicao).getProduto().getNome());
+        precototal = new JLabel("Preço Total: " + vendas.get(posicao).getPreçoTotal());
+
+        voltarvenda = new JButton("Voltar");
+
+        protocolo.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
+        protocolo.setBounds(10, 5, 500, 50);
+
+        comprador.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
+        comprador.setBounds(10, 80, 500, 50);
+
+        funcresponsavel.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
+        funcresponsavel.setBounds(10, 155, 500, 50);
+
+        prodvendido.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
+        prodvendido.setBounds(10, 230, 500, 50);
+
+        precototal.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
+        precototal.setBounds(10, 305, 500, 50);
+
+        voltarvenda.setBounds(2, 399, 150, 60);
+
+        janela.setLayout(null);
+        janela.add(protocolo);
+        janela.add(comprador);
+        janela.add(funcresponsavel);
+        janela.add(prodvendido);
+        janela.add(precototal);
+        janela.add(voltarvenda);
+
+        janela.setSize(1000, 500);
+        janela.setResizable(false);
+        janela.setLocationRelativeTo(null);
+        janela.setVisible(true);
+        janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        voltarvenda.addActionListener(this);
+        
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();
         if (src == voltarcliente) {
-
+            //ao clicar em voltar na tela de editar e visualizar cliente ele ira pegar os dados nos textfields e salvar.
             try {
                 clientesTelaEditar.get(posicao).setNome(textnome.getText());
                 clientesTelaEditar.get(posicao).setEmail(textemail.getText());
@@ -519,6 +609,7 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
         }
 
         if (src == deletarcliente) {
+            //ao clicar no botao deletar da tela editar/visualizar cliente ele ira deletar aquele cliente.
             janela.dispose();
             clientesTelaEditar.remove(posicao);
 
@@ -526,7 +617,7 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
         }
 
         if (src == voltarfuncionario) {
-
+            //ao clicar em voltar na tela de editar e visualizar funcionario ele ira pegar os dados nos textfields e salvar.
             try {
                 funcionariosTelaEditar.get(posicao).setNome(textnome.getText());
                 funcionariosTelaEditar.get(posicao).setEmail(textemail.getText());
@@ -544,6 +635,7 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
         }
 
         if (src == deletarfuncionario) {
+            //ao clicar no botao deletar da tela editar/visualizar cliente ele ira deletar aquele funcionario.
             janela.dispose();
             funcionariosTelaEditar.remove(posicao);
 
@@ -553,16 +645,20 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
 
         if (src == voltarcam) {
             try {
-                camisaTelaEditar.get(posicao).setId(textid.getText());
-                camisaTelaEditar.get(posicao).setNome(textnomec.getText());
-                camisaTelaEditar.get(posicao).setDescricao(textdescricao.getText());
-                camisaTelaEditar.get(posicao).setGenero(textgenero.getText().charAt(0));
-                camisaTelaEditar.get(posicao).setPreco(Float.parseFloat(textpreco.getText()));
-                camisaTelaEditar.get(posicao).setMarca(textmarca.getText());
-                camisaTelaEditar.get(posicao).setCor(textcor.getText());
-                camisaTelaEditar.get(posicao).setTamanho(texttamanho.getText());
-                camisaTelaEditar.get(posicao).setEstoqueCamisa(Integer.parseInt(textestoque.getText()));
-
+                //ao clicar em voltar na tela de editar e visualizar camisa ele ira pegar os dados nos textfields e salvar.
+                if (textid.getText().length() == 3) {
+                    camisaTelaEditar.get(posicao).setId(textid.getText());
+                    camisaTelaEditar.get(posicao).setNome(textnomec.getText());
+                    camisaTelaEditar.get(posicao).setDescricao(textdescricao.getText());
+                    camisaTelaEditar.get(posicao).setGenero(textgenero.getText().charAt(0));
+                    camisaTelaEditar.get(posicao).setPreco(Float.parseFloat(textpreco.getText()));
+                    camisaTelaEditar.get(posicao).setMarca(textmarca.getText());
+                    camisaTelaEditar.get(posicao).setCor(textcor.getText());
+                    camisaTelaEditar.get(posicao).setTamanho(texttamanho.getText());
+                    camisaTelaEditar.get(posicao).setEstoqueCamisa(Integer.parseInt(textestoque.getText()));
+                }else{
+                    JOptionPane.showMessageDialog(null, "O ID deve ter obrigatoriamente 3 digitos!!", "Erro ID", JOptionPane.ERROR_MESSAGE);
+                }
             } catch (NumberFormatException exep) {
                 JOptionPane.showMessageDialog(null, "Alguma informação está incorreta", "Erro Cadastro",
                         JOptionPane.ERROR_MESSAGE);
@@ -572,10 +668,51 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
             new TelaRoupa().telacamisa(camisaTelaEditar, calcaTelaEditar);
         }
         if (src == deletarcam) {
+            //ao clicar no botao deletar da tela editar/visualizar camisa ele ira deletar aquele funcionario.
             janela.dispose();
             camisaTelaEditar.remove(posicao);
 
             new TelaRoupa().telacamisa(camisaTelaEditar, calcaTelaEditar);
         }
+
+
+        if (src == voltarcalca) {
+            try {
+                //ao clicar em voltar na tela de editar e visualizar calça ele ira pegar os dados nos textfields e salvar.
+                if (textid.getText().length() == 3) {
+                    calcaTelaEditar.get(posicao).setId(textid.getText());
+                    calcaTelaEditar.get(posicao).setNome(textnomec.getText());
+                    calcaTelaEditar.get(posicao).setDescricao(textdescricao.getText());
+                    calcaTelaEditar.get(posicao).setGenero(textgenero.getText().charAt(0));
+                    calcaTelaEditar.get(posicao).setPreco(Float.parseFloat(textpreco.getText()));
+                    calcaTelaEditar.get(posicao).setMarca(textmarca.getText());
+                    calcaTelaEditar.get(posicao).setCor(textcor.getText());
+                    calcaTelaEditar.get(posicao).setTamanhocintura(Float.parseFloat(texttamanhocintura.getText()));
+                    calcaTelaEditar.get(posicao).setEstoqueCalca(Integer.parseInt(textestoquecalca.getText()));
+                }else{
+                    JOptionPane.showMessageDialog(null, "O ID deve ter obrigatoriamente 3 digitos!!", "Erro ID", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (NumberFormatException exep) {
+                JOptionPane.showMessageDialog(null, "Alguma informação está incorreta", "Erro Cadastro",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+
+            janela.dispose();
+            new TelaRoupa().telaCalca(camisaTelaEditar, calcaTelaEditar);
+        }
+        if (src == deletarcalca) {
+            //ao clicar no botao deletar da tela editar/visualizar camisa ele ira deletar aquela calça.
+            janela.dispose();
+            calcaTelaEditar.remove(posicao);
+
+            new TelaRoupa().telaCalca(camisaTelaEditar, calcaTelaEditar);
+        }
+
+        if (src == voltarvenda) {
+            janela.dispose();
+            new TelaVenda().telaVenda(clientesTelaEditar, funcionariosTelaEditar, camisaTelaEditar, calcaTelaEditar, vendaTelaEditar);
+        }
     }
+    
+    
 }
