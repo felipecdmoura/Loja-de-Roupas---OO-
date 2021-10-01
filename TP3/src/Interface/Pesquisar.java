@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import Objetos.*;
 
 public class Pesquisar {
-
+    //metodo que obtem uma String[] de todos os nomes igual ao pesquisado.
     public static String[] pesquisarCliente(ArrayList<Cliente> clientes, String clientepesquisado) {
         String [] nomespesq = new String[clientes.size()];
         int count = 0;
@@ -20,6 +20,7 @@ public class Pesquisar {
         return nomespesq;
     }
 
+    //metodo que obtem uma String[] de todos os nomes igual ao pesquisado.
     public static String[] pesquisarFuncionario(ArrayList<Funcionario> funcionarios ,String funcionariopesquisado) {
         String [] nomespesq = new String[funcionarios.size()];
         int count = 0;
@@ -34,6 +35,7 @@ public class Pesquisar {
         return nomespesq;
     }
 
+    //metodo que obtem uma String[] de todos os nomes igual ao pesquisado.
     public static String[] pesquisarCamisa(ArrayList<Camisa> camisas , String id) {
         String [] camisapesq = new String[camisas.size()];
         int count = 0;
@@ -47,7 +49,7 @@ public class Pesquisar {
 
         return camisapesq;
     }
-
+    //metodo que obtem uma String[] de todos os nomes igual ao pesquisado.
     public static String[] pesquisarCalca(ArrayList<Calca> calcas ,String id) {
         String [] calcapesq = new String[calcas.size()];
         int count = 0;
@@ -61,7 +63,7 @@ public class Pesquisar {
 
         return calcapesq;
     }
-
+    //metodo que obtem uma String[] de todos os nomes igual ao pesquisado.
     public static String[] pesquisarVenda(ArrayList<Venda> vendas, String protoc) {
         String [] vendapesq = new String[vendas.size()];
         int count = 0;

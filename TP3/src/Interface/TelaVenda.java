@@ -1,5 +1,5 @@
 package Interface;
-
+//importa as bibliotecas e classes que usaremos
 import java.util.ArrayList;
 import javax.swing.*;
 import java.awt.*;
@@ -18,7 +18,7 @@ import Objetos.Camisa;
 import Objetos.Cliente;
 import Objetos.Funcionario;
 import Objetos.Venda;
-
+//instancia uma classe no qual implementa ActionListeners para que possamos utilizar dos evento
 public class TelaVenda implements ActionListener, ListSelectionListener, MouseListener {
 
     private JFrame janela;
@@ -43,8 +43,10 @@ public class TelaVenda implements ActionListener, ListSelectionListener, MouseLi
     private static ArrayList <Venda> vendasTelaVenda;
 
     private String[] todasvendas;
-
+    //metodo que ira nos mostrar a nos tela venda principal .Este metodo recebe 5 arraylists como parametros.
     public void telaVenda(ArrayList<Cliente> clientes, ArrayList<Funcionario> funcionarios, ArrayList<Camisa> camisas ,ArrayList<Calca> calcas, ArrayList<Venda> vendas) {
+        
+        //iguala as arraylists recebidas a instanciadas no codigo.
         clientesTelaVenda = clientes;
         funcionariosTelaVenda = funcionarios;
         camisasTelaVenda = camisas;
@@ -59,7 +61,7 @@ public class TelaVenda implements ActionListener, ListSelectionListener, MouseLi
             count++;
         }
 
-   
+        //aqui instanciamos nossos componentes da tela e instanciamos suas psoições.
         janela = new JFrame("Camisas");
         listavendas = new JList<String>(todasvendas);
         listascroll = new JScrollPane();
@@ -139,7 +141,7 @@ public class TelaVenda implements ActionListener, ListSelectionListener, MouseLi
     @Override
     public void mouseClicked(MouseEvent e) {
         Object src = e.getSource();
-
+         //evento que recebe o  clique do mouse e limpa o textfield de pesquisar a venda.
         if(src == pesqvenda){
             pesqvenda.setText(null);
         }
@@ -202,21 +204,25 @@ public class TelaVenda implements ActionListener, ListSelectionListener, MouseLi
         }
 
         if (src == cadastrarvenda) {
+            //evento que abre a nossa tela pre cadastro de venda onde voce selecionara as opçoes.
             janela.dispose();
             new TelaVenda().telaPreCadastro(clientesTelaVenda, funcionariosTelaVenda, camisasTelaVenda, calcasTelaVenda, vendasTelaVenda);
         }
 
         if (src == voltar) {
+            //evento que volta para a tela principal da aplicação.
             janela.dispose();
             new TelaPrincipal().telaPrincipal();
         }
 
         if (src == seleccamisa) {
+            //evento que seleciona a camisa e abre o cadastro de venda para camisa
             janela.dispose();
             new TelaCadastrar().cadastrarVendaComCamisa(clientesTelaVenda, funcionariosTelaVenda, camisasTelaVenda, calcasTelaVenda, vendasTelaVenda);
         }
 
         if (src == seleccalca) {
+            //evento que seleciona a camisa e abre o cadastro de venda para calça
             janela.dispose();
             new TelaCadastrar().cadastrarVendaComCalca(clientesTelaVenda, funcionariosTelaVenda, camisasTelaVenda, calcasTelaVenda, vendasTelaVenda);
         }
