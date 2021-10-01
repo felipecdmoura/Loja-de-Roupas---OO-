@@ -1,16 +1,20 @@
 package Interface;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Serial;
 
 import Objetos.*;
 
 public class TelaCadastrar implements ActionListener {
     private JFrame janela;
+
+    // Labels para cliente e funcionario.
     private JLabel nome;
     private JLabel email;
     private JLabel cpf;
@@ -20,6 +24,7 @@ public class TelaCadastrar implements ActionListener {
     private JLabel barradata1;
     private JLabel barradata2;
 
+    // Textfields para cliente e funcionario   .
     private JTextField textnome;
     private JTextField textemail;
     private JTextField textcpf;
@@ -29,7 +34,16 @@ public class TelaCadastrar implements ActionListener {
     private JTextField textddd;
     private JTextField texttel;
 
-    //labels Roupa
+    // Botoes cliente.
+    private JButton cadastrarc;
+    private JButton voltarcliente;
+
+     // Botoes funcionario.
+     private JButton cadastrarf;
+     private JButton voltarfuncionario;
+
+
+    // Labels para roupas (camisas e calcas).
     private JLabel id;
     private JLabel nomec;
     private JLabel descricao;
@@ -42,8 +56,7 @@ public class TelaCadastrar implements ActionListener {
     private JLabel estoque;
     private JLabel estoquecalca;
 
-
-    //Texts Roupa
+    // Texts Roupa.
     private JTextField textid;
     private JTextField textnomec;
     private JTextField textdescricao;
@@ -56,21 +69,40 @@ public class TelaCadastrar implements ActionListener {
     private JTextField textestoque;
     private JTextField textestoquecalca;
 
-    private JButton cadastrarc;
-    private JButton voltarcliente;
-    private JButton cadastrarf;
-    private JButton voltarfuncionario;
+    // Botoes camisa.
     private JButton cadastrarcam;
     private JButton voltarcam;
+
+    // Botoes calca.
     private JButton cadastrarcalca;
     private JButton voltarcalca;
-    private ArrayList<Cliente> clienteTeleCadastrar;
-    private ArrayList<Funcionario> funcionariotelacadastrar;
+
+    //Labels de para vendas.
+    private JLabel precototal;
+
+    // Labels Venda
+    private JLabel rotclientes;
+    private JLabel rotfunc;
+    private JLabel rotroupas;
+
+    // Caixas de selecao de venda.
+    private JComboBox<String> caixaclientes;
+    private JComboBox<String> caixafuncionarios;
+    private JComboBox<String> caixaprodutos;
+
+    // Botoes venda.
+    private JButton cadastrarvendacamisa;
+    private JButton cadastrarvendacalca;
+    private JButton voltarvenda;
+
+    private ArrayList<Cliente> clienteTelaCadastrar;
+    private ArrayList<Funcionario> funcionarioTelaCadastrar;
     private ArrayList<Camisa> camisaTelaCadastrar;
     private ArrayList<Calca> calcaTelaCadastrar;
+    private ArrayList<Venda> vendaTelaCadastrar;
 
     public void cadastroCliente(ArrayList<Cliente> clientes) {
-        clienteTeleCadastrar = clientes;
+        clienteTelaCadastrar = clientes;
 
         janela = new JFrame("Cadastrar Cliente");
         nome = new JLabel("Nome: ");
@@ -171,7 +203,7 @@ public class TelaCadastrar implements ActionListener {
     }
 
     public void cadastrofuncionario(ArrayList<Funcionario> funcionario) {
-        funcionariotelacadastrar = funcionario;
+        funcionarioTelaCadastrar = funcionario;
 
         janela = new JFrame("Cadastrar Funcionario");
         nome = new JLabel("Nome: ");
@@ -505,21 +537,179 @@ public class TelaCadastrar implements ActionListener {
         voltarcalca.addActionListener(this);
     }
 
+    public void cadastrarVendaComCamisa(ArrayList<Cliente> clientes, ArrayList<Funcionario> funcionarios, ArrayList<Camisa> camisas ,ArrayList<Calca> calcas, ArrayList<Venda> vendas) {
+        clienteTelaCadastrar = clientes;
+        funcionarioTelaCadastrar = funcionarios;
+        camisaTelaCadastrar = camisas;
+        calcaTelaCadastrar = calcas;
+        vendaTelaCadastrar = vendas;
+
+        janela = new JFrame("Cadastrar Venda");
+
+        String [] todosclientes = new String[clientes.size()];
+        int count = 0;
+            for(Cliente cliente : clientes){
+                todosclientes[count] = cliente.getNome();
+                count++;
+            }
+        caixaclientes = new JComboBox<String>(todosclientes);
+
+        String [] todosfunc = new String[clientes.size()];
+        count = 0;
+            for(Funcionario funcionario : funcionarios){
+                todosfunc[count] = funcionario.getNome();
+                count++;
+            }
+        caixafuncionarios = new JComboBox<String>(todosfunc);
+
+        String [] todasroupas = new String[clientes.size()];
+        count = 0;
+            for(Camisa camisa : camisas){
+                todasroupas[count] = camisa.getId() + "-" + camisa.getNome();
+                count++;
+            }
+            
+        caixaprodutos = new JComboBox<String>(todasroupas);
+        
+        rotclientes = new JLabel("Clientes");
+        rotfunc = new JLabel("Funcionários");
+        rotroupas = new JLabel("Roupas");
+        cadastrarvendacamisa = new JButton("Cadastrar");
+        voltarvenda = new JButton("Voltar");
+
+        rotclientes.setBounds(175, 135, 150, 70);
+        rotclientes.setFont(new Font(Font.SANS_SERIF, Font.ITALIC, 25));
+        rotfunc.setBounds(355, 135, 150, 70);
+        rotfunc.setFont(new Font(Font.SANS_SERIF, Font.ITALIC, 25));
+        rotroupas.setBounds(535, 135, 300, 70);
+        rotroupas.setFont(new Font(Font.SANS_SERIF, Font.ITALIC, 25));
+
+        caixaclientes.setBounds(175, 190, 150, 75);
+        caixaclientes.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
+        caixafuncionarios.setBounds(355, 190, 150, 75);
+        caixafuncionarios.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
+        caixaprodutos.setBounds(535, 190, 300, 75);
+        caixaprodutos.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
+
+        cadastrarvendacamisa.setBounds(425, 400, 150, 60);
+        voltarvenda.setBounds(2, 399, 150, 60);
+
+        janela.setLayout(null);
+        janela.add(rotclientes);
+        janela.add(rotfunc);
+        janela.add(rotroupas);
+        janela.add(caixaclientes);
+        janela.add(caixafuncionarios);
+        janela.add(caixaprodutos);
+        janela.add(cadastrarvendacamisa);
+        janela.add(voltarvenda);
+      
+        janela.setSize(1000, 500);
+        janela.setResizable(true);
+        janela.setLocationRelativeTo(null);
+        janela.setVisible(true);
+        janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        cadastrarvendacamisa.addActionListener(this);
+        voltarvenda.addActionListener(this);
+    }
+
+    public void cadastrarVendaComCalca(ArrayList<Cliente> clientes, ArrayList<Funcionario> funcionarios, ArrayList<Camisa> camisas ,ArrayList<Calca> calcas, ArrayList<Venda> vendas) {
+        clienteTelaCadastrar = clientes;
+        funcionarioTelaCadastrar = funcionarios;
+        camisaTelaCadastrar = camisas;
+        calcaTelaCadastrar = calcas;
+        vendaTelaCadastrar = vendas;
+
+        janela = new JFrame("Cadastrar Venda");
+
+        String [] todosclientes = new String[clientes.size()];
+        int count = 0;
+            for(Cliente cliente : clientes){
+                todosclientes[count] = cliente.getNome();
+                count++;
+            }
+        caixaclientes = new JComboBox<String>(todosclientes);
+
+        String [] todosfunc = new String[clientes.size()];
+        count = 0;
+            for(Funcionario funcionario : funcionarios){
+                todosfunc[count] = funcionario.getNome();
+                count++;
+            }
+        caixafuncionarios = new JComboBox<String>(todosfunc);
+
+        String [] todasroupas = new String[clientes.size()];
+        count = 0;
+            for(Calca calca: calcas){
+                todasroupas[count] = calca.getId() + "-" + calca.getNome();
+                count++;
+            }
+        caixaprodutos = new JComboBox<String>(todasroupas);
+        
+        rotclientes = new JLabel("Clientes");
+        rotfunc = new JLabel("Funcionários");
+        rotroupas = new JLabel("Roupas");
+        cadastrarvendacalca = new JButton("Cadastrar");
+        voltarvenda = new JButton("Voltar");
+
+        rotclientes.setBounds(175, 135, 150, 70);
+        rotclientes.setFont(new Font(Font.SANS_SERIF, Font.ITALIC, 25));
+        rotfunc.setBounds(355, 135, 150, 70);
+        rotfunc.setFont(new Font(Font.SANS_SERIF, Font.ITALIC, 25));
+        rotroupas.setBounds(535, 135, 300, 70);
+        rotroupas.setFont(new Font(Font.SANS_SERIF, Font.ITALIC, 25));
+
+        caixaclientes.setBounds(175, 190, 150, 75);
+        caixaclientes.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
+        caixafuncionarios.setBounds(355, 190, 150, 75);
+        caixafuncionarios.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
+        caixaprodutos.setBounds(535, 190, 300, 75);
+        caixaprodutos.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
+
+        cadastrarvendacalca.setBounds(425, 400, 150, 60);
+        voltarvenda.setBounds(2, 399, 150, 60);
+
+        janela.setLayout(null);
+        janela.add(rotclientes);
+        janela.add(rotfunc);
+        janela.add(rotroupas);
+        janela.add(caixaclientes);
+        janela.add(caixafuncionarios);
+        janela.add(caixaprodutos);
+        janela.add(cadastrarvendacalca);
+        janela.add(voltarvenda);
+      
+        janela.setSize(1000, 500);
+        janela.setResizable(true);
+        janela.setLocationRelativeTo(null);
+        janela.setVisible(true);
+        janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        cadastrarvendacalca.addActionListener(this);
+        voltarvenda.addActionListener(this);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();
         if(src == cadastrarcam){
             try{
-                camisaTelaCadastrar.add(new Camisa(
-                    textid.getText(), 
-                    textnomec.getText(), 
-                    textdescricao.getText(),
-                    textgenero.getText().charAt(0),
-                    Float.parseFloat(textpreco.getText()),
-                    textmarca.getText(),
-                    textcor.getText(),
-                    texttamanho.getText(),
-                    Integer.parseInt(textestoque.getText())));
+                if (textid.getText().length() == 3){
+                    camisaTelaCadastrar.add(new Camisa(
+                        textid.getText(), 
+                        textnomec.getText(), 
+                        textdescricao.getText(),
+                        textgenero.getText().charAt(0),
+                        Float.parseFloat(textpreco.getText()),
+                        textmarca.getText(),
+                        textcor.getText(),
+                        texttamanho.getText(),
+                        Integer.parseInt(textestoque.getText())));  
+                }else{
+                    JOptionPane.showMessageDialog(null, "O ID deve ter obrigatoriamente 3 digitos!!", "Erro ID", JOptionPane.ERROR_MESSAGE);
+                }
+                
             }catch(NumberFormatException exep){
                 JOptionPane.showMessageDialog(null, "Alguma informação está incorreta", "Erro Cadastro", JOptionPane.ERROR_MESSAGE);
             }
@@ -532,16 +722,21 @@ public class TelaCadastrar implements ActionListener {
         }
         if(src == cadastrarcalca){
             try{
-                calcaTelaCadastrar.add(new Calca(
-                    textid.getText(), 
-                    textnomec.getText(), 
-                    textdescricao.getText(),
-                    textgenero.getText().charAt(0),
-                    Float.parseFloat(textpreco.getText()),
-                    textmarca.getText(),
-                    textcor.getText(),
-                    Float.parseFloat(texttamanhocintura.getText()),
-                    Integer.parseInt(textestoquecalca.getText())));
+                if (textid.getText().length() == 3) {
+                    calcaTelaCadastrar.add(new Calca(
+                        textid.getText(), 
+                        textnomec.getText(), 
+                        textdescricao.getText(),
+                        textgenero.getText().charAt(0),
+                        Float.parseFloat(textpreco.getText()),
+                        textmarca.getText(),
+                        textcor.getText(),
+                        Float.parseFloat(texttamanhocintura.getText()),
+                        Integer.parseInt(textestoquecalca.getText())));
+                }else{
+                    JOptionPane.showMessageDialog(null, "O ID deve ter obrigatoriamente 3 digitos!!", "Erro ID", JOptionPane.ERROR_MESSAGE);
+                }
+                
             }catch(NumberFormatException exep){
                 JOptionPane.showMessageDialog(null, "Alguma informação está incorreta", "Erro Cadastro", JOptionPane.ERROR_MESSAGE);
             }
@@ -555,7 +750,7 @@ public class TelaCadastrar implements ActionListener {
         if (src == cadastrarc) {
             String dataformatada = textdia.getText() + "/" + textmes.getText() + "/" + textano.getText();
             try{
-                clienteTeleCadastrar.add(new Cliente(
+                clienteTelaCadastrar.add(new Cliente(
                     textnome.getText(), 
                     textemail.getText(), 
                     textcpf.getText(), 
@@ -566,18 +761,18 @@ public class TelaCadastrar implements ActionListener {
             }
 
             janela.dispose();
-            new TelaPessoa().telaCliente(clienteTeleCadastrar);
+            new TelaPessoa().telaCliente(clienteTelaCadastrar);
         }
         
         if (src == voltarcliente) {
             janela.dispose();
-            new TelaPessoa().telaCliente(clienteTeleCadastrar);;
+            new TelaPessoa().telaCliente(clienteTelaCadastrar);;
         }
         
         if (src == cadastrarf) {
             String dataformatada = textdia.getText() + "/" + textmes.getText() + "/" + textano.getText();
             try{
-            funcionariotelacadastrar.add(new Funcionario(
+            funcionarioTelaCadastrar.add(new Funcionario(
                 textnome.getText(), 
                 textemail.getText(), 
                 textcpf.getText(), 
@@ -588,12 +783,67 @@ public class TelaCadastrar implements ActionListener {
             }
             
             janela.dispose(); 
-            new TelaPessoa().telaFuncionario(funcionariotelacadastrar);
+            new TelaPessoa().telaFuncionario(funcionarioTelaCadastrar);
         }
         
         if (src == voltarfuncionario) {
             janela.dispose();
-            new TelaPessoa().telaFuncionario(funcionariotelacadastrar);
+            new TelaPessoa().telaFuncionario(funcionarioTelaCadastrar);
+        }
+
+        if (src == cadastrarvendacamisa) {
+            int protoc = new Random().nextInt(9999-1000) + 1000;
+
+            vendaTelaCadastrar.add(new Venda(
+                clienteTelaCadastrar.get(caixaclientes.getSelectedIndex()), 
+                camisaTelaCadastrar.get(caixaprodutos.getSelectedIndex()),
+                funcionarioTelaCadastrar.get(caixafuncionarios.getSelectedIndex()), 
+                camisaTelaCadastrar.get(caixaprodutos.getSelectedIndex()).getPreco(), 
+                String.valueOf(protoc)
+            ));
+            
+            JOptionPane.showMessageDialog(null, 
+                "Preço Total: " + camisaTelaCadastrar.get(caixaprodutos.getSelectedIndex()).getPreco() + "\n" +
+                "Protocolo: " + protoc, 
+                "Venda Registrada!", JOptionPane.INFORMATION_MESSAGE
+            );
+            
+            // Reduz o estoque da camisa vendida.
+            camisaTelaCadastrar.get(caixaprodutos.getSelectedIndex()).setEstoqueCamisa(
+                camisaTelaCadastrar.get(caixaprodutos.getSelectedIndex()).getEstoqueCamisa() - 1);
+                
+
+            janela.dispose(); 
+            new TelaVenda().telaVenda(clienteTelaCadastrar, funcionarioTelaCadastrar, camisaTelaCadastrar, calcaTelaCadastrar, vendaTelaCadastrar);
+        }
+
+        if (src == cadastrarvendacalca) {
+            int protoc = new Random().nextInt(9999-1000) + 1000;
+            vendaTelaCadastrar.add(new Venda(
+                clienteTelaCadastrar.get(caixaclientes.getSelectedIndex()), 
+                calcaTelaCadastrar.get(caixaprodutos.getSelectedIndex()),
+                funcionarioTelaCadastrar.get(caixafuncionarios.getSelectedIndex()), 
+                calcaTelaCadastrar.get(caixaprodutos.getSelectedIndex()).getPreco(), 
+                String.valueOf(protoc)
+            ));
+
+            JOptionPane.showMessageDialog(null, 
+                "Preço Total: " + calcaTelaCadastrar.get(caixaprodutos.getSelectedIndex()).getPreco() + "\n" +
+                "Protocolo: " + protoc, 
+                "Venda Registrada!", JOptionPane.INFORMATION_MESSAGE
+            );
+
+            // Reduz o estoque da calca vendida.
+            calcaTelaCadastrar.get(caixaprodutos.getSelectedIndex()).setEstoqueCalca(
+                calcaTelaCadastrar.get(caixaprodutos.getSelectedIndex()).getEstoqueCalca() - 1);
+
+            janela.dispose(); 
+            new TelaVenda().telaVenda(clienteTelaCadastrar, funcionarioTelaCadastrar, camisaTelaCadastrar, calcaTelaCadastrar, vendaTelaCadastrar);
+        }
+
+        if (src == voltarvenda) {
+            janela.dispose();
+            new TelaVenda().telaVenda(clienteTelaCadastrar, funcionarioTelaCadastrar, camisaTelaCadastrar, calcaTelaCadastrar, vendaTelaCadastrar);
         }
     }
 }

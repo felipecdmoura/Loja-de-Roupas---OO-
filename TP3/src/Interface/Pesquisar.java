@@ -34,13 +34,13 @@ public class Pesquisar {
         return nomespesq;
     }
 
-    public static String[] pesquisarCamisa(ArrayList<Camisa> camisas ,String id) {
+    public static String[] pesquisarCamisa(ArrayList<Camisa> camisas , String id) {
         String [] camisapesq = new String[camisas.size()];
         int count = 0;
 
         for (Camisa idpesq : camisas) {
             if(idpesq.getId().equalsIgnoreCase(id)){
-                camisapesq[count] = idpesq.getId();
+                camisapesq[count] = idpesq.getId() + "-" + idpesq.getNome();
                 count++;
             }
         }
@@ -54,11 +54,25 @@ public class Pesquisar {
 
         for (Calca idpesq : calcas) {
             if(idpesq.getId().equalsIgnoreCase(id)){
-                calcapesq[count] = idpesq.getId();
+                calcapesq[count] = idpesq.getId() + "-" + idpesq.getNome();
                 count++;
             }
         }
 
         return calcapesq;
+    }
+
+    public static String[] pesquisarVenda(ArrayList<Venda> vendas, String protoc) {
+        String [] vendapesq = new String[vendas.size()];
+        int count = 0;
+
+        for (Venda protocpesq : vendas) {
+            if(protocpesq.getProtocolo().equalsIgnoreCase(protoc)){
+                vendapesq[count] = protocpesq.getProtocolo() + "-" + protocpesq.getCliente().getNome();
+                count++;
+            }
+        }
+
+        return vendapesq;
     }
 }

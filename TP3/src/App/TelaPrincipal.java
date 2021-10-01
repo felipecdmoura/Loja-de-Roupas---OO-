@@ -1,14 +1,19 @@
-package Interface;
+package App;
 
 import javax.swing.*;
+
+import Interface.TelaLoja;
+import Interface.TelaPessoa;
+import Interface.TelaRoupa;
+import Interface.TelaVenda;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import Interface.TelaCliente.*;
 import Objetos.*;
-import App.DadosAleatorios;
+import Interface.*;
 
 public class TelaPrincipal extends JFrame implements ActionListener  {
 
@@ -25,15 +30,15 @@ public class TelaPrincipal extends JFrame implements ActionListener  {
     private JButton loja = new JButton("Loja");
     private JButton roupa = new JButton("Roupas");
     private JButton sair = new JButton("Sair");
-
+    
     public void telaPrincipal(){
         setTitle("Menu principal");
 
         cliente.setBounds(105, 190, 150, 60);
         funcionario.setBounds(265, 190, 150, 60);
         loja.setBounds(425, 190, 150, 60);
-        venda.setBounds(585, 190, 150, 60);
-        roupa.setBounds(745, 190, 150, 60);
+        roupa.setBounds(585, 190, 150, 60);
+        venda.setBounds(745, 190, 150, 60);
         sair.setBounds(2, 399, 150, 60);
         
         setLayout(null);
@@ -54,6 +59,7 @@ public class TelaPrincipal extends JFrame implements ActionListener  {
         funcionario.addActionListener(this);
         loja.addActionListener(this);
         roupa.addActionListener(this);
+        venda.addActionListener(this);
         sair.addActionListener(this);
     }
    
@@ -84,6 +90,11 @@ public class TelaPrincipal extends JFrame implements ActionListener  {
         if(src == roupa){
             dispose();
             new TelaRoupa().telacamisa(camisasTelaPrincipal, calcasTelaPrincipal);
+        }
+
+        if (src == venda){
+            dispose();
+            new TelaVenda().telaVenda(clientesTelaPrincipal, funcionariosTelaPrincipal, camisasTelaPrincipal, calcasTelaPrincipal, vendasTelaPrincipal);
         }
 
         if(src == sair){
