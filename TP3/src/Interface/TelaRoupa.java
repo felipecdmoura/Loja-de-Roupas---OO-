@@ -1,9 +1,10 @@
 package Interface;
-
+//importa as bibliotecas e classes que usaremos.
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
 
 import App.DadosAleatorios;
 
@@ -15,12 +16,13 @@ import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+//importa as classes da pasta Objetos para que possamos usar seus metodos
 import Objetos.*;
 
-
+//instancia uma classe no qual implementa ActionListeners para que possamos utilizar dos eventos
 public class TelaRoupa implements ActionListener, ListSelectionListener, MouseListener {
+    //esta seção cria os componentes da biblioteca java swing que utilizaremos para formar nossa tela de camisa ou calça.
     private JFrame janela;
-
     private JLabel titulo;
 
     private JList<String> listacamisas ;
@@ -42,8 +44,9 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
     private String[] todascamisas;
     private String[] todascalcas;
 
-
+    //metodo que ira nos mostrar a tela de camisa.Este metodo recebe duas arraylists como parametros.
     public void telacamisa(ArrayList<Camisa> camisas, ArrayList<Calca> calcas) {
+        //iguala as arraylists recebidas a instanciadas no codigo.
         camisasTelaRoupa = camisas;
         calcasTelaRoupa = calcas;
         todascamisas = new String[camisas.size()];
@@ -54,7 +57,7 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
             count++;
         }
 
-   
+        //aqui instanciamos nossos componentes da tela e instanciamos suas psoições.
         janela = new JFrame("Camisas");
         listacamisas = new JList<String>(todascamisas);
         listascroll = new JScrollPane();
@@ -108,17 +111,19 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
     }
 
     public void telaCalca(ArrayList<Camisa> camisas, ArrayList<Calca> calcas) {
+        //iguala as arraylists recebidas a instanciadas no codigo.        
         camisasTelaRoupa = camisas;
         calcasTelaRoupa = calcas;
         todascalcas = new String[calcas.size()];
         int count = 0;
-
+        
+        
         for(Calca calca : calcas){
             todascalcas[count]= calca.getId() + "-" + calca.getNome();
             count++;
         }
 
-   
+        //aqui instanciamos nossos componentes da tela e instanciamos suas psoições.
         janela = new JFrame("Calças");
         listacalcas = new JList<String>(todascalcas);
         listascroll = new JScrollPane();
@@ -171,7 +176,7 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
         listacalcas.addListSelectionListener(this);
     }
 
-
+    //evento que recebe o  clique do mouse e limpa o textfield de pesquisar.
     @Override
     public void mouseClicked(MouseEvent e) {
         Object src = e.getSource();
@@ -214,6 +219,7 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
     public void valueChanged(ListSelectionEvent e) {
         Object src = e.getSource();
         try{
+            //evento que observa o clique do botão na lista e cria nossa tela editar/visualizar para camisa.
             if (e.getValueIsAdjusting() && src == listacamisas) {
                 janela.dispose();
                 // Passa apenas os tres primeiros digitos, sendo o ID, como agrumento da posicao da lista.
@@ -225,6 +231,7 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
         }
 
         try{
+            //evento que observa o clique do botão na lista e cria nossa tela editar/visualizar para calça.
             if (e.getValueIsAdjusting() && src == listacalcas) {
                 janela.dispose();
                 // Passa apenas os tres primeiros digitos, sendo o ID, como agrumento da posicao da lista.
@@ -239,6 +246,7 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
     @Override
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();
+        //evento que observa o clique do botão calça e gera uma tela expecifica para a mesma
         if(src == calca){
             janela.dispose();
             new TelaRoupa().telaCalca(camisasTelaRoupa, calcasTelaRoupa);
@@ -247,18 +255,22 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
             janela.dispose();
             new TelaRoupa().telacamisa(camisasTelaRoupa, calcasTelaRoupa);
         }
+         //evento que observa o clique do botão voltar e gera a tela  principal da nossa aplicação.
         if (src == voltarcamisa){
             janela.dispose();
             new TelaPrincipal().telaPrincipal();
         }
+        //evento que observa o clique do botão voltar e gera a tela  de camisa da nossa aplicação.
         if (src == voltarcalca){
             janela.dispose();
             new TelaRoupa().telacamisa(camisasTelaRoupa, calcasTelaRoupa);
         }
+        //evento que observa o clique do botão cadastrar da tela camisa e gera uma nova tela para o mesmo.
         if(src == cadastrarcamisa){
             janela.dispose();
             new TelaCadastrar().cadastroCamisa(camisasTelaRoupa, calcasTelaRoupa);
         }
+        //evento que compara os textos da pesqcamisa e retorna apenas o mesmo na nossa lista.
         if(src == pesqcamisa){
             if(pesqcamisa.getText().equals("")){
                 listacamisas.setListData(todascamisas);
@@ -270,10 +282,12 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
                 }
             }
         }
+         //evento que observa o clique do botão cadastrar da tela calça e gera uma nova tela para o mesmo.
         if(src == cadastrarcalca){
             janela.dispose();
             new TelaCadastrar().cadastroCalca(camisasTelaRoupa, calcasTelaRoupa);
         }
+        //evento que compara os textos da pesqcalca e retorna apenas o mesmo na nossa lista.
         if(src == pesqcalca){
             if(pesqcalca.getText().equals("")){
                 listacalcas.setListData(todascalcas);

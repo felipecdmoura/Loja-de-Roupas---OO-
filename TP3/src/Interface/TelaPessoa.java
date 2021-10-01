@@ -1,5 +1,7 @@
 package Interface;
 
+//seçao que importa os objetos e classes que usaremos na nossa aplicação
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.awt.Font;
@@ -24,6 +26,7 @@ import javax.swing.event.ListSelectionListener;
 import Objetos.Cliente;
 import Objetos.Funcionario;
 
+//classe que implementa os nossos eventos
 public class TelaPessoa implements ActionListener, ListSelectionListener, MouseListener {
     private JFrame janela;
 
@@ -46,6 +49,7 @@ public class TelaPessoa implements ActionListener, ListSelectionListener, MouseL
     private String[] todosfunc;
 
     public void telaCliente(ArrayList<Cliente> clientes) {
+        //iguala as arraylists recebidas a instanciadas no codigo.  
         clienteTelaPessoa = clientes;
         todosclientes = new String[clientes.size()];
         int count = 0;
@@ -55,6 +59,7 @@ public class TelaPessoa implements ActionListener, ListSelectionListener, MouseL
             count++;
         }
 
+        //aqui instanciamos nossos componentes da tela e instanciamos suas psoições.
         janela = new JFrame("Clientes");
         listaclientes = new JList<String>(todosclientes);
         listascroll = new JScrollPane();
@@ -103,6 +108,7 @@ public class TelaPessoa implements ActionListener, ListSelectionListener, MouseL
     }
 
     public void telaFuncionario(ArrayList<Funcionario> funcionarios) {
+        //iguala as arraylists recebidas a instanciadas no codigo.  
         funcionariosTelaPessoa = funcionarios;
         todosfunc = new String[funcionarios.size()];
         int count = 0;
@@ -112,6 +118,7 @@ public class TelaPessoa implements ActionListener, ListSelectionListener, MouseL
             count++;
         }
         
+        //aqui instanciamos nossos componentes da tela e instanciamos suas psoições.
         listafuncionarios = new JList<String>(todosfunc);
         listascroll = new JScrollPane();
         janela = new JFrame("Funcionarios");
@@ -163,12 +170,12 @@ public class TelaPessoa implements ActionListener, ListSelectionListener, MouseL
         @Override
         public void actionPerformed(ActionEvent e) {
             Object src = e.getSource();
-
+        //evento que observa o clique do botão cadastrar da tela cliente e gera uma nova tela para o mesmo.
             if(src == cadastrarcliente){
                 janela.dispose();
                 new TelaCadastrar().cadastroCliente(clienteTelaPessoa);
             }
-            
+            //evento que compara os textos da pesqcliente e retorna apenas o mesmo na nossa lista.
             if(src == pesqcliente){
                 if(pesqcliente.getText().equals("")){
                     listaclientes.setListData(todosclientes);
@@ -176,12 +183,12 @@ public class TelaPessoa implements ActionListener, ListSelectionListener, MouseL
                     listaclientes.setListData(Pesquisar.pesquisarCliente(clienteTelaPessoa, pesqcliente.getText()));
                 }
             }
-
+            //evento que observa o clique do botão cadastrar da tela funcionario e gera uma nova tela para o mesmo.
             if(src == cadastrarfuncionario){
                 janela.dispose();
                 new TelaCadastrar().cadastrofuncionario(funcionariosTelaPessoa);
             }
-
+            //evento que compara os textos da pesqfuncionario e retorna apenas o mesmo na nossa lista.
             if(src == pesqfuncionario){
                 if(src == pesqfuncionario){
                     if(pesqfuncionario.getText().equals("")){
@@ -193,7 +200,7 @@ public class TelaPessoa implements ActionListener, ListSelectionListener, MouseL
 
                 pesqfuncionario.setText("");
             }
-
+            //evento que volta ao menu principal.
             if (src == voltar){
                 janela.dispose();
                 new TelaPrincipal().telaPrincipal();
@@ -206,6 +213,7 @@ public class TelaPessoa implements ActionListener, ListSelectionListener, MouseL
             Object src = e.getSource();
 
             try{
+                //evento que observa o clique do botão na lista e cria nossa tela editar/visualizar para clientes.
                 if (e.getValueIsAdjusting() && src == listaclientes) {
                     janela.dispose();
                     new TelaEditarVizualizarDeletar().editarCliente(clienteTelaPessoa, listaclientes.getSelectedValue());
@@ -216,6 +224,7 @@ public class TelaPessoa implements ActionListener, ListSelectionListener, MouseL
             }
 
             try{
+                //evento que observa o clique do botão na lista e cria nossa tela editar/visualizar para funcionarios.
                 if (e.getValueIsAdjusting() && src == listafuncionarios) {
                     janela.dispose();
                     new TelaEditarVizualizarDeletar().editarFuncionario(funcionariosTelaPessoa, listafuncionarios.getSelectedValue());
@@ -227,6 +236,7 @@ public class TelaPessoa implements ActionListener, ListSelectionListener, MouseL
             
         }
 
+        //evento que recebe o  clique do mouse e limpa o textfield de pesquisar.
         @Override
         public void mouseClicked(MouseEvent e) {
             Object src = e.getSource();

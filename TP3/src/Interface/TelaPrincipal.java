@@ -1,4 +1,5 @@
 package Interface;
+//importa as bibliotecas e classes que usaremos.
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,6 +13,8 @@ import App.DadosAleatorios;
 
 public class TelaPrincipal extends JFrame implements ActionListener  {
 
+    
+    //Instancia as ArrayList que usaremos para inserir nos metodos.
     private static ArrayList <Cliente> clientesTelaPrincipal = new ArrayList<Cliente>();
     private static ArrayList <Funcionario> funcionariosTelaPrincipal = new ArrayList<Funcionario>();
     private static ArrayList <Venda> vendasTelaPrincipal = new ArrayList<Venda>();
@@ -19,6 +22,7 @@ public class TelaPrincipal extends JFrame implements ActionListener  {
     private static ArrayList <Calca> calcasTelaPrincipal = new ArrayList<Calca>();
     private static Loja lojaTelaPrincipal  = new Loja("51.882.182/0001-12","qr 312 cj f loja 315 Gama DF", "Filial Guimarães");
 
+    //Instancia os Botoes que serão utilizados para o metodo do MenuPrincipal.
     private JButton cliente = new JButton("Cliente");
     private JButton funcionario = new JButton("Funcionario");
     private JButton venda = new JButton("Venda");
@@ -26,6 +30,7 @@ public class TelaPrincipal extends JFrame implements ActionListener  {
     private JButton roupa = new JButton("Roupas");
     private JButton sair = new JButton("Sair");
 
+      //Metodo do MenuPrincipal da nossa aplicação.
     public void telaPrincipal(){
         setTitle("Menu principal");
 
@@ -58,15 +63,18 @@ public class TelaPrincipal extends JFrame implements ActionListener  {
         sair.addActionListener(this);
     }
    
+    //Metodo que executa nossa aplicação
     public static void main(String[] args) {
         DadosAleatorios.setDefaultData(clientesTelaPrincipal, funcionariosTelaPrincipal, vendasTelaPrincipal, calcasTelaPrincipal, camisasTelaPrincipal);
         new TelaPrincipal().telaPrincipal();
     }
 
+     //configura os eventos que acontecerão ao acionarmos os botões.
     @Override
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();
         
+         //instancia uma condição que se o objeto src receber o botao cliente ele ira criar uma tela pessoa e executara o metodo da telaCliente.
         if(src == cliente){
             dispose();
             new TelaPessoa().telaCliente(clientesTelaPrincipal);
@@ -92,6 +100,7 @@ public class TelaPrincipal extends JFrame implements ActionListener  {
             new TelaVenda().telaVenda(clientesTelaPrincipal, funcionariosTelaPrincipal, camisasTelaPrincipal, calcasTelaPrincipal, vendasTelaPrincipal);
         }
 
+        //se o objeto src receber o botao sair ele ira fechar nossa aplicação.
         if(src == sair){
             System.exit(0);
         }

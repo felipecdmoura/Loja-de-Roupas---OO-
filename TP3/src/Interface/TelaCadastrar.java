@@ -94,7 +94,8 @@ public class TelaCadastrar implements ActionListener {
     private JButton cadastrarvendacamisa;
     private JButton cadastrarvendacalca;
     private JButton voltarvenda;
-
+    
+    //Arraylists 
     private ArrayList<Cliente> clienteTelaCadastrar;
     private ArrayList<Funcionario> funcionarioTelaCadastrar;
     private ArrayList<Camisa> camisaTelaCadastrar;
@@ -102,6 +103,7 @@ public class TelaCadastrar implements ActionListener {
     private ArrayList<Venda> vendaTelaCadastrar;
 
     public void cadastroCliente(ArrayList<Cliente> clientes) {
+        //iguala a arraylist recebida a instanciada no codigo
         clienteTelaCadastrar = clientes;
 
         janela = new JFrame("Cadastrar Cliente");
