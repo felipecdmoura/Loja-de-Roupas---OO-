@@ -5,22 +5,22 @@ import java.util.ArrayList;
 import Objetos.*;
 
 public class DadosAleatorios{ 
-    public static void setDefaultData(ArrayList<Cliente> cliente, ArrayList<Funcionario> funcionarios, ArrayList<Venda> vendas, ArrayList<Calca> calcas, ArrayList<Camisa> camisas) { //Método para definir os 10 clientes e produtos padrão
+    public static void setDefaultData(ArrayList<Cliente> clientes, ArrayList<Funcionario> funcionarios, ArrayList<Venda> vendas, ArrayList<Calca> calcas, ArrayList<Camisa> camisas) { //Método para definir os 10 clientes e produtos padrão
         Telefone telefone;
 
         //DADOS PRE CARREGADOS
         
         //DADOS DE CLIENTES
-        cliente.add(new Cliente("Felipe", "felipe@gmail.com", "02938374653", new Telefone(61, 987345643), "17/3/2002"));
-        cliente.add(new Cliente("Marcos", "marcos@gmail.com", "20293847563", new Telefone(61, 982736454), "13/2/2000"));
-        cliente.add(new Cliente("Julia", "julia@gmail.com", "10293837452", new Telefone(61, 981224000), "20/4/1999"));
-        cliente.add(new Cliente("Renata", "renata@gmail.com", "20392827564", new Telefone(11, 982726345), "29/10/1995"));
-        cliente.add(new Cliente("Pedro", "pedro@gmail.com", "1654789754", new Telefone(61, 995456874), "2/6/2001"));
-        cliente.add(new Cliente("Lucas", "lucas@gmail.com", "12321456879", new Telefone(61, 999998754), "15/8/1980"));
-        cliente.add(new Cliente("Fernanda", "fernanda@gmail.com", "32215465789", new Telefone(21, 978456555), "16/9/1970"));
-        cliente.add(new Cliente("Maria", "maria@gmail.com", "12648975321", new Telefone(61, 988775321), "11/11/2000"));
-        cliente.add(new Cliente("Livia", "livia@gmail.com", "31546879845", new Telefone(61, 998755654), "21/8/1988"));
-        cliente.add(new Cliente("Tales", "tales@gmail.com", "21564897546", new Telefone(61, 986588745), "19/9/2002"));
+        clientes.add(new Cliente("Felipe", "felipe@gmail.com", "02938374653", new Telefone(61, 987345643), "17/3/2002"));
+        clientes.add(new Cliente("Marcos", "marcos@gmail.com", "20293847563", new Telefone(61, 982736454), "13/2/2000"));
+        clientes.add(new Cliente("Julia", "julia@gmail.com", "10293837452", new Telefone(61, 981224000), "20/4/1999"));
+        clientes.add(new Cliente("Renata", "renata@gmail.com", "20392827564", new Telefone(11, 982726345), "29/10/1995"));
+        clientes.add(new Cliente("Pedro", "pedro@gmail.com", "1654789754", new Telefone(61, 995456874), "2/6/2001"));
+        clientes.add(new Cliente("Lucas", "lucas@gmail.com", "12321456879", new Telefone(61, 999998754), "15/8/1980"));
+        clientes.add(new Cliente("Fernanda", "fernanda@gmail.com", "32215465789", new Telefone(21, 978456555), "16/9/1970"));
+        clientes.add(new Cliente("Maria", "maria@gmail.com", "12648975321", new Telefone(61, 988775321), "11/11/2000"));
+        clientes.add(new Cliente("Livia", "livia@gmail.com", "31546879845", new Telefone(61, 998755654), "21/8/1988"));
+        clientes.add(new Cliente("Tales", "tales@gmail.com", "21564897546", new Telefone(61, 986588745), "19/9/2002"));
 
         //DADOS DE FUNCIONARIOS
         funcionarios.add(new Funcionario("Roberto", "robertin@gmail.com", "21567797546", new Telefone(61, 981209235), "19/7/2000"));

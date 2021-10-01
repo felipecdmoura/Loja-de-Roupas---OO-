@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import Interface.TelaCliente.*;
 import Objetos.*;
 import App.DadosAleatorios;
 
@@ -25,7 +24,7 @@ public class TelaPrincipal extends JFrame implements ActionListener  {
     private JButton loja = new JButton("Loja");
     private JButton roupa = new JButton("Roupas");
     private JButton sair = new JButton("Sair");
-
+    
     public void telaPrincipal(){
         setTitle("Menu principal");
 
