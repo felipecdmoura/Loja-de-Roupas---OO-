@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.io.Serial;
 
 import Objetos.*;
-
+//classe principal que implementa os nossos eventos
 public class TelaCadastrar implements ActionListener {
     private JFrame janela;
 
@@ -102,10 +102,12 @@ public class TelaCadastrar implements ActionListener {
     private ArrayList<Calca> calcaTelaCadastrar;
     private ArrayList<Venda> vendaTelaCadastrar;
 
+    //metodo que gera a nossa tela de cadastro do cliente.
     public void cadastroCliente(ArrayList<Cliente> clientes) {
         //iguala a arraylist recebida a instanciada no codigo
         clienteTelaCadastrar = clientes;
 
+        //aqui instanciamos nossos componentes da tela e instanciamos suas psoições.
         janela = new JFrame("Cadastrar Cliente");
         nome = new JLabel("Nome: ");
         email = new JLabel("Email: ");
@@ -204,9 +206,12 @@ public class TelaCadastrar implements ActionListener {
         voltarcliente.addActionListener(this);
     }
 
+    //metodo que gera a nossa tela de cadastro do Funcionario.
     public void cadastrofuncionario(ArrayList<Funcionario> funcionario) {
+        //iguala a arraylist recebida a instanciada no codigo
         funcionarioTelaCadastrar = funcionario;
 
+        //aqui instanciamos nossos componentes da tela e instanciamos suas psoições.
         janela = new JFrame("Cadastrar Funcionario");
         nome = new JLabel("Nome: ");
         email = new JLabel("Email: ");
@@ -305,10 +310,14 @@ public class TelaCadastrar implements ActionListener {
         voltarfuncionario.addActionListener(this);
     }
 
+    //metodo que gera a nossa tela de cadastro da camisa.
     public void cadastroCamisa(ArrayList<Camisa> camisas, ArrayList<Calca> calcas) {
+        
+        //iguala as arraylists recebidas as instanciadas no codigo
         camisaTelaCadastrar = camisas;
         calcaTelaCadastrar = calcas;
 
+        //aqui instanciamos nossos componentes da tela e instanciamos suas psoições.
         janela = new JFrame("Cadastrar Camisa");
         id = new JLabel("id: ");
         nomec = new JLabel("Nome: ");
@@ -421,11 +430,15 @@ public class TelaCadastrar implements ActionListener {
         cadastrarcam.addActionListener(this);
         voltarcam.addActionListener(this);
     }
-        
+    
+    //metodo que gera a nossa tela de cadastro da calça
     public void cadastroCalca(ArrayList<Camisa> camisas, ArrayList<Calca> calcas) {
+        
+        //iguala as arraylists recebidas as instanciadas no codigo
         camisaTelaCadastrar = camisas;
         calcaTelaCadastrar = calcas;
 
+        //aqui instanciamos nossos componentes da tela e instanciamos suas psoições.
         janela = new JFrame("Cadastrar Calça");
         id = new JLabel("id: ");
         nomec = new JLabel("Nome: ");
@@ -539,7 +552,10 @@ public class TelaCadastrar implements ActionListener {
         voltarcalca.addActionListener(this);
     }
 
+    //metodo que gera a nossa tela de cadastro de venda com a camisa
     public void cadastrarVendaComCamisa(ArrayList<Cliente> clientes, ArrayList<Funcionario> funcionarios, ArrayList<Camisa> camisas ,ArrayList<Calca> calcas, ArrayList<Venda> vendas) {
+        
+        //iguala as arraylists recebidas as instanciadas no codigo
         clienteTelaCadastrar = clientes;
         funcionarioTelaCadastrar = funcionarios;
         camisaTelaCadastrar = camisas;
@@ -547,7 +563,8 @@ public class TelaCadastrar implements ActionListener {
         vendaTelaCadastrar = vendas;
 
         janela = new JFrame("Cadastrar Venda");
-
+        
+        //Gera as caixas de seleçao no nosso metodo de cadastrar venda camisa.
         String [] todosclientes = new String[clientes.size()];
         int count = 0;
             for(Cliente cliente : clientes){
@@ -570,7 +587,8 @@ public class TelaCadastrar implements ActionListener {
                 todasroupas[count] = camisa.getId() + "-" + camisa.getNome();
                 count++;
             }
-            
+        
+        //aqui instanciamos nossos componentes da tela e instanciamos suas psoições.
         caixaprodutos = new JComboBox<String>(todasroupas);
         
         rotclientes = new JLabel("Clientes");
@@ -616,7 +634,10 @@ public class TelaCadastrar implements ActionListener {
         voltarvenda.addActionListener(this);
     }
 
+    //metodo que gera a nossa tela de cadastro de venda com a Calça
     public void cadastrarVendaComCalca(ArrayList<Cliente> clientes, ArrayList<Funcionario> funcionarios, ArrayList<Camisa> camisas ,ArrayList<Calca> calcas, ArrayList<Venda> vendas) {
+        
+        //iguala as arraylists recebidas as instanciadas no codigo
         clienteTelaCadastrar = clientes;
         funcionarioTelaCadastrar = funcionarios;
         camisaTelaCadastrar = camisas;
@@ -625,6 +646,7 @@ public class TelaCadastrar implements ActionListener {
 
         janela = new JFrame("Cadastrar Venda");
 
+        //Gera as caixas de seleçao no nosso metodo de cadastrar venda calça.
         String [] todosclientes = new String[clientes.size()];
         int count = 0;
             for(Cliente cliente : clientes){
@@ -696,6 +718,7 @@ public class TelaCadastrar implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();
         if(src == cadastrarcam){
+            //evento que cadastra uma camisa com os dados inseridos nos textfields
             try{
                 if (textid.getText().length() == 3){
                     camisaTelaCadastrar.add(new Camisa(
@@ -719,10 +742,12 @@ public class TelaCadastrar implements ActionListener {
             new TelaRoupa().telacamisa(camisaTelaCadastrar, calcaTelaCadastrar);
         }
         if (src == voltarcam) {
+            //evento que volta da tela cadastro camisa para a tela camisa.
             janela.dispose();
             new TelaRoupa().telacamisa(camisaTelaCadastrar, calcaTelaCadastrar);;
         }
         if(src == cadastrarcalca){
+            //evento que cadastra uma calça com os dados inseridos nos textfields
             try{
                 if (textid.getText().length() == 3) {
                     calcaTelaCadastrar.add(new Calca(
@@ -746,10 +771,12 @@ public class TelaCadastrar implements ActionListener {
             new TelaRoupa().telaCalca(camisaTelaCadastrar, calcaTelaCadastrar);
         }
         if (src == voltarcalca) {
+            //evento que volta da tela cadastro calça para a tela calça.
             janela.dispose();
             new TelaRoupa().telaCalca(camisaTelaCadastrar, calcaTelaCadastrar);;
         }
         if (src == cadastrarc) {
+            //evento que cadastra um cliente com os dados inseridos nos textfields
             String dataformatada = textdia.getText() + "/" + textmes.getText() + "/" + textano.getText();
             try{
                 clienteTelaCadastrar.add(new Cliente(
@@ -767,11 +794,13 @@ public class TelaCadastrar implements ActionListener {
         }
         
         if (src == voltarcliente) {
+            //evento que volta da tela cadastro cliente para a tela cliente.
             janela.dispose();
             new TelaPessoa().telaCliente(clienteTelaCadastrar);;
         }
         
         if (src == cadastrarf) {
+            //evento que cadastra um funcionario com os dados inseridos nos textfields
             String dataformatada = textdia.getText() + "/" + textmes.getText() + "/" + textano.getText();
             try{
             funcionarioTelaCadastrar.add(new Funcionario(
@@ -789,11 +818,13 @@ public class TelaCadastrar implements ActionListener {
         }
         
         if (src == voltarfuncionario) {
+            //evento que volta da tela cadastro funcionario para a tela funcionario.
             janela.dispose();
             new TelaPessoa().telaFuncionario(funcionarioTelaCadastrar);
         }
 
         if (src == cadastrarvendacamisa) {
+            //evento que recebe o item selecionado na caixa e os cadastra.
             int protoc = new Random().nextInt(9999-1000) + 1000;
 
             vendaTelaCadastrar.add(new Venda(
@@ -820,6 +851,7 @@ public class TelaCadastrar implements ActionListener {
         }
 
         if (src == cadastrarvendacalca) {
+            //evento que recebe o item selecionado na caixa e os cadastra.
             int protoc = new Random().nextInt(9999-1000) + 1000;
             vendaTelaCadastrar.add(new Venda(
                 clienteTelaCadastrar.get(caixaclientes.getSelectedIndex()), 
@@ -844,6 +876,7 @@ public class TelaCadastrar implements ActionListener {
         }
 
         if (src == voltarvenda) {
+            //evento que volta para a tela do menu venda.
             janela.dispose();
             new TelaVenda().telaVenda(clienteTelaCadastrar, funcionarioTelaCadastrar, camisaTelaCadastrar, calcaTelaCadastrar, vendaTelaCadastrar);
         }
