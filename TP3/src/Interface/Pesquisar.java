@@ -61,4 +61,18 @@ public class Pesquisar {
 
         return calcapesq;
     }
+
+    public static String[] pesquisarVenda(ArrayList<Venda> vendas, String protoc) {
+        String [] vendapesq = new String[vendas.size()];
+        int count = 0;
+
+        for (Venda protocpesq : vendas) {
+            if(protocpesq.getProtocolo().equalsIgnoreCase(protoc)){
+                vendapesq[count] = protocpesq.getProtocolo() + "-" + protocpesq.getCliente().getNome();
+                count++;
+            }
+        }
+
+        return vendapesq;
+    }
 }
