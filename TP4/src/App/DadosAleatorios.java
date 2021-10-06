@@ -11,20 +11,20 @@ public class DadosAleatorios{
         //DADOS PRE CARREGADOS
         
         //DADOS DE CLIENTES
-        clientes.add(new Cliente("Felipe", "felipe@gmail.com", "02938374653", new Telefone(61, 987345643), "17/3/2002"));
-        clientes.add(new Cliente("Marcos", "marcos@gmail.com", "20293847563", new Telefone(61, 982736454), "13/2/2000"));
-        clientes.add(new Cliente("Julia", "julia@gmail.com", "10293837452", new Telefone(61, 981224000), "20/4/1999"));
-        clientes.add(new Cliente("Renata", "renata@gmail.com", "20392827564", new Telefone(11, 982726345), "29/10/1995"));
-        clientes.add(new Cliente("Pedro", "pedro@gmail.com", "1654789754", new Telefone(61, 995456874), "2/6/2001"));
-        clientes.add(new Cliente("Lucas", "lucas@gmail.com", "12321456879", new Telefone(61, 999998754), "15/8/1980"));
-        clientes.add(new Cliente("Fernanda", "fernanda@gmail.com", "32215465789", new Telefone(21, 978456555), "16/9/1970"));
-        clientes.add(new Cliente("Maria", "maria@gmail.com", "12648975321", new Telefone(61, 988775321), "11/11/2000"));
-        clientes.add(new Cliente("Livia", "livia@gmail.com", "31546879845", new Telefone(61, 998755654), "21/8/1988"));
-        clientes.add(new Cliente("Tales", "tales@gmail.com", "21564897546", new Telefone(61, 986588745), "19/9/2002"));
+        clientes.add(new Cliente("Felipe", "felipe@gmail.com", "34278101007", new Telefone(61, 987345643), "17/3/2002"));
+        clientes.add(new Cliente("Marcos", "marcos@gmail.com", "93024529055", new Telefone(61, 982736454), "13/2/2000"));
+        clientes.add(new Cliente("Julia", "julia@gmail.com", "83674497034", new Telefone(61, 981224000), "20/4/1999"));
+        clientes.add(new Cliente("Renata", "renata@gmail.com", "26842584060", new Telefone(11, 982726345), "29/10/1995"));
+        clientes.add(new Cliente("Pedro", "pedro@gmail.com", "13292927072", new Telefone(61, 995456874), "2/6/2001"));
+        clientes.add(new Cliente("Lucas", "lucas@gmail.com", "42997703077", new Telefone(61, 999998754), "15/8/1980"));
+        clientes.add(new Cliente("Fernanda", "fernanda@gmail.com", "81428330003", new Telefone(21, 978456555), "16/9/1970"));
+        clientes.add(new Cliente("Maria", "maria@gmail.com", "42501125002", new Telefone(61, 988775321), "11/11/2000"));
+        clientes.add(new Cliente("Livia", "livia@gmail.com", "78802659028", new Telefone(61, 998755654), "21/8/1988"));
+        clientes.add(new Cliente("Tales", "tales@gmail.com", "57560444008", new Telefone(61, 986588745), "19/9/2002"));
 
         //DADOS DE FUNCIONARIOS
-        funcionarios.add(new Funcionario("Roberto", "robertin@gmail.com", "21567797546", new Telefone(61, 981209235), "19/7/2000"));
-        funcionarios.add(new Funcionario("Claudio", "Claudin@gmail.com", "25564897546", new Telefone(61, 981209235), "19/7/2000"));
+        funcionarios.add(new Funcionario("Roberto", "robertin@gmail.com", "43325858015", new Telefone(61, 981209235), "19/7/2000"));
+        funcionarios.add(new Funcionario("Claudio", "Claudin@gmail.com", "42993212001", new Telefone(61, 981209235), "19/7/2000"));
        
         //DADOS DE CALCAS
         calcas.add(new Calca("006", "calça sportwear nike mid", "calça voltada para esportes ", 'M', 123, "nike", "preta", 54, 5));
