@@ -593,12 +593,17 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
         if (src == voltarcliente) {
             //ao clicar em voltar na tela de editar e visualizar cliente ele ira pegar os dados nos textfields e salvar.
             try {
-                clientesTelaEditar.get(posicao).setNome(textnome.getText());
-                clientesTelaEditar.get(posicao).setEmail(textemail.getText());
-                clientesTelaEditar.get(posicao).setCpf(textcpf.getText());
-                clientesTelaEditar.get(posicao).setData(textdatanasc.getText());
-                clientesTelaEditar.get(posicao).setNumtel(
-                        new Telefone(Integer.parseInt(textddd.getText()), Integer.parseInt(texttel.getText())));
+                // Verifica o Cpf.
+                if (Validador.validaCpf(textcpf.getText())) {
+                    clientesTelaEditar.get(posicao).setNome(textnome.getText());
+                    clientesTelaEditar.get(posicao).setEmail(textemail.getText());
+                    clientesTelaEditar.get(posicao).setCpf(textcpf.getText());
+                    clientesTelaEditar.get(posicao).setData(textdatanasc.getText());
+                    clientesTelaEditar.get(posicao).setNumtel(
+                    new Telefone(Integer.parseInt(textddd.getText()), Integer.parseInt(texttel.getText())));
+                }else{
+                    JOptionPane.showMessageDialog(null, "O CPF é inválido!", "Erro CPF", JOptionPane.ERROR_MESSAGE);
+                }
             } catch (NumberFormatException exep) {
                 JOptionPane.showMessageDialog(null, "Alguma informação está incorreta", "Erro Cadastro",
                         JOptionPane.ERROR_MESSAGE);
@@ -619,12 +624,17 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
         if (src == voltarfuncionario) {
             //ao clicar em voltar na tela de editar e visualizar funcionario ele ira pegar os dados nos textfields e salvar.
             try {
-                funcionariosTelaEditar.get(posicao).setNome(textnome.getText());
-                funcionariosTelaEditar.get(posicao).setEmail(textemail.getText());
-                funcionariosTelaEditar.get(posicao).setCpf(textcpf.getText());
-                funcionariosTelaEditar.get(posicao).setDatacontrat(textdatanasc.getText());
-                funcionariosTelaEditar.get(posicao).setNumtel(
-                        new Telefone(Integer.parseInt(textddd.getText()), Integer.parseInt(texttel.getText())));
+                // Verifica o Cpf.
+                if (Validador.validaCpf(textcpf.getText())) {
+                    funcionariosTelaEditar.get(posicao).setNome(textnome.getText());
+                    funcionariosTelaEditar.get(posicao).setEmail(textemail.getText());
+                    funcionariosTelaEditar.get(posicao).setCpf(textcpf.getText());
+                    funcionariosTelaEditar.get(posicao).setDatacontrat(textdatanasc.getText());
+                    funcionariosTelaEditar.get(posicao).setNumtel(
+                    new Telefone(Integer.parseInt(textddd.getText()), Integer.parseInt(texttel.getText())));
+                }else{
+                    JOptionPane.showMessageDialog(null, "O CPF é inválido!", "Erro CPF", JOptionPane.ERROR_MESSAGE);
+                }
             } catch (NumberFormatException exep) {
                 JOptionPane.showMessageDialog(null, "Alguma informação está incorreta", "Erro Cadastro",
                         JOptionPane.ERROR_MESSAGE);
@@ -646,16 +656,26 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
         if (src == voltarcam) {
             try {
                 //ao clicar em voltar na tela de editar e visualizar camisa ele ira pegar os dados nos textfields e salvar.
-                if (textid.getText().length() == 3) {
-                    camisaTelaEditar.get(posicao).setId(textid.getText());
-                    camisaTelaEditar.get(posicao).setNome(textnomec.getText());
-                    camisaTelaEditar.get(posicao).setDescricao(textdescricao.getText());
-                    camisaTelaEditar.get(posicao).setGenero(textgenero.getText().charAt(0));
-                    camisaTelaEditar.get(posicao).setPreco(Float.parseFloat(textpreco.getText()));
-                    camisaTelaEditar.get(posicao).setMarca(textmarca.getText());
-                    camisaTelaEditar.get(posicao).setCor(textcor.getText());
-                    camisaTelaEditar.get(posicao).setTamanho(texttamanho.getText());
-                    camisaTelaEditar.get(posicao).setEstoqueCamisa(Integer.parseInt(textestoque.getText()));
+                if (Validador.validaId(textid.getText())) {
+                    // Valida o genero inserido.
+                    if (Validador.validaGenero(textgenero.getText().charAt(0))) {
+                        // Valida o tamano inserido.
+                        if (Validador.validaTamanho(texttamanho.getText())) {
+                            camisaTelaEditar.get(posicao).setId(textid.getText());
+                            camisaTelaEditar.get(posicao).setNome(textnomec.getText());
+                            camisaTelaEditar.get(posicao).setDescricao(textdescricao.getText());
+                            camisaTelaEditar.get(posicao).setGenero(textgenero.getText().charAt(0));
+                            camisaTelaEditar.get(posicao).setPreco(Float.parseFloat(textpreco.getText()));
+                            camisaTelaEditar.get(posicao).setMarca(textmarca.getText());
+                            camisaTelaEditar.get(posicao).setCor(textcor.getText());
+                            camisaTelaEditar.get(posicao).setTamanho(texttamanho.getText());
+                            camisaTelaEditar.get(posicao).setEstoqueCamisa(Integer.parseInt(textestoque.getText()));
+                        }else{
+                            JOptionPane.showMessageDialog(null, "O tamanho inserido é inválido! (Apenas PP, P, M, G, GG)", "Erro Tamanho", JOptionPane.ERROR_MESSAGE);
+                        } 
+                    }else{
+                        JOptionPane.showMessageDialog(null, "O gênero é inválido! (Apenas F/M)", "Erro Gênero", JOptionPane.ERROR_MESSAGE);
+                    }
                 }else{
                     JOptionPane.showMessageDialog(null, "O ID deve ter obrigatoriamente 3 digitos!!", "Erro ID", JOptionPane.ERROR_MESSAGE);
                 }
@@ -679,16 +699,23 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
         if (src == voltarcalca) {
             try {
                 //ao clicar em voltar na tela de editar e visualizar calça ele ira pegar os dados nos textfields e salvar.
-                if (textid.getText().length() == 3) {
-                    calcaTelaEditar.get(posicao).setId(textid.getText());
-                    calcaTelaEditar.get(posicao).setNome(textnomec.getText());
-                    calcaTelaEditar.get(posicao).setDescricao(textdescricao.getText());
-                    calcaTelaEditar.get(posicao).setGenero(textgenero.getText().charAt(0));
-                    calcaTelaEditar.get(posicao).setPreco(Float.parseFloat(textpreco.getText()));
-                    calcaTelaEditar.get(posicao).setMarca(textmarca.getText());
-                    calcaTelaEditar.get(posicao).setCor(textcor.getText());
-                    calcaTelaEditar.get(posicao).setTamanhocintura(Float.parseFloat(texttamanhocintura.getText()));
-                    calcaTelaEditar.get(posicao).setEstoqueCalca(Integer.parseInt(textestoquecalca.getText()));
+
+                // Valida o Id inserido.
+                if (Validador.validaId(textid.getText())) {
+                    // Valida o genero inserido.
+                    if (Validador.validaGenero(textgenero.getText().charAt(0))) {
+                        calcaTelaEditar.get(posicao).setId(textid.getText());
+                        calcaTelaEditar.get(posicao).setNome(textnomec.getText());
+                        calcaTelaEditar.get(posicao).setDescricao(textdescricao.getText());
+                        calcaTelaEditar.get(posicao).setGenero(textgenero.getText().charAt(0));
+                        calcaTelaEditar.get(posicao).setPreco(Float.parseFloat(textpreco.getText()));
+                        calcaTelaEditar.get(posicao).setMarca(textmarca.getText());
+                        calcaTelaEditar.get(posicao).setCor(textcor.getText());
+                        calcaTelaEditar.get(posicao).setTamanhocintura(Float.parseFloat(texttamanhocintura.getText()));
+                        calcaTelaEditar.get(posicao).setEstoqueCalca(Integer.parseInt(textestoquecalca.getText()));
+                    }else{
+                        JOptionPane.showMessageDialog(null, "O gênero é inválido! (Apenas F/M)", "Erro Gênero", JOptionPane.ERROR_MESSAGE);
+                    }
                 }else{
                     JOptionPane.showMessageDialog(null, "O ID deve ter obrigatoriamente 3 digitos!!", "Erro ID", JOptionPane.ERROR_MESSAGE);
                 }

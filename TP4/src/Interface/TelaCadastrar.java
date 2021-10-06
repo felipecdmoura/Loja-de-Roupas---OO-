@@ -717,20 +717,33 @@ public class TelaCadastrar implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();
+
         if(src == cadastrarcam){
             //evento que cadastra uma camisa com os dados inseridos nos textfields
             try{
-                if (textid.getText().length() == 3){
-                    camisaTelaCadastrar.add(new Camisa(
-                        textid.getText(), 
-                        textnomec.getText(), 
-                        textdescricao.getText(),
-                        textgenero.getText().charAt(0),
-                        Float.parseFloat(textpreco.getText()),
-                        textmarca.getText(),
-                        textcor.getText(),
-                        texttamanho.getText(),
-                        Integer.parseInt(textestoque.getText())));  
+                // Valida o id iserido.
+                if (Validador.validaId(textid.getText())){
+                    // Valida o genero inserido.
+                    if (Validador.validaGenero(textgenero.getText().charAt(0))) {
+                        // Valida o tamano inserido.
+                        if (Validador.validaTamanho(texttamanho.getText())) {
+                            camisaTelaCadastrar.add(new Camisa(
+                                textid.getText(), 
+                                textnomec.getText(), 
+                                textdescricao.getText(),
+                                textgenero.getText().charAt(0),
+                                Float.parseFloat(textpreco.getText()),
+                                textmarca.getText(),
+                                textcor.getText(),
+                                texttamanho.getText(),
+                                Integer.parseInt(textestoque.getText())));  
+                        }else{
+                            JOptionPane.showMessageDialog(null, "O tamanho inserido é inválido! (Apenas PP, P, M, G, GG)", "Erro Tamanho", JOptionPane.ERROR_MESSAGE);
+                        } 
+                    }else{
+                        JOptionPane.showMessageDialog(null, "O gênero é inválido! (Apenas F/M)", "Erro Gênero", JOptionPane.ERROR_MESSAGE);
+                    }
+
                 }else{
                     JOptionPane.showMessageDialog(null, "O ID deve ter obrigatoriamente 3 digitos!!", "Erro ID", JOptionPane.ERROR_MESSAGE);
                 }
@@ -741,25 +754,33 @@ public class TelaCadastrar implements ActionListener {
             janela.dispose();
             new TelaRoupa().telacamisa(camisaTelaCadastrar, calcaTelaCadastrar);
         }
+
         if (src == voltarcam) {
             //evento que volta da tela cadastro camisa para a tela camisa.
             janela.dispose();
             new TelaRoupa().telacamisa(camisaTelaCadastrar, calcaTelaCadastrar);;
         }
+
         if(src == cadastrarcalca){
             //evento que cadastra uma calça com os dados inseridos nos textfields
             try{
-                if (textid.getText().length() == 3) {
-                    calcaTelaCadastrar.add(new Calca(
-                        textid.getText(), 
-                        textnomec.getText(), 
-                        textdescricao.getText(),
-                        textgenero.getText().charAt(0),
-                        Float.parseFloat(textpreco.getText()),
-                        textmarca.getText(),
-                        textcor.getText(),
-                        Float.parseFloat(texttamanhocintura.getText()),
-                        Integer.parseInt(textestoquecalca.getText())));
+                // Valida o id inserido.
+                if (Validador.validaId(textid.getText())) {
+                    // Valida o genero inserido.
+                    if (Validador.validaGenero(textgenero.getText().charAt(0))) {
+                        calcaTelaCadastrar.add(new Calca(
+                            textid.getText(), 
+                            textnomec.getText(), 
+                            textdescricao.getText(),
+                            textgenero.getText().charAt(0),
+                            Float.parseFloat(textpreco.getText()),
+                            textmarca.getText(),
+                            textcor.getText(),
+                            Float.parseFloat(texttamanhocintura.getText()),
+                            Integer.parseInt(textestoquecalca.getText())));
+                    }else{
+                        JOptionPane.showMessageDialog(null, "O gênero é inválido! (Apenas F/M)", "Erro Gênero", JOptionPane.ERROR_MESSAGE);
+                    }
                 }else{
                     JOptionPane.showMessageDialog(null, "O ID deve ter obrigatoriamente 3 digitos!!", "Erro ID", JOptionPane.ERROR_MESSAGE);
                 }
@@ -770,21 +791,28 @@ public class TelaCadastrar implements ActionListener {
             janela.dispose();
             new TelaRoupa().telaCalca(camisaTelaCadastrar, calcaTelaCadastrar);
         }
+
         if (src == voltarcalca) {
             //evento que volta da tela cadastro calça para a tela calça.
             janela.dispose();
             new TelaRoupa().telaCalca(camisaTelaCadastrar, calcaTelaCadastrar);;
         }
+
         if (src == cadastrarc) {
             //evento que cadastra um cliente com os dados inseridos nos textfields
             String dataformatada = textdia.getText() + "/" + textmes.getText() + "/" + textano.getText();
             try{
-                clienteTelaCadastrar.add(new Cliente(
-                    textnome.getText(), 
-                    textemail.getText(), 
-                    textcpf.getText(), 
-                    new Telefone(Integer.parseInt(textddd.getText()), Integer.parseInt(texttel.getText())), 
-                    dataformatada));
+                // Valida o cpf inserido
+                if (Validador.validaCpf(textcpf.getText())) {
+                    clienteTelaCadastrar.add(new Cliente(
+                        textnome.getText(), 
+                        textemail.getText(), 
+                        textcpf.getText(), 
+                        new Telefone(Integer.parseInt(textddd.getText()), Integer.parseInt(texttel.getText())), 
+                        dataformatada));
+                }else{
+                    JOptionPane.showMessageDialog(null, "O CPF é inválido!", "Erro CPF", JOptionPane.ERROR_MESSAGE);
+                }
             }catch(NumberFormatException exep){
                 JOptionPane.showMessageDialog(null, "Alguma informação está incorreta", "Erro Cadastro", JOptionPane.ERROR_MESSAGE);
             }
@@ -803,12 +831,18 @@ public class TelaCadastrar implements ActionListener {
             //evento que cadastra um funcionario com os dados inseridos nos textfields
             String dataformatada = textdia.getText() + "/" + textmes.getText() + "/" + textano.getText();
             try{
-            funcionarioTelaCadastrar.add(new Funcionario(
-                textnome.getText(), 
-                textemail.getText(), 
-                textcpf.getText(), 
-                new Telefone(Integer.parseInt(textddd.getText()), Integer.parseInt(texttel.getText())), 
-                dataformatada));
+                // Valida o cpf inserido
+                if (Validador.validaCpf(textcpf.getText())) {
+                    funcionarioTelaCadastrar.add(new Funcionario(
+                        textnome.getText(), 
+                        textemail.getText(), 
+                        textcpf.getText(), 
+                        new Telefone(Integer.parseInt(textddd.getText()), Integer.parseInt(texttel.getText())), 
+                        dataformatada));
+                }else{
+                    JOptionPane.showMessageDialog(null, "O CPF é inválido!", "Erro CPF", JOptionPane.ERROR_MESSAGE);
+                }
+            
             }catch(NumberFormatException exep){
                 JOptionPane.showMessageDialog(null, "Alguma informação está incorreta", "Erro Cadastro", JOptionPane.ERROR_MESSAGE);
             }
