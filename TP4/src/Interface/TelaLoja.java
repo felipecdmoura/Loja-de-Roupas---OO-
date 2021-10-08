@@ -11,7 +11,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import Objetos.Loja;
-//classe principal que implementa os nossos eventos
+/**
+ * implementa a tela que exibira os dados da nossa loja
+ * @author Felipe e João
+ * @version TP5 (Outubro 2021)
+ */
 public class TelaLoja implements ActionListener {
 
     private JFrame janela;
@@ -27,11 +31,18 @@ public class TelaLoja implements ActionListener {
 
     private Loja lojaTelaLoja;
     
-    public void telaLoja(Loja loja) {
-        //iguala a arraylist recebida a instanciadas no codigo. 
+    
+    /** 
+     * Gera a tela com os dados de nossa loja
+     * (1)iguala o objeto recebido ao instanciado no codigo.
+     * (2)instancia os componentes da tela e suas posições
+     * @param loja
+     * @return retorna a tela da nossa loja
+     */
+    public void telaLoja(Loja loja) { 
         lojaTelaLoja = loja;
 
-        //aqui instanciamos nossos componentes da tela e instanciamos suas psoições.
+        
         janela = new JFrame("Informações Loja");
         nomefilial = new JLabel("Nome da Filial: ");
         cnpj = new JLabel("CNPJ: ");
@@ -81,9 +92,15 @@ public class TelaLoja implements ActionListener {
         voltar.addActionListener(this);
     }
 
+    
+    /** 
+     * este evento altera os dados de nossa loja quando alteramos seus textfields.
+     * @param e
+     * @return os dados da loja alterados
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
-        //este evento altera os dados de nossa loja quando alteramos seus textfields.
+        
         try{
             lojaTelaLoja.setNomefilial(textnomefilial.getText());
             lojaTelaLoja.setCnpj(textcnpj.getText());

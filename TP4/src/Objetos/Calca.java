@@ -1,7 +1,11 @@
 package Objetos;
 
 import App.Read;
-
+/**
+ * classe responsavel pela implementação dos atributos e dos metodos da Calça
+ * @author Felipe e João
+ * @version TP5 (Outubro 2021)
+ */
 public class Calca extends Roupa {
 
     //SUBCLASSE DE ROUPA
@@ -41,7 +45,11 @@ public class Calca extends Roupa {
         this.estoqueCalca = estoqueCalca;
     }
 
-    //Metodo de cadastro de calca
+    /**
+     * Metodo responsavel pelo cadastro dos dados da calça. 
+     * @return cadastro da calça na arraylist
+     */
+
     public void cadastrarcalca(){
         System.out.println("Digite o Id da Calça : ");
 		this.setId(Read.getString());
@@ -72,7 +80,13 @@ public class Calca extends Roupa {
 
 	}
 
-    //Metodo de edicao de calca
+    
+    /** 
+     * metodo responsavel pela edição dos dados da calça
+     * @param seletor
+     * @return edição da calça na arraylist
+     */
+
 	public void editarCalca(int seletor){
 
 		switch (seletor) {
@@ -126,7 +140,12 @@ public class Calca extends Roupa {
 		}
 	}
 
-    //toString de Calca
+    
+    /** 
+     * Metodo responsavel por mostrar os dados da calça atraves do toString
+     * @return String
+     */
+
     public String toString() {
         return    "Id: " + id + "\n"  
                 + "Nome: " + nome + "\n"

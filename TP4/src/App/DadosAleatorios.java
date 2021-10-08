@@ -4,7 +4,22 @@ import java.util.ArrayList;
 
 import Objetos.*;
 
+/**
+ * instancia a classe de DadosAleatorios que implementa dados aleatorios para que possamos utilizar em nossa aplicação.
+ * @author Felipe e João
+ * @version TP5 (Outubro 2021)
+ */
+
 public class DadosAleatorios{ 
+    /**
+     * Metodo ultilizado para o cadastro de dados pré cadastrados na loja
+     * @param clientes
+     * @param funcionarios
+     * @param vendas
+     * @param calcas
+     * @param camisas
+     * @return dados pré cadastrados
+     */
     public static void setDefaultData(ArrayList<Cliente> clientes, ArrayList<Funcionario> funcionarios, ArrayList<Venda> vendas, ArrayList<Calca> calcas, ArrayList<Camisa> camisas) { //Método para definir os 10 clientes e produtos padrão
         Telefone telefone;
 

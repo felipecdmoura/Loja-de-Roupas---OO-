@@ -3,7 +3,12 @@ package App;
 
 import java.util.Scanner;
 
-public class Read { //Classe para facilitar o uso do Scanner, visando principalmente evitar problemas com buffer.
+/**
+ * instancia a classe de Read qual implementa metodos que facilitarão na obtenção de dados e evitar problemas com buffer.
+ * @author Felipe e João
+ * @version TP5 (Outubro 2021)
+ */
+public class Read {
 	public static int getInt() {
 		Scanner read = new Scanner(System.in);
 		return read.nextInt();

@@ -1,6 +1,10 @@
 package Objetos;
 
-
+/**
+ * classe responsavel pela implementação dos atributos e dos metodos do Telefone
+ * @author Felipe e João
+ * @version TP5 (Outubro 2021)
+ */
 public class Telefone {
 	
 	//ATRIBUTOS
@@ -36,7 +40,12 @@ public class Telefone {
 		this.numero = numero;
 	}
 
-	//toString de Telefone
+	
+	/** 
+	 * Metodo que imprime os dados do telefone utilizando o toString
+	 * @return String
+	 */
+	
 	public String toString() {
 		return "Telefone: (" + DDD + ") " + numero;
 	}

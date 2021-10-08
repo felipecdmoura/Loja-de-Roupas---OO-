@@ -2,6 +2,11 @@ package Objetos;
 
 import App.Read;
 
+/**
+ * classe responsavel pela implementação dos atributos e dos metodos do Funcionario
+ * @author Felipe e João
+ * @version TP5 (Outubro 2021)
+ */
 public class Funcionario extends Pessoa {
 
 	//SUBCLASSE DE PESSOA
@@ -30,7 +35,10 @@ public class Funcionario extends Pessoa {
 		this.datacontrat = datacontrat;
 	}
 
-	//Metodo de cadastro de funcionarios
+	/**
+	 * Metodo responsavel pelo cadastro do funcionario
+	 * @return cadastro do funcionario no seu arraylist
+	 */
 	public void cadatrarFuncionario(){
 		String cpf;
 		numtel = new Telefone();
@@ -66,7 +74,13 @@ public class Funcionario extends Pessoa {
 
 	}
 
-	//Metodo de edicao de funcinario
+	
+	/** 
+	 * Metodo responsavel pela edição dos dados do funcionario
+	 * @param seletor
+	 * @return dados editados na arraylist
+	 */
+
 	public void editarFuncionario(int seletor){
 		String cpfedit;
 		numtel = new Telefone(61,339);
@@ -117,7 +131,12 @@ public class Funcionario extends Pessoa {
 		}
 	}
 
-	//toString de Funcionario
+	
+	/** 
+	 * Metodo responsavel por mostrar os dados do funcionario atraves do toString
+	 * @return String
+	 */
+	
 	public String toString() {
 		return "Nome: " + nome + "\n"
 			   + "Email: " + email + "\n"

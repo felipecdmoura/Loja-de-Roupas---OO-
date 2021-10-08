@@ -26,8 +26,12 @@ import javax.swing.event.ListSelectionListener;
 import App.TelaPrincipal;
 import Objetos.Cliente;
 import Objetos.Funcionario;
-
-//classe que implementa os nossos eventos
+/**
+ * implementa as nossas telas que herdam do objeto pessoa como cliente e funcionario.
+ * @author Felipe e João
+ * 
+ * @version TP5 (Outubro 2021)
+ */
 public class TelaPessoa implements ActionListener, ListSelectionListener, MouseListener {
     private JFrame janela;
 
@@ -49,8 +53,16 @@ public class TelaPessoa implements ActionListener, ListSelectionListener, MouseL
     private String[] todosclientes;
     private String[] todosfunc;
 
+    
+    /** 
+     * Gera a nossa tela do cliente:
+     * (1)iguala a arraylist recebida a instanciada no codigo.
+     * (2)instancia os componentes das telas e suas posições.
+     * @param clientes
+     * @return a nossa tela de cliente
+     */
     public void telaCliente(ArrayList<Cliente> clientes) {
-        //iguala as arraylists recebidas a instanciadas no codigo.  
+        
         clienteTelaPessoa = clientes;
         todosclientes = new String[clientes.size()];
         int count = 0;
@@ -60,7 +72,6 @@ public class TelaPessoa implements ActionListener, ListSelectionListener, MouseL
             count++;
         }
 
-        //aqui instanciamos nossos componentes da tela e instanciamos suas psoições.
         janela = new JFrame("Clientes");
         listaclientes = new JList<String>(todosclientes);
         listascroll = new JScrollPane();
@@ -108,8 +119,15 @@ public class TelaPessoa implements ActionListener, ListSelectionListener, MouseL
         listaclientes.addListSelectionListener(this);
     }
 
+    
+    /** 
+     * Gera a nossa tela do funcionario:
+     * (1)iguala a arraylist recebida a instanciada no codigo.
+     * (2)instancia os componentes das telas e suas posições.
+     * @param funcionarios
+     */
     public void telaFuncionario(ArrayList<Funcionario> funcionarios) {
-        //iguala as arraylists recebidas a instanciadas no codigo.  
+ 
         funcionariosTelaPessoa = funcionarios;
         todosfunc = new String[funcionarios.size()];
         int count = 0;
@@ -119,7 +137,7 @@ public class TelaPessoa implements ActionListener, ListSelectionListener, MouseL
             count++;
         }
         
-        //aqui instanciamos nossos componentes da tela e instanciamos suas psoições.
+
         listafuncionarios = new JList<String>(todosfunc);
         listascroll = new JScrollPane();
         janela = new JFrame("Funcionarios");
@@ -209,12 +227,18 @@ public class TelaPessoa implements ActionListener, ListSelectionListener, MouseL
             
         }
 
+        
+        /** 
+         * evento que observa o clique do botão na lista e cria nossa tela editar/visualizar para clientes ou funcionarios.
+         * @param e
+         * @return tela editar cliente e funcionario
+         */
         @Override
         public void valueChanged(ListSelectionEvent e) {
             Object src = e.getSource();
 
             try{
-                //evento que observa o clique do botão na lista e cria nossa tela editar/visualizar para clientes.
+                
                 if (e.getValueIsAdjusting() && src == listaclientes) {
                     janela.dispose();
                     new TelaEditarVizualizarDeletar().editarCliente(clienteTelaPessoa, listaclientes.getSelectedValue());
@@ -225,7 +249,7 @@ public class TelaPessoa implements ActionListener, ListSelectionListener, MouseL
             }
 
             try{
-                //evento que observa o clique do botão na lista e cria nossa tela editar/visualizar para funcionarios.
+                
                 if (e.getValueIsAdjusting() && src == listafuncionarios) {
                     janela.dispose();
                     new TelaEditarVizualizarDeletar().editarFuncionario(funcionariosTelaPessoa, listafuncionarios.getSelectedValue());
@@ -237,7 +261,13 @@ public class TelaPessoa implements ActionListener, ListSelectionListener, MouseL
             
         }
 
-        //evento que recebe o  clique do mouse e limpa o textfield de pesquisar.
+        
+        /** 
+         * evento que recebe o  clique do mouse e limpa o textfield de pesquisar.
+         * @param e
+         * @return textfield limpo
+         */
+        
         @Override
         public void mouseClicked(MouseEvent e) {
             Object src = e.getSource();

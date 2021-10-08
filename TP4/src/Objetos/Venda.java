@@ -1,4 +1,10 @@
 package Objetos;
+
+/**
+ * classe responsavel pela implementação dos atributos e dos metodos da Venda
+ * @author Felipe e João
+ * @version TP5 (Outubro 2021)
+ */
 public class Venda {
 
 	//ATRIBUTOS
@@ -62,7 +68,12 @@ public class Venda {
 		this.protocolo = protocolo;
 	}
 	
-	//toString de Venda
+	
+	/** 
+	 * Metodo que imprime os dados da Venda utilizando o toString
+	 * @return String
+	 */
+	
 	public String toString() {
 		return    "-----Funcionário-----" + "\n"
 				+ "Nome: " + funcionario.getNome() + "\n"

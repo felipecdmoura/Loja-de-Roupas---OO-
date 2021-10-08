@@ -2,6 +2,11 @@ package Objetos;
 
 import App.Read;
 
+/**
+ * classe responsavel pela implementação dos atributos e dos metodos do Cliente
+ * @author Felipe e João
+ * @version TP5 (Outubro 2021)
+ */
 public class Cliente extends Pessoa{
 
 	//SUBCLASSE DE PESSOA
@@ -30,7 +35,10 @@ public class Cliente extends Pessoa{
 		this.datanasc = datanasc;
 	}
 
-	//Metodo de cadastro de clientes
+	/**
+	 * Metodo responsavel pelo cadastro de cliente
+	 * @return cadastro do cliente no seu arraylist
+	 */
 	public void cadatrarCliente(){
 		String cpf;
 		numtel = new Telefone();
@@ -66,7 +74,13 @@ public class Cliente extends Pessoa{
 
 	}
 
-	//Metodo de edicao de clientes
+	
+	/** 
+	 * Metodo responsavel pela edição dos dados do cliente
+	 * @param seletor
+	 * @return dados editados na arraylist
+	 */
+	
 	public void editCliente(int seletor){
 		String cpfedit;
 		numtel = new Telefone(61,339);
@@ -118,7 +132,12 @@ public class Cliente extends Pessoa{
 		}
 	}
 
-	//toString de Cliente
+	
+	/** 
+	 * Metodo responsavel por mostrar os dados do cliente atraves do toString
+	 * @return String
+	 */
+	
 	public String toString() {
 		return "Nome: " + nome + "\n"
 			   + "Email: " + email + "\n"

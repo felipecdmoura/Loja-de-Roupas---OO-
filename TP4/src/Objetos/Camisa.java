@@ -2,6 +2,11 @@ package Objetos;
 
 import App.Read;
 
+/**
+ * classe responsavel pela implementação dos atributos e dos metodos da Camisa
+ * @author Felipe e João
+ * @version TP5 (Outubro 2021)
+ */
 public class Camisa extends Roupa {
 
     //SUBCLASSE DE ROUPA
@@ -41,7 +46,11 @@ public class Camisa extends Roupa {
         this.estoqueCamisa = estoqueCamisa;
     }
 
-    //Metodo de cadastro de camisa
+    /**
+     * Metodo responsavel pelo cadastro da camisa
+     * @return cadastro da camisa no arraylist
+     */
+
     public void cadastrarcamisa(){
 
         System.out.println("Digite o Id da camisa : ");
@@ -73,7 +82,13 @@ public class Camisa extends Roupa {
 
 	}
 
-    //Metodo de edicao de camisa
+    
+    /** 
+     * Metodo responsavel pela ediçao dos dados da camisa
+     * @param seletor
+     * @return dados editados na arraylist
+     */
+
 	public void editarCamisa(int seletor){
 		switch (seletor) {
             case 1:
@@ -124,7 +139,12 @@ public class Camisa extends Roupa {
 		}
 	}
 
-    //toString de camisa
+    
+    /** 
+     * Metodo responsavel por mostrar os dados da camisa atraves do toString
+     * @return String
+     */
+
     public String toString() {
         return    "Id: " + id + "\n"
                 + "Nome: " + nome + "\n"

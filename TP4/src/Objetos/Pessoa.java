@@ -1,6 +1,10 @@
 package Objetos;
 
-
+/**
+ * classe responsavel pela implementação dos atributos e dos metodos da Pessoa
+ * @author Felipe e João
+ * @version TP5 (Outubro 2021)
+ */
 public abstract class Pessoa {
 
 	//ATRIBUTOS

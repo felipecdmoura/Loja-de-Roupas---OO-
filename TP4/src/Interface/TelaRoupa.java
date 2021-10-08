@@ -19,8 +19,11 @@ import java.awt.event.MouseListener;
 
 //importa as classes da pasta Objetos para que possamos usar seus metodos
 import Objetos.*;
-
-//instancia uma classe no qual implementa ActionListeners para que possamos utilizar dos eventos
+/**
+ * instancia a classe tela roupa no qual implementa ActionListeners para que possamos utilizar dos eventos
+ * @author Felipe e João
+ * @version TP5 (Outubro 2021)
+ */
 public class TelaRoupa implements ActionListener, ListSelectionListener, MouseListener {
     //esta seção cria os componentes da biblioteca java swing que utilizaremos para formar nossa tela de camisa ou calça.
     private JFrame janela;
@@ -45,9 +48,19 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
     private String[] todascamisas;
     private String[] todascalcas;
 
-    //metodo que ira nos mostrar a tela de camisa.Este metodo recebe duas arraylists como parametros.
+    
+    /** 
+     * nos mostra a tela de camisa.Este metodo recebe duas arraylists como parametros:
+     * (1)iguala as arraylists recebidas a instanciadas no codigo.
+     * (2)Percorre o for each.
+     * (3)instancia os componentes e suas posições.
+     * @param camisas
+     * @param calcas
+     * @return a tela da camisa 
+     */
+    
     public void telacamisa(ArrayList<Camisa> camisas, ArrayList<Calca> calcas) {
-        //iguala as arraylists recebidas a instanciadas no codigo.
+        
         camisasTelaRoupa = camisas;
         calcasTelaRoupa = calcas;
         todascamisas = new String[camisas.size()];
@@ -58,7 +71,7 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
             count++;
         }
 
-        //aqui instanciamos nossos componentes da tela e instanciamos suas psoições.
+       
         janela = new JFrame("Camisas");
         listacamisas = new JList<String>(todascamisas);
         listascroll = new JScrollPane();
@@ -111,8 +124,19 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
         listacamisas.addListSelectionListener(this);
     }
 
+    
+   
+    /** 
+     * nos mostra a tela da calça.Este metodo recebe duas arraylists como parametros:
+     * (1)iguala as arraylists recebidas a instanciadas no codigo.
+     * (2)Percorre o for each.
+     * (3)instancia os componentes e suas posições.
+     * @param camisas
+     * @param calcas
+     * @return a tela da calça 
+     */
     public void telaCalca(ArrayList<Camisa> camisas, ArrayList<Calca> calcas) {
-        //iguala as arraylists recebidas a instanciadas no codigo.        
+       
         camisasTelaRoupa = camisas;
         calcasTelaRoupa = calcas;
         todascalcas = new String[calcas.size()];
@@ -124,7 +148,7 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
             count++;
         }
 
-        //aqui instanciamos nossos componentes da tela e instanciamos suas psoições.
+
         janela = new JFrame("Calças");
         listacalcas = new JList<String>(todascalcas);
         listascroll = new JScrollPane();
@@ -177,7 +201,13 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
         listacalcas.addListSelectionListener(this);
     }
 
-    //evento que recebe o  clique do mouse e limpa o textfield de pesquisar.
+    
+    
+    /** 
+     * metodo que recebe o  clique do mouse e limpa o textfield de pesquisar.
+     * @param e
+     * @return textfield limpo para pesquisa
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
         Object src = e.getSource();
@@ -216,14 +246,19 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
         
     }
 
+    
+    /** Metodo que observa o clique do botão na lista e cria nossa tela editar/visualizar para camisa ou calça
+     * (1)passa apenas os tres primeiros digitos, sendo o ID, como agrumento da posicao da lista.
+     * @param e
+     */
     @Override
     public void valueChanged(ListSelectionEvent e) {
         Object src = e.getSource();
         try{
-            //evento que observa o clique do botão na lista e cria nossa tela editar/visualizar para camisa.
+            
             if (e.getValueIsAdjusting() && src == listacamisas) {
                 janela.dispose();
-                // Passa apenas os tres primeiros digitos, sendo o ID, como agrumento da posicao da lista.
+                
                 new TelaEditarVizualizarDeletar().editarCamisa(camisasTelaRoupa, calcasTelaRoupa, listacamisas.getSelectedValue().substring(0, 3));
             }
         }catch(NullPointerException exc){
@@ -232,10 +267,10 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
         }
 
         try{
-            //evento que observa o clique do botão na lista e cria nossa tela editar/visualizar para calça.
+            
             if (e.getValueIsAdjusting() && src == listacalcas) {
                 janela.dispose();
-                // Passa apenas os tres primeiros digitos, sendo o ID, como agrumento da posicao da lista.
+                
                 new TelaEditarVizualizarDeletar().editarCalca(camisasTelaRoupa, calcasTelaRoupa, listacalcas.getSelectedValue().substring(0, 3));
             }
         }catch(NullPointerException exc){
@@ -244,10 +279,23 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
         }
     }
 
+    
+    /** 
+     * metodo que define os actions dos nossos botões:
+     * (calca) observa o clique do botão calça e gera a tela camisa
+     * (camisa) observa o clique do botão camisa e gera uma tela camisa
+     * (voltarcamisa) observa o clique do botão voltar e gera a tela  principal da nossa aplicação.
+     * (voltarcalca) observa o clique do botão voltar e gera a tela  de camisa da nossa aplicação.
+     * (cadastrarcamisa) observa o clique do botão cadastrar da tela camisa e gera uma nova tela de cadastro camisa.
+     * (pesqcamisa) compara os textos da pesqcamisa e retorna apenas o mesmo nome na nossa lista.
+     * (cadastrarcalca) observa o clique do botão cadastrar da tela calça e gera uma nova tela de cadastro calça.
+     * (pesqcalca) compara os textos da pesqcalca e retorna apenas o mesmo nome na nossa lista.
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();
-        //evento que observa o clique do botão calça e gera uma tela expecifica para a mesma
+        
         if(src == calca){
             janela.dispose();
             new TelaRoupa().telaCalca(camisasTelaRoupa, calcasTelaRoupa);
@@ -256,22 +304,22 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
             janela.dispose();
             new TelaRoupa().telacamisa(camisasTelaRoupa, calcasTelaRoupa);
         }
-         //evento que observa o clique do botão voltar e gera a tela  principal da nossa aplicação.
+        
         if (src == voltarcamisa){
             janela.dispose();
             new TelaPrincipal().telaPrincipal();
         }
-        //evento que observa o clique do botão voltar e gera a tela  de camisa da nossa aplicação.
+        
         if (src == voltarcalca){
             janela.dispose();
             new TelaRoupa().telacamisa(camisasTelaRoupa, calcasTelaRoupa);
         }
-        //evento que observa o clique do botão cadastrar da tela camisa e gera uma nova tela para o mesmo.
+        
         if(src == cadastrarcamisa){
             janela.dispose();
             new TelaCadastrar().cadastroCamisa(camisasTelaRoupa, calcasTelaRoupa);
         }
-        //evento que compara os textos da pesqcamisa e retorna apenas o mesmo na nossa lista.
+        
         if(src == pesqcamisa){
             if(pesqcamisa.getText().equals("")){
                 listacamisas.setListData(todascamisas);
@@ -283,12 +331,12 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
                 }
             }
         }
-         //evento que observa o clique do botão cadastrar da tela calça e gera uma nova tela para o mesmo.
+         
         if(src == cadastrarcalca){
             janela.dispose();
             new TelaCadastrar().cadastroCalca(camisasTelaRoupa, calcasTelaRoupa);
         }
-        //evento que compara os textos da pesqcalca e retorna apenas o mesmo na nossa lista.
+        
         if(src == pesqcalca){
             if(pesqcalca.getText().equals("")){
                 listacalcas.setListData(todascalcas);
