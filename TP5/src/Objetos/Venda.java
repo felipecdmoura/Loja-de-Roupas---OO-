@@ -11,15 +11,15 @@ public class Venda {
 	private Cliente cliente;
 	private Roupa produto;
 	private Funcionario funcionario;
-	private float preçoTotal;
+	private float precoTotal;
 	private String protocolo;
 
 	//Construtor com parametros
-	public Venda (Cliente cliente_, Roupa produto_, Funcionario funcionario_, Float preçoTotal_,  String protocolo_){
+	public Venda (Cliente cliente_, Roupa produto_, Funcionario funcionario_, Float precoTotal_,  String protocolo_){
 		cliente = cliente_;
 		produto = produto_;
 		funcionario = funcionario_;
-		preçoTotal = preçoTotal_;
+		precoTotal = precoTotal_;
 		protocolo = protocolo_;
 	}
 
@@ -52,12 +52,12 @@ public class Venda {
 		this.funcionario = funcionario;
 	}
 
-	public float getPreçoTotal() {
-		return preçoTotal;
+	public float getPrecoTotal() {
+		return precoTotal;
 	}
 
-	public void setPreçoTotal(float preçoTotal) {
-		this.preçoTotal = preçoTotal;
+	public void setPrecoTotal(float precoTotal) {
+		this.precoTotal = precoTotal;
 	}
 
 	public String getProtocolo() {
@@ -84,7 +84,7 @@ public class Venda {
 				+ "-----Informações da Compra-----"  + "\n"
 				+ "ID do Produto: " +  produto.getId() + "\n"
 				+ "Nome do Produto: " + produto.getNome() + "\n"
-				+ "Preço Total: " + preçoTotal + "\n"
+				+ "Preço Total: " + precoTotal + "\n"
 				+ "Número de Protocolo: " + protocolo;
 
 	}			
