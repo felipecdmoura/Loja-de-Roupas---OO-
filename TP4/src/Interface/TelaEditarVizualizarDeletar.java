@@ -8,7 +8,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import Objetos.*;
-//classe principal que implementa os nossos eventos
+/**
+ * implementa as nossas telas de editar,visualiazr e deletar.
+ * @author Felipe e João
+ * @version TP5 (Outubro 2021)
+ */
 public class TelaEditarVizualizarDeletar implements ActionListener {
     private JFrame janela;
 
@@ -82,7 +86,17 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
     private ArrayList<Venda> vendaTelaEditar;
     private int posicao;
     
-    //metodo que ira nos mostrar a tela de editar o cliente.Este metodo recebe uma arrayliste uma string como parametros.
+    
+    /** 
+     * Gera a tela de editar o cliente.Este metodo recebe uma arrayliste uma string como parametros:
+     *  (1)utiliza-se do for each para obter o nome
+     *  (2)iguala a arraylist recebida a instanciada no codigo
+     *  (3)instancia os componentes da tela e suas posições
+     * @param clientes
+     * @param nomecliente
+     * @return retorna a tela de editar cliente
+     */
+    
     public void editarCliente(ArrayList<Cliente> clientes, String nomecliente) {
         posicao = 0;
 
@@ -92,10 +106,10 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
             }
             posicao++;
         }
-        //iguala a arraylist recebida a instanciada no codigo
+        
         clientesTelaEditar = clientes;
 
-        //aqui instanciamos nossos componentes da tela e instanciamos suas psoições.
+        
         janela = new JFrame("Cliente " + clientes.get(posicao).getNome());
         nome = new JLabel("Nome: ");
         email = new JLabel("Email: ");
@@ -175,7 +189,17 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
 
     }
 
-    //metodo que ira nos mostrar a tela de editar o funcionario.Este metodo recebe uma arraylist e uma string como parametros.
+    
+    /** 
+     * Gera a tela de editar o funcionario.Este metodo recebe uma arraylist e uma string como parametros:
+     *  (1)utiliza-se do for each para obter o nome
+     *  (2)iguala a arraylist recebida a instanciada no codigo
+     *  (3)instancia os componentes da tela e suas posições
+     * @param funcionarios
+     * @param nomefunc
+     * @return retorna a tela de editar funcionario
+     */
+
     public void editarFuncionario(ArrayList<Funcionario> funcionarios, String nomefunc) {
         posicao = 0;
 
@@ -186,10 +210,8 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
             posicao++;
         }
         
-        //iguala a arraylist recebida a instanciada no codigo
         funcionariosTelaEditar = funcionarios;
 
-        //aqui instanciamos nossos componentes da tela e instanciamos suas psoições.
         janela = new JFrame("Funcionario " + funcionarios.get(posicao).getNome());
         nome = new JLabel("Nome: ");
         email = new JLabel("Email: ");
@@ -268,7 +290,18 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
         deletarfuncionario.addActionListener(this);
     }
 
-       //metodo que ira nos mostrar a tela de editar a Camisa.Este metodo recebe duas arraylists como parametros.
+       
+       /** 
+        * Gera a tela de editar a Camisa.Este metodo recebe duas arraylists como parametros:
+        * (1)utiliza-se do for each para obter o Id
+        * (2)iguala as arraylisst recebidas a instanciadas no codigo
+        * (3)instancia os componentes da tela e suas posições
+        * @param camisas
+        * @param calcas
+        * @param idcamisa
+        * @return a tela de editar camisa
+        */
+
     public void editarCamisa(ArrayList<Camisa> camisas, ArrayList<Calca> calcas, String idcamisa) {
         posicao = 0;
 
@@ -278,11 +311,11 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
             }
             posicao++;
         }
-        //iguala as arraylists recebidas a instanciadas no codigo
+
         camisaTelaEditar = camisas;
         calcaTelaEditar = calcas;
 
-        //aqui instanciamos nossos componentes da tela e instanciamos suas psoições.
+
         janela = new JFrame("Camisa " + camisas.get(posicao).getNome());
         id = new JLabel("ID: ");
         nomec = new JLabel("Nome: ");
@@ -396,6 +429,17 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
         voltarcam.addActionListener(this);
     }
 
+       
+       /** 
+        * Gera a tela de editar a Calça.Este metodo recebe duas arraylists como parametros:
+        * (1)utiliza-se do for each para obter o Id
+        * (2)iguala as arraylisst recebidas a instanciadas no codigo
+        * (3)instancia os componentes da tela e suas posições
+        * @param camisas
+        * @param calcas
+        * @param nomecalca
+        * @return retorna a tela de editar calça
+        */
        //metodo que ira nos mostrar a tela de editar a Calça.Este metodo recebe duas arraylists como parametros.
     public void editarCalca(ArrayList<Camisa> camisas, ArrayList<Calca> calcas, String nomecalca) {
         posicao = 0;
@@ -407,11 +451,9 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
             posicao++;
         }
 
-        //iguala as arraylists recebidas a instanciadas no codigo
         camisaTelaEditar = camisas;
         calcaTelaEditar = calcas;
 
-        //aqui instanciamos nossos componentes da tela e instanciamos suas psoições.
         janela = new JFrame("Calca" + calcas.get(posicao).getNome());
         id = new JLabel("ID: ");
         nomec = new JLabel("Nome: ");
@@ -525,7 +567,21 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
         voltarcalca.addActionListener(this);
     }
 
-    // Apenas vizualiza as infos da venda selecionada.
+    
+    /**         
+    * Gera a tela de visualizar venda.Este metodo recebe cinco arraylists e uma String como parametros:
+    * (1)utiliza-se do for each para obter o Protocolo da venda.
+    * (2)iguala as arraylissts recebidas a instanciadas no codigo
+    * (3)instancia os componentes da tela e suas posições
+     * @param clientes
+     * @param funcionarios
+     * @param camisas
+     * @param calcas
+     * @param vendas
+     * @param protocvenda
+     * @return retorna a tela de visualizar a venda
+     */
+
     public void vizualizarVenda(ArrayList<Cliente> clientes, ArrayList<Funcionario> funcionarios, ArrayList<Camisa> camisas ,ArrayList<Calca> calcas, ArrayList<Venda> vendas, String protocvenda) {
         posicao = 0;
 
@@ -535,14 +591,13 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
             }
             posicao++;
         }
-        //iguala as arraylists recebidas a instanciadas no codigo
+
         clientesTelaEditar = clientes;
         funcionariosTelaEditar = funcionarios;
         camisaTelaEditar = camisas;
         calcaTelaEditar = calcas;
         vendaTelaEditar = vendas;
 
-        //aqui instanciamos nossos componentes da tela e instanciamos suas psoições.
         janela = new JFrame("Venda " + vendas.get(posicao).getProtocolo());
         protocolo = new JLabel("Protocolo: " + vendas.get(posicao).getProtocolo());
         comprador = new JLabel("Cliente: " + vendas.get(posicao).getCliente().getNome());
@@ -587,11 +642,25 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
         
     }
 
+    
+    /** 
+     * Metodo que instancia os actions dos botões:
+     * (voltarcliente) ao clicar em voltar da tela de editar e visualizar cliente pega os dados nos textfields e salva.
+     * (deletarcliente) deleta o cliente da arraylist.
+     * (voltarfuncionario) ao clicar em voltar da tela de editar e visualizar funcionario pega os dados nos textfields e salva.
+     * (deletarfuncionario) deleta o funcionario da arraylist.
+     * (voltarcamisa) ao clicar em voltar da tela de editar e visualizar camisa  pega os dados nos textfields e salva.
+     * (deletarcamisa) deleta a camisa da arraylist.
+     * (voltarcalca) ao clicar em voltar da tela de editar e visualizar calça pega os dados nos textfields e salva.
+     * (deletarcalca) deleta a calça da arraylist.
+     * (voltarvenda) gera a tela venda .
+     * @param e
+     * @return retorna as actions dos nossos botões.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();
         if (src == voltarcliente) {
-            //ao clicar em voltar na tela de editar e visualizar cliente ele ira pegar os dados nos textfields e salvar.
             try {
                 // Verifica o Cpf.
                 if (Validador.validaCpf(textcpf.getText())) {
@@ -614,7 +683,7 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
         }
 
         if (src == deletarcliente) {
-            //ao clicar no botao deletar da tela editar/visualizar cliente ele ira deletar aquele cliente.
+
             janela.dispose();
             clientesTelaEditar.remove(posicao);
 
@@ -622,7 +691,7 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
         }
 
         if (src == voltarfuncionario) {
-            //ao clicar em voltar na tela de editar e visualizar funcionario ele ira pegar os dados nos textfields e salvar.
+            
             try {
                 // Verifica o Cpf.
                 if (Validador.validaCpf(textcpf.getText())) {
@@ -645,7 +714,7 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
         }
 
         if (src == deletarfuncionario) {
-            //ao clicar no botao deletar da tela editar/visualizar cliente ele ira deletar aquele funcionario.
+            
             janela.dispose();
             funcionariosTelaEditar.remove(posicao);
 
@@ -655,7 +724,7 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
 
         if (src == voltarcam) {
             try {
-                //ao clicar em voltar na tela de editar e visualizar camisa ele ira pegar os dados nos textfields e salvar.
+                
                 if (Validador.validaId(textid.getText())) {
                     // Valida o genero inserido.
                     if (Validador.validaGenero(textgenero.getText().charAt(0))) {
@@ -688,7 +757,7 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
             new TelaRoupa().telacamisa(camisaTelaEditar, calcaTelaEditar);
         }
         if (src == deletarcam) {
-            //ao clicar no botao deletar da tela editar/visualizar camisa ele ira deletar aquele funcionario.
+            
             janela.dispose();
             camisaTelaEditar.remove(posicao);
 
@@ -698,7 +767,6 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
 
         if (src == voltarcalca) {
             try {
-                //ao clicar em voltar na tela de editar e visualizar calça ele ira pegar os dados nos textfields e salvar.
 
                 // Valida o Id inserido.
                 if (Validador.validaId(textid.getText())) {
@@ -728,7 +796,6 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
             new TelaRoupa().telaCalca(camisaTelaEditar, calcaTelaEditar);
         }
         if (src == deletarcalca) {
-            //ao clicar no botao deletar da tela editar/visualizar camisa ele ira deletar aquela calça.
             janela.dispose();
             calcaTelaEditar.remove(posicao);
 

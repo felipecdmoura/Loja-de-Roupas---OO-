@@ -1,5 +1,10 @@
 package Objetos;
 
+/**
+ * classe responsavel pela implementação dos atributos e dos metodos da Roupa
+ * @author Felipe e João
+ * @version TP5 (Outubro 2021)
+ */
 public abstract class Roupa {
 
     //ATRIBUTOS
@@ -90,7 +95,12 @@ public abstract class Roupa {
         this.cor = cor;
     }
 
-    //toString de Pessoa
+    
+    /** 
+     * Metodo que imprime os dados da roupa utilizando o toString
+     * @return String
+     */
+    
     public String toString() {
         return    "Nome: " + nome + "\n"
                 + "Descrição: " + descricao + "\n"

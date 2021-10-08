@@ -17,6 +17,12 @@ import java.util.ArrayList;
 import Objetos.*;
 import Interface.*;
 
+
+/**
+ * Inicializa o nosso sistema de loja
+ * @author Felipe e João
+ * @version TP5 (Outubro 2021)
+ */
 public class TelaPrincipal extends JFrame implements ActionListener  {
 
     
@@ -36,7 +42,10 @@ public class TelaPrincipal extends JFrame implements ActionListener  {
     private JButton roupa = new JButton("Roupas");
     private JButton sair = new JButton("Sair");
 
-      //Metodo do MenuPrincipal da nossa aplicação.
+    /**
+     * Metodo do MenuPrincipal da nossa aplicação.
+     *@return Tela principal da nossa aplicação 
+     */
     public void telaPrincipal(){
         setTitle("Menu principal");
 
@@ -69,13 +78,26 @@ public class TelaPrincipal extends JFrame implements ActionListener  {
         sair.addActionListener(this);
     }
    
-    //Metodo que executa nossa aplicação
+    
+    /** 
+     * @param args
+     * @return dados aleatorios e tela da aplicação
+     * (1)Inicializa os Dados aleatorios como dados default da nossa aplicação
+     * (2)Inicializa o metodo da nossa tela principal.
+     */
     public static void main(String[] args) {
         DadosAleatorios.setDefaultData(clientesTelaPrincipal, funcionariosTelaPrincipal, vendasTelaPrincipal, calcasTelaPrincipal, camisasTelaPrincipal);
         new TelaPrincipal().telaPrincipal();
     }
 
-     //configura os eventos que acontecerão ao acionarmos os botões.
+     
+
+    
+    /** 
+     * Metodo que instancia os actions dos botões.
+     * @param e
+     * @return os eventos que acontecerão ao acionarmos os botões.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();

@@ -110,8 +110,7 @@ public class Validador {
      */
     public static boolean validaTamanho(String tamanho) {
         System.out.println(tamanho);
-        if (tamanho.length() <= 2 || 
-            tamanho == "PP" || 
+        if (tamanho == "PP" || 
             tamanho == "P" || 
             tamanho == "M" || 
             tamanho == "G" || 

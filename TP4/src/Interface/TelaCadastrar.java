@@ -10,7 +10,13 @@ import java.awt.event.ActionListener;
 import java.io.Serial;
 
 import Objetos.*;
-//classe principal que implementa os nossos eventos
+
+/**
+ * classe principal que implementa os nossos eventos
+ * 
+ * @author Felipe e João
+ * @version TP5 (Outubro 2021)
+ */
 public class TelaCadastrar implements ActionListener {
     private JFrame janela;
 
@@ -19,12 +25,12 @@ public class TelaCadastrar implements ActionListener {
     private JLabel email;
     private JLabel cpf;
     private JLabel datanac;
-    private JLabel datacontract ;
+    private JLabel datacontract;
     private JLabel tel;
     private JLabel barradata1;
     private JLabel barradata2;
 
-    // Textfields para cliente e funcionario   .
+    // Textfields para cliente e funcionario .
     private JTextField textnome;
     private JTextField textemail;
     private JTextField textcpf;
@@ -38,10 +44,9 @@ public class TelaCadastrar implements ActionListener {
     private JButton cadastrarc;
     private JButton voltarcliente;
 
-     // Botoes funcionario.
-     private JButton cadastrarf;
-     private JButton voltarfuncionario;
-
+    // Botoes funcionario.
+    private JButton cadastrarf;
+    private JButton voltarfuncionario;
 
     // Labels para roupas (camisas e calcas).
     private JLabel id;
@@ -77,7 +82,7 @@ public class TelaCadastrar implements ActionListener {
     private JButton cadastrarcalca;
     private JButton voltarcalca;
 
-    //Labels de para vendas.
+    // Labels de para vendas.
     private JLabel precototal;
 
     // Labels Venda
@@ -94,20 +99,27 @@ public class TelaCadastrar implements ActionListener {
     private JButton cadastrarvendacamisa;
     private JButton cadastrarvendacalca;
     private JButton voltarvenda;
-    
-    //Arraylists 
+
+    // Arraylists
     private ArrayList<Cliente> clienteTelaCadastrar;
     private ArrayList<Funcionario> funcionarioTelaCadastrar;
     private ArrayList<Camisa> camisaTelaCadastrar;
     private ArrayList<Calca> calcaTelaCadastrar;
     private ArrayList<Venda> vendaTelaCadastrar;
 
-    //metodo que gera a nossa tela de cadastro do cliente.
+    /**
+     * metodo que gera a nossa tela de cadastro do cliente: (1) iguala a arraylist
+     * recebida a instanciada no codigo. (2) instancia os componentes da tela e suas
+     * psoições.
+     * 
+     * @param clientes
+     * @return Tela de cadastro do Cliente
+     */
+
     public void cadastroCliente(ArrayList<Cliente> clientes) {
-        //iguala a arraylist recebida a instanciada no codigo
+
         clienteTelaCadastrar = clientes;
 
-        //aqui instanciamos nossos componentes da tela e instanciamos suas psoições.
         janela = new JFrame("Cadastrar Cliente");
         nome = new JLabel("Nome: ");
         email = new JLabel("Email: ");
@@ -134,7 +146,7 @@ public class TelaCadastrar implements ActionListener {
 
         textnome.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 30));
         textnome.setBounds(145, 13, 450, 40);
-        
+
         email.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
         email.setBounds(10, 80, 150, 50);
 
@@ -146,7 +158,7 @@ public class TelaCadastrar implements ActionListener {
 
         textcpf.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 30));
         textcpf.setBounds(125, 163, 200, 40);
-    
+
         datanac.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
         datanac.setBounds(10, 230, 350, 50);
 
@@ -206,12 +218,17 @@ public class TelaCadastrar implements ActionListener {
         voltarcliente.addActionListener(this);
     }
 
-    //metodo que gera a nossa tela de cadastro do Funcionario.
+    /**
+     * metodo que gera a nossa tela de cadastro do Funcionario: (1) iguala a
+     * arraylist recebida a instanciada no codigo (2) instancia os componentes da
+     * tela e suas psoições.
+     * 
+     * @param funcionario
+     * @return Tela de cadastro do Funcionario
+     */
     public void cadastrofuncionario(ArrayList<Funcionario> funcionario) {
-        //iguala a arraylist recebida a instanciada no codigo
         funcionarioTelaCadastrar = funcionario;
 
-        //aqui instanciamos nossos componentes da tela e instanciamos suas psoições.
         janela = new JFrame("Cadastrar Funcionario");
         nome = new JLabel("Nome: ");
         email = new JLabel("Email: ");
@@ -238,7 +255,7 @@ public class TelaCadastrar implements ActionListener {
 
         textnome.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 30));
         textnome.setBounds(145, 13, 450, 40);
-        
+
         email.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
         email.setBounds(10, 80, 150, 50);
 
@@ -250,7 +267,7 @@ public class TelaCadastrar implements ActionListener {
 
         textcpf.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 30));
         textcpf.setBounds(125, 163, 200, 40);
-    
+
         datacontract.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
         datacontract.setBounds(10, 230, 350, 50);
 
@@ -310,14 +327,21 @@ public class TelaCadastrar implements ActionListener {
         voltarfuncionario.addActionListener(this);
     }
 
-    //metodo que gera a nossa tela de cadastro da camisa.
+    /**
+     * metodo que gera a nossa tela de cadastro da Camisa: (1)iguala as arraylists
+     * recebidas as instanciadas no codigo (2) instancia os componentes da tela e
+     * suas posições.
+     * 
+     * @param camisas
+     * @param calcas
+     * @return Tela de cadastro da Camisa
+     */
+
     public void cadastroCamisa(ArrayList<Camisa> camisas, ArrayList<Calca> calcas) {
-        
-        //iguala as arraylists recebidas as instanciadas no codigo
+
         camisaTelaCadastrar = camisas;
         calcaTelaCadastrar = calcas;
 
-        //aqui instanciamos nossos componentes da tela e instanciamos suas psoições.
         janela = new JFrame("Cadastrar Camisa");
         id = new JLabel("id: ");
         nomec = new JLabel("Nome: ");
@@ -347,7 +371,7 @@ public class TelaCadastrar implements ActionListener {
 
         textid.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
         textid.setBounds(145, 15, 200, 30);
-        
+
         nomec.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
         nomec.setBounds(10, 50, 150, 50);
 
@@ -359,7 +383,7 @@ public class TelaCadastrar implements ActionListener {
 
         textdescricao.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
         textdescricao.setBounds(145, 105, 200, 30);
-    
+
         genero.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
         genero.setBounds(10, 140, 350, 50);
 
@@ -395,7 +419,7 @@ public class TelaCadastrar implements ActionListener {
 
         textestoque.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
         textestoque.setBounds(145, 375, 200, 30);
-        
+
         cadastrarcam.setBounds(425, 410, 150, 50);
         voltarcam.setBounds(2, 410, 150, 50);
 
@@ -430,15 +454,24 @@ public class TelaCadastrar implements ActionListener {
         cadastrarcam.addActionListener(this);
         voltarcam.addActionListener(this);
     }
-    
-    //metodo que gera a nossa tela de cadastro da calça
+
+    /**
+     * metodo que gera a nossa tela de cadastro da Calça: (1)iguala as arraylists
+     * recebidas as instanciadas no codigo (2)instancia os componentes da tela e
+     * suas posições..
+     * 
+     * @param camisas
+     * @param calcas
+     * @return retorna a tela de cadastro da Calça.
+     */
+
     public void cadastroCalca(ArrayList<Camisa> camisas, ArrayList<Calca> calcas) {
-        
-        //iguala as arraylists recebidas as instanciadas no codigo
+
+        // iguala as arraylists recebidas as instanciadas no codigo
         camisaTelaCadastrar = camisas;
         calcaTelaCadastrar = calcas;
 
-        //aqui instanciamos nossos componentes da tela e instanciamos suas psoições.
+        // aqui instanciamos nossos componentes da tela e instanciamos suas psoições.
         janela = new JFrame("Cadastrar Calça");
         id = new JLabel("id: ");
         nomec = new JLabel("Nome: ");
@@ -468,7 +501,7 @@ public class TelaCadastrar implements ActionListener {
 
         textid.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
         textid.setBounds(145, 15, 200, 30);
-        
+
         nomec.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
         nomec.setBounds(10, 50, 150, 50);
 
@@ -480,7 +513,7 @@ public class TelaCadastrar implements ActionListener {
 
         textdescricao.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
         textdescricao.setBounds(145, 105, 200, 30);
-    
+
         genero.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
         genero.setBounds(10, 140, 350, 50);
 
@@ -516,7 +549,7 @@ public class TelaCadastrar implements ActionListener {
 
         textestoquecalca.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
         textestoquecalca.setBounds(145, 375, 200, 30);
-        
+
         cadastrarcalca.setBounds(425, 410, 150, 50);
         voltarcalca.setBounds(2, 410, 150, 50);
 
@@ -552,10 +585,22 @@ public class TelaCadastrar implements ActionListener {
         voltarcalca.addActionListener(this);
     }
 
-    //metodo que gera a nossa tela de cadastro de venda com a camisa
-    public void cadastrarVendaComCamisa(ArrayList<Cliente> clientes, ArrayList<Funcionario> funcionarios, ArrayList<Camisa> camisas ,ArrayList<Calca> calcas, ArrayList<Venda> vendas) {
-        
-        //iguala as arraylists recebidas as instanciadas no codigo
+    /**
+     * metodo que gera a nossa tela de cadastro de venda com a Camisa: (1)iguala as
+     * arraylists recebidas as instanciadas no codigo. (2)Gera as caixas de
+     * seleção utilizando o for each para percorrer os nomes cadastrados.
+     * (3)instancia os componentes da tela e suas posições.
+     * 
+     * @param clientes
+     * @param funcionarios
+     * @param camisas
+     * @param calcas
+     * @param vendas
+     * @return Tela de cadastro de venda da Camisa
+     */
+    public void cadastrarVendaComCamisa(ArrayList<Cliente> clientes, ArrayList<Funcionario> funcionarios,
+            ArrayList<Camisa> camisas, ArrayList<Calca> calcas, ArrayList<Venda> vendas) {
+
         clienteTelaCadastrar = clientes;
         funcionarioTelaCadastrar = funcionarios;
         camisaTelaCadastrar = camisas;
@@ -563,34 +608,32 @@ public class TelaCadastrar implements ActionListener {
         vendaTelaCadastrar = vendas;
 
         janela = new JFrame("Cadastrar Venda");
-        
-        //Gera as caixas de seleçao no nosso metodo de cadastrar venda camisa.
-        String [] todosclientes = new String[clientes.size()];
+
+        String[] todosclientes = new String[clientes.size()];
         int count = 0;
-            for(Cliente cliente : clientes){
-                todosclientes[count] = cliente.getNome();
-                count++;
-            }
+        for (Cliente cliente : clientes) {
+            todosclientes[count] = cliente.getNome();
+            count++;
+        }
         caixaclientes = new JComboBox<String>(todosclientes);
 
-        String [] todosfunc = new String[clientes.size()];
+        String[] todosfunc = new String[clientes.size()];
         count = 0;
-            for(Funcionario funcionario : funcionarios){
-                todosfunc[count] = funcionario.getNome();
-                count++;
-            }
+        for (Funcionario funcionario : funcionarios) {
+            todosfunc[count] = funcionario.getNome();
+            count++;
+        }
         caixafuncionarios = new JComboBox<String>(todosfunc);
 
-        String [] todasroupas = new String[clientes.size()];
+        String[] todasroupas = new String[clientes.size()];
         count = 0;
-            for(Camisa camisa : camisas){
-                todasroupas[count] = camisa.getId() + "-" + camisa.getNome();
-                count++;
-            }
-        
-        //aqui instanciamos nossos componentes da tela e instanciamos suas psoições.
+        for (Camisa camisa : camisas) {
+            todasroupas[count] = camisa.getId() + "-" + camisa.getNome();
+            count++;
+        }
+
         caixaprodutos = new JComboBox<String>(todasroupas);
-        
+
         rotclientes = new JLabel("Clientes");
         rotfunc = new JLabel("Funcionários");
         rotroupas = new JLabel("Roupas");
@@ -623,7 +666,7 @@ public class TelaCadastrar implements ActionListener {
         janela.add(caixaprodutos);
         janela.add(cadastrarvendacamisa);
         janela.add(voltarvenda);
-      
+
         janela.setSize(1000, 500);
         janela.setResizable(true);
         janela.setLocationRelativeTo(null);
@@ -634,10 +677,23 @@ public class TelaCadastrar implements ActionListener {
         voltarvenda.addActionListener(this);
     }
 
-    //metodo que gera a nossa tela de cadastro de venda com a Calça
-    public void cadastrarVendaComCalca(ArrayList<Cliente> clientes, ArrayList<Funcionario> funcionarios, ArrayList<Camisa> camisas ,ArrayList<Calca> calcas, ArrayList<Venda> vendas) {
-        
-        //iguala as arraylists recebidas as instanciadas no codigo
+    /**
+     * metodo que gera a nossa tela de cadastro de venda com a Calça: (1)iguala as
+     * arraylists recebidas as instanciadas no codigo (2)Gera as caixas de seleção
+     * utilizando o for each para percorrer os nomes cadastrados. (3)instancia os
+     * componentes da tela e suas posições.
+     * 
+     * @param clientes
+     * @param funcionarios
+     * @param camisas
+     * @param calcas
+     * @param vendas
+     * @return Tela de cadastro de venda da Calça
+     */
+
+    public void cadastrarVendaComCalca(ArrayList<Cliente> clientes, ArrayList<Funcionario> funcionarios,
+            ArrayList<Camisa> camisas, ArrayList<Calca> calcas, ArrayList<Venda> vendas) {
+
         clienteTelaCadastrar = clientes;
         funcionarioTelaCadastrar = funcionarios;
         camisaTelaCadastrar = camisas;
@@ -646,31 +702,30 @@ public class TelaCadastrar implements ActionListener {
 
         janela = new JFrame("Cadastrar Venda");
 
-        //Gera as caixas de seleçao no nosso metodo de cadastrar venda calça.
-        String [] todosclientes = new String[clientes.size()];
+        String[] todosclientes = new String[clientes.size()];
         int count = 0;
-            for(Cliente cliente : clientes){
-                todosclientes[count] = cliente.getNome();
-                count++;
-            }
+        for (Cliente cliente : clientes) {
+            todosclientes[count] = cliente.getNome();
+            count++;
+        }
         caixaclientes = new JComboBox<String>(todosclientes);
 
-        String [] todosfunc = new String[clientes.size()];
+        String[] todosfunc = new String[clientes.size()];
         count = 0;
-            for(Funcionario funcionario : funcionarios){
-                todosfunc[count] = funcionario.getNome();
-                count++;
-            }
+        for (Funcionario funcionario : funcionarios) {
+            todosfunc[count] = funcionario.getNome();
+            count++;
+        }
         caixafuncionarios = new JComboBox<String>(todosfunc);
 
-        String [] todasroupas = new String[clientes.size()];
+        String[] todasroupas = new String[clientes.size()];
         count = 0;
-            for(Calca calca: calcas){
-                todasroupas[count] = calca.getId() + "-" + calca.getNome();
-                count++;
-            }
+        for (Calca calca : calcas) {
+            todasroupas[count] = calca.getId() + "-" + calca.getNome();
+            count++;
+        }
         caixaprodutos = new JComboBox<String>(todasroupas);
-        
+
         rotclientes = new JLabel("Clientes");
         rotfunc = new JLabel("Funcionários");
         rotroupas = new JLabel("Roupas");
@@ -703,7 +758,7 @@ public class TelaCadastrar implements ActionListener {
         janela.add(caixaprodutos);
         janela.add(cadastrarvendacalca);
         janela.add(voltarvenda);
-      
+
         janela.setSize(1000, 500);
         janela.setResizable(true);
         janela.setLocationRelativeTo(null);
@@ -714,205 +769,212 @@ public class TelaCadastrar implements ActionListener {
         voltarvenda.addActionListener(this);
     }
 
+    /**
+     * Metodo que instancia os actions dos botões. (cadastrarcam) cadastra uma
+     * camisa com os dados inseridos nos textfields (voltarcam) volta da tela
+     * cadastro camisa para a tela camisa. (cadastrarcalca) cadastra uma calça com
+     * os dados inseridos nos textfields (voltarcalca) olta da tela cadastro calça
+     * para a tela calça. (cadastrarc) cadastra um cliente com os dados inseridos
+     * nos textfields (voltarcliente) volta da tela cadastro cliente para a tela
+     * cliente. (cadastrarf)cadastra um funcionario com os dados inseridos nos
+     * textfields (voltarfuncionario) volta da tela cadastro funcionario para a tela
+     * funcionario. (cadastrarvendacamisa) recebe o item selecionado na caixa e os
+     * cadastra. (cadastrarvendacalca) recebe o item selecionado na caixa e os
+     * cadastra. (voltarvenda) volta para a tela do menu venda.
+     * 
+     * @param e
+     * @return os eventos que acontecerão ao acionarmos os botões.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();
 
-        if(src == cadastrarcam){
-            //evento que cadastra uma camisa com os dados inseridos nos textfields
-            try{
+        if (src == cadastrarcam) {
+
+            try {
                 // Valida o id iserido.
-                if (Validador.validaId(textid.getText())){
+                if (Validador.validaId(textid.getText())) {
                     // Valida o genero inserido.
                     if (Validador.validaGenero(textgenero.getText().charAt(0))) {
                         // Valida o tamano inserido.
                         if (Validador.validaTamanho(texttamanho.getText())) {
-                            camisaTelaCadastrar.add(new Camisa(
-                                textid.getText(), 
-                                textnomec.getText(), 
-                                textdescricao.getText(),
-                                textgenero.getText().charAt(0),
-                                Float.parseFloat(textpreco.getText()),
-                                textmarca.getText(),
-                                textcor.getText(),
-                                texttamanho.getText(),
-                                Integer.parseInt(textestoque.getText())));  
-                        }else{
-                            JOptionPane.showMessageDialog(null, "O tamanho inserido é inválido! (Apenas PP, P, M, G, GG)", "Erro Tamanho", JOptionPane.ERROR_MESSAGE);
-                        } 
-                    }else{
-                        JOptionPane.showMessageDialog(null, "O gênero é inválido! (Apenas F/M)", "Erro Gênero", JOptionPane.ERROR_MESSAGE);
+                            camisaTelaCadastrar.add(new Camisa(textid.getText(), textnomec.getText(),
+                                    textdescricao.getText(), textgenero.getText().charAt(0),
+                                    Float.parseFloat(textpreco.getText()), textmarca.getText(), textcor.getText(),
+                                    texttamanho.getText(), Integer.parseInt(textestoque.getText())));
+                        } else {
+                            JOptionPane.showMessageDialog(null,
+                                    "O tamanho inserido é inválido! (Apenas PP, P, M, G, GG)", "Erro Tamanho",
+                                    JOptionPane.ERROR_MESSAGE);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "O gênero é inválido! (Apenas F/M)", "Erro Gênero",
+                                JOptionPane.ERROR_MESSAGE);
                     }
 
-                }else{
-                    JOptionPane.showMessageDialog(null, "O ID deve ter obrigatoriamente 3 digitos!!", "Erro ID", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "O ID deve ter obrigatoriamente 3 digitos!!", "Erro ID",
+                            JOptionPane.ERROR_MESSAGE);
                 }
-                
-            }catch(NumberFormatException exep){
-                JOptionPane.showMessageDialog(null, "Alguma informação está incorreta", "Erro Cadastro", JOptionPane.ERROR_MESSAGE);
+
+            } catch (NumberFormatException exep) {
+                JOptionPane.showMessageDialog(null, "Alguma informação está incorreta", "Erro Cadastro",
+                        JOptionPane.ERROR_MESSAGE);
             }
             janela.dispose();
             new TelaRoupa().telacamisa(camisaTelaCadastrar, calcaTelaCadastrar);
         }
 
         if (src == voltarcam) {
-            //evento que volta da tela cadastro camisa para a tela camisa.
             janela.dispose();
-            new TelaRoupa().telacamisa(camisaTelaCadastrar, calcaTelaCadastrar);;
+            new TelaRoupa().telacamisa(camisaTelaCadastrar, calcaTelaCadastrar);
+            ;
         }
 
-        if(src == cadastrarcalca){
-            //evento que cadastra uma calça com os dados inseridos nos textfields
-            try{
+        if (src == cadastrarcalca) {
+
+            try {
                 // Valida o id inserido.
                 if (Validador.validaId(textid.getText())) {
                     // Valida o genero inserido.
                     if (Validador.validaGenero(textgenero.getText().charAt(0))) {
-                        calcaTelaCadastrar.add(new Calca(
-                            textid.getText(), 
-                            textnomec.getText(), 
-                            textdescricao.getText(),
-                            textgenero.getText().charAt(0),
-                            Float.parseFloat(textpreco.getText()),
-                            textmarca.getText(),
-                            textcor.getText(),
-                            Float.parseFloat(texttamanhocintura.getText()),
-                            Integer.parseInt(textestoquecalca.getText())));
-                    }else{
-                        JOptionPane.showMessageDialog(null, "O gênero é inválido! (Apenas F/M)", "Erro Gênero", JOptionPane.ERROR_MESSAGE);
+                        calcaTelaCadastrar.add(new Calca(textid.getText(), textnomec.getText(), textdescricao.getText(),
+                                textgenero.getText().charAt(0), Float.parseFloat(textpreco.getText()),
+                                textmarca.getText(), textcor.getText(), Float.parseFloat(texttamanhocintura.getText()),
+                                Integer.parseInt(textestoquecalca.getText())));
+                    } else {
+                        JOptionPane.showMessageDialog(null, "O gênero é inválido! (Apenas F/M)", "Erro Gênero",
+                                JOptionPane.ERROR_MESSAGE);
                     }
-                }else{
-                    JOptionPane.showMessageDialog(null, "O ID deve ter obrigatoriamente 3 digitos!!", "Erro ID", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "O ID deve ter obrigatoriamente 3 digitos!!", "Erro ID",
+                            JOptionPane.ERROR_MESSAGE);
                 }
-                
-            }catch(NumberFormatException exep){
-                JOptionPane.showMessageDialog(null, "Alguma informação está incorreta", "Erro Cadastro", JOptionPane.ERROR_MESSAGE);
+
+            } catch (NumberFormatException exep) {
+                JOptionPane.showMessageDialog(null, "Alguma informação está incorreta", "Erro Cadastro",
+                        JOptionPane.ERROR_MESSAGE);
             }
             janela.dispose();
             new TelaRoupa().telaCalca(camisaTelaCadastrar, calcaTelaCadastrar);
         }
 
         if (src == voltarcalca) {
-            //evento que volta da tela cadastro calça para a tela calça.
+
             janela.dispose();
-            new TelaRoupa().telaCalca(camisaTelaCadastrar, calcaTelaCadastrar);;
+            new TelaRoupa().telaCalca(camisaTelaCadastrar, calcaTelaCadastrar);
+            ;
         }
 
         if (src == cadastrarc) {
-            //evento que cadastra um cliente com os dados inseridos nos textfields
+
             String dataformatada = textdia.getText() + "/" + textmes.getText() + "/" + textano.getText();
-            try{
+            try {
                 // Valida o cpf inserido
                 if (Validador.validaCpf(textcpf.getText())) {
-                    clienteTelaCadastrar.add(new Cliente(
-                        textnome.getText(), 
-                        textemail.getText(), 
-                        textcpf.getText(), 
-                        new Telefone(Integer.parseInt(textddd.getText()), Integer.parseInt(texttel.getText())), 
-                        dataformatada));
-                }else{
+                    clienteTelaCadastrar.add(new Cliente(textnome.getText(), textemail.getText(), textcpf.getText(),
+                            new Telefone(Integer.parseInt(textddd.getText()), Integer.parseInt(texttel.getText())),
+                            dataformatada));
+                } else {
                     JOptionPane.showMessageDialog(null, "O CPF é inválido!", "Erro CPF", JOptionPane.ERROR_MESSAGE);
                 }
-            }catch(NumberFormatException exep){
-                JOptionPane.showMessageDialog(null, "Alguma informação está incorreta", "Erro Cadastro", JOptionPane.ERROR_MESSAGE);
+            } catch (NumberFormatException exep) {
+                JOptionPane.showMessageDialog(null, "Alguma informação está incorreta", "Erro Cadastro",
+                        JOptionPane.ERROR_MESSAGE);
             }
 
             janela.dispose();
             new TelaPessoa().telaCliente(clienteTelaCadastrar);
         }
-        
+
         if (src == voltarcliente) {
-            //evento que volta da tela cadastro cliente para a tela cliente.
+
             janela.dispose();
-            new TelaPessoa().telaCliente(clienteTelaCadastrar);;
+            new TelaPessoa().telaCliente(clienteTelaCadastrar);
+            ;
         }
-        
+
         if (src == cadastrarf) {
-            //evento que cadastra um funcionario com os dados inseridos nos textfields
+
             String dataformatada = textdia.getText() + "/" + textmes.getText() + "/" + textano.getText();
-            try{
+            try {
                 // Valida o cpf inserido
                 if (Validador.validaCpf(textcpf.getText())) {
-                    funcionarioTelaCadastrar.add(new Funcionario(
-                        textnome.getText(), 
-                        textemail.getText(), 
-                        textcpf.getText(), 
-                        new Telefone(Integer.parseInt(textddd.getText()), Integer.parseInt(texttel.getText())), 
-                        dataformatada));
-                }else{
+                    funcionarioTelaCadastrar.add(new Funcionario(textnome.getText(), textemail.getText(),
+                            textcpf.getText(),
+                            new Telefone(Integer.parseInt(textddd.getText()), Integer.parseInt(texttel.getText())),
+                            dataformatada));
+                } else {
                     JOptionPane.showMessageDialog(null, "O CPF é inválido!", "Erro CPF", JOptionPane.ERROR_MESSAGE);
                 }
-            
-            }catch(NumberFormatException exep){
-                JOptionPane.showMessageDialog(null, "Alguma informação está incorreta", "Erro Cadastro", JOptionPane.ERROR_MESSAGE);
+
+            } catch (NumberFormatException exep) {
+                JOptionPane.showMessageDialog(null, "Alguma informação está incorreta", "Erro Cadastro",
+                        JOptionPane.ERROR_MESSAGE);
             }
-            
-            janela.dispose(); 
+
+            janela.dispose();
             new TelaPessoa().telaFuncionario(funcionarioTelaCadastrar);
         }
-        
+
         if (src == voltarfuncionario) {
-            //evento que volta da tela cadastro funcionario para a tela funcionario.
+
             janela.dispose();
             new TelaPessoa().telaFuncionario(funcionarioTelaCadastrar);
         }
 
         if (src == cadastrarvendacamisa) {
-            //evento que recebe o item selecionado na caixa e os cadastra.
-            int protoc = new Random().nextInt(9999-1000) + 1000;
 
-            vendaTelaCadastrar.add(new Venda(
-                clienteTelaCadastrar.get(caixaclientes.getSelectedIndex()), 
-                camisaTelaCadastrar.get(caixaprodutos.getSelectedIndex()),
-                funcionarioTelaCadastrar.get(caixafuncionarios.getSelectedIndex()), 
-                camisaTelaCadastrar.get(caixaprodutos.getSelectedIndex()).getPreco(), 
-                String.valueOf(protoc)
-            ));
-            
-            JOptionPane.showMessageDialog(null, 
-                "Preço Total: " + camisaTelaCadastrar.get(caixaprodutos.getSelectedIndex()).getPreco() + "\n" +
-                "Protocolo: " + protoc, 
-                "Venda Registrada!", JOptionPane.INFORMATION_MESSAGE
-            );
-            
+            int protoc = new Random().nextInt(9999 - 1000) + 1000;
+
+            vendaTelaCadastrar.add(new Venda(clienteTelaCadastrar.get(caixaclientes.getSelectedIndex()),
+                    camisaTelaCadastrar.get(caixaprodutos.getSelectedIndex()),
+                    funcionarioTelaCadastrar.get(caixafuncionarios.getSelectedIndex()),
+                    camisaTelaCadastrar.get(caixaprodutos.getSelectedIndex()).getPreco(), String.valueOf(protoc)));
+
+            JOptionPane
+                    .showMessageDialog(null,
+                            "Preço Total: " + camisaTelaCadastrar.get(caixaprodutos.getSelectedIndex()).getPreco()
+                                    + "\n" + "Protocolo: " + protoc,
+                            "Venda Registrada!", JOptionPane.INFORMATION_MESSAGE);
+
             // Reduz o estoque da camisa vendida.
-            camisaTelaCadastrar.get(caixaprodutos.getSelectedIndex()).setEstoqueCamisa(
-                camisaTelaCadastrar.get(caixaprodutos.getSelectedIndex()).getEstoqueCamisa() - 1);
-                
+            camisaTelaCadastrar.get(caixaprodutos.getSelectedIndex())
+                    .setEstoqueCamisa(camisaTelaCadastrar.get(caixaprodutos.getSelectedIndex()).getEstoqueCamisa() - 1);
 
-            janela.dispose(); 
-            new TelaVenda().telaVenda(clienteTelaCadastrar, funcionarioTelaCadastrar, camisaTelaCadastrar, calcaTelaCadastrar, vendaTelaCadastrar);
+            janela.dispose();
+            new TelaVenda().telaVenda(clienteTelaCadastrar, funcionarioTelaCadastrar, camisaTelaCadastrar,
+                    calcaTelaCadastrar, vendaTelaCadastrar);
         }
 
         if (src == cadastrarvendacalca) {
-            //evento que recebe o item selecionado na caixa e os cadastra.
-            int protoc = new Random().nextInt(9999-1000) + 1000;
-            vendaTelaCadastrar.add(new Venda(
-                clienteTelaCadastrar.get(caixaclientes.getSelectedIndex()), 
-                calcaTelaCadastrar.get(caixaprodutos.getSelectedIndex()),
-                funcionarioTelaCadastrar.get(caixafuncionarios.getSelectedIndex()), 
-                calcaTelaCadastrar.get(caixaprodutos.getSelectedIndex()).getPreco(), 
-                String.valueOf(protoc)
-            ));
 
-            JOptionPane.showMessageDialog(null, 
-                "Preço Total: " + calcaTelaCadastrar.get(caixaprodutos.getSelectedIndex()).getPreco() + "\n" +
-                "Protocolo: " + protoc, 
-                "Venda Registrada!", JOptionPane.INFORMATION_MESSAGE
-            );
+            int protoc = new Random().nextInt(9999 - 1000) + 1000;
+            vendaTelaCadastrar.add(new Venda(clienteTelaCadastrar.get(caixaclientes.getSelectedIndex()),
+                    calcaTelaCadastrar.get(caixaprodutos.getSelectedIndex()),
+                    funcionarioTelaCadastrar.get(caixafuncionarios.getSelectedIndex()),
+                    calcaTelaCadastrar.get(caixaprodutos.getSelectedIndex()).getPreco(), String.valueOf(protoc)));
+
+            JOptionPane
+                    .showMessageDialog(
+                            null, "Preço Total: " + calcaTelaCadastrar.get(caixaprodutos.getSelectedIndex()).getPreco()
+                                    + "\n" + "Protocolo: " + protoc,
+                            "Venda Registrada!", JOptionPane.INFORMATION_MESSAGE);
 
             // Reduz o estoque da calca vendida.
-            calcaTelaCadastrar.get(caixaprodutos.getSelectedIndex()).setEstoqueCalca(
-                calcaTelaCadastrar.get(caixaprodutos.getSelectedIndex()).getEstoqueCalca() - 1);
+            calcaTelaCadastrar.get(caixaprodutos.getSelectedIndex())
+                    .setEstoqueCalca(calcaTelaCadastrar.get(caixaprodutos.getSelectedIndex()).getEstoqueCalca() - 1);
 
-            janela.dispose(); 
-            new TelaVenda().telaVenda(clienteTelaCadastrar, funcionarioTelaCadastrar, camisaTelaCadastrar, calcaTelaCadastrar, vendaTelaCadastrar);
+            janela.dispose();
+            new TelaVenda().telaVenda(clienteTelaCadastrar, funcionarioTelaCadastrar, camisaTelaCadastrar,
+                    calcaTelaCadastrar, vendaTelaCadastrar);
         }
 
         if (src == voltarvenda) {
-            //evento que volta para a tela do menu venda.
+
             janela.dispose();
-            new TelaVenda().telaVenda(clienteTelaCadastrar, funcionarioTelaCadastrar, camisaTelaCadastrar, calcaTelaCadastrar, vendaTelaCadastrar);
+            new TelaVenda().telaVenda(clienteTelaCadastrar, funcionarioTelaCadastrar, camisaTelaCadastrar,
+                    calcaTelaCadastrar, vendaTelaCadastrar);
         }
     }
 }

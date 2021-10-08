@@ -18,7 +18,13 @@ import Objetos.Camisa;
 import Objetos.Cliente;
 import Objetos.Funcionario;
 import Objetos.Venda;
-//instancia uma classe no qual implementa ActionListeners para que possamos utilizar dos evento
+
+/**
+ * instancia a classe de TelaVendano qual implementa ActionListeners para que possamos utilizar dos evento.
+ * @author Felipe e João
+ * @version TP5 (Outubro 2021)
+ */
+
 public class TelaVenda implements ActionListener, ListSelectionListener, MouseListener {
 
     private JFrame janela;
@@ -43,10 +49,23 @@ public class TelaVenda implements ActionListener, ListSelectionListener, MouseLi
     private static ArrayList <Venda> vendasTelaVenda;
 
     private String[] todasvendas;
-    //metodo que ira nos mostrar a nos tela venda principal .Este metodo recebe 5 arraylists como parametros.
+    
+    /** 
+     * metodo que ira nos mostrar a nos tela venda principal .Este metodo recebe 5 arraylists como parametros.
+     * (1)iguala as arraylists recebidas a instanciadas no codigo.
+     * (2)Percorre o for each
+     * (3)instancia os componentes e suas posições
+     * @param clientes
+     * @param funcionarios
+     * @param camisas
+     * @param calcas
+     * @param vendas
+     * @return Tela de venda
+     */
+    
     public void telaVenda(ArrayList<Cliente> clientes, ArrayList<Funcionario> funcionarios, ArrayList<Camisa> camisas ,ArrayList<Calca> calcas, ArrayList<Venda> vendas) {
         
-        //iguala as arraylists recebidas a instanciadas no codigo.
+        
         clientesTelaVenda = clientes;
         funcionariosTelaVenda = funcionarios;
         camisasTelaVenda = camisas;
@@ -61,7 +80,7 @@ public class TelaVenda implements ActionListener, ListSelectionListener, MouseLi
             count++;
         }
 
-        //aqui instanciamos nossos componentes da tela e instanciamos suas psoições.
+
         janela = new JFrame("Camisas");
         listavendas = new JList<String>(todasvendas);
         listascroll = new JScrollPane();
@@ -108,7 +127,18 @@ public class TelaVenda implements ActionListener, ListSelectionListener, MouseLi
         listavendas.addListSelectionListener(this);
     }
 
-    // Tela para escolha do tipo de produto vendido (aparece apos clicar em cadastrar venda).
+    
+    /** 
+     * Tela para escolha do tipo de produto vendido (aparece apos clicar em cadastrar venda).
+     * (1)instancia os componentes e suas posições
+     * @param clientes
+     * @param funcionarios
+     * @param camisas
+     * @param calcas
+     * @param vendas
+     * @return tela de escolha do produto
+     */
+    
     public void telaPreCadastro(ArrayList<Cliente> clientes, ArrayList<Funcionario> funcionarios, ArrayList<Camisa> camisas ,ArrayList<Calca> calcas, ArrayList<Venda> vendas) {
         janela = new JFrame("Cadasto de Venda");
 
@@ -138,10 +168,16 @@ public class TelaVenda implements ActionListener, ListSelectionListener, MouseLi
         seleccalca.addActionListener(this);
     }
 
+    
+    /** 
+     * vento que recebe o  clique do mouse e limpa o textfield de pesquisar a venda.
+     * @param e
+     * @return textfield limpo para pesquisa
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
         Object src = e.getSource();
-         //evento que recebe o  clique do mouse e limpa o textfield de pesquisar a venda.
+         
         if(src == pesqvenda){
             pesqvenda.setText(null);
         }
@@ -171,6 +207,12 @@ public class TelaVenda implements ActionListener, ListSelectionListener, MouseLi
         
     }
 
+    
+    /** 
+     * observa o clique na lista da venda e monstra os dados
+     * @param e
+     * @return dados da venda
+     */
     @Override
     public void valueChanged(ListSelectionEvent e) {
         Object src = e.getSource();
@@ -187,6 +229,16 @@ public class TelaVenda implements ActionListener, ListSelectionListener, MouseLi
         }        
     }
 
+    
+    /** Metodo que configura os actions dos botões
+     * (pesqvenda) obtem o textfield e realiza a pesquisa na lista
+     * (cadastrarvenda) abre a nossa tela pre cadastro de venda onde voce selecionara as opçoes.
+     * (voltar) volta para a tela principal da aplicação.
+     * (seleccamisa) seleciona a camisa e abre o cadastro de venda para camisa
+     * (seleccalca) seleciona a calça e abre o cadastro de venda para calça
+     * @param e
+     * @return eventos dos botões
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();   
@@ -204,25 +256,25 @@ public class TelaVenda implements ActionListener, ListSelectionListener, MouseLi
         }
 
         if (src == cadastrarvenda) {
-            //evento que abre a nossa tela pre cadastro de venda onde voce selecionara as opçoes.
+            
             janela.dispose();
             new TelaVenda().telaPreCadastro(clientesTelaVenda, funcionariosTelaVenda, camisasTelaVenda, calcasTelaVenda, vendasTelaVenda);
         }
 
         if (src == voltar) {
-            //evento que volta para a tela principal da aplicação.
+            
             janela.dispose();
             new TelaPrincipal().telaPrincipal();
         }
 
         if (src == seleccamisa) {
-            //evento que seleciona a camisa e abre o cadastro de venda para camisa
+            
             janela.dispose();
             new TelaCadastrar().cadastrarVendaComCamisa(clientesTelaVenda, funcionariosTelaVenda, camisasTelaVenda, calcasTelaVenda, vendasTelaVenda);
         }
 
         if (src == seleccalca) {
-            //evento que seleciona a camisa e abre o cadastro de venda para calça
+            
             janela.dispose();
             new TelaCadastrar().cadastrarVendaComCalca(clientesTelaVenda, funcionariosTelaVenda, camisasTelaVenda, calcasTelaVenda, vendasTelaVenda);
         }

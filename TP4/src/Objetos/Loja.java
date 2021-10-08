@@ -2,6 +2,11 @@ package Objetos;
 
 import App.Read;
 
+/**
+ * classe responsavel pela implementação dos atributos e dos metodos da Loja
+ * @author Felipe e João
+ * @version TP5 (Outubro 2021)
+ */
 public class Loja {
 	
 	String cnpj;
@@ -42,7 +47,10 @@ public class Loja {
 	public void setNomefilial(String nomefilial) {
 		this.nomefilial = nomefilial;
 	}
-	
+	/**
+	 * Metodo responsavel pelo cadastro dos dados da loja
+	 * @return cadastro dos dados no seu arraylist
+	 */
 	public void cadastrarLoja(){
 		System.out.println("Digite o nome da filial: ");
 		this.setNomefilial(Read.getString());
@@ -55,6 +63,12 @@ public class Loja {
 
 	}
 
+	
+	/** 
+	 * Metodo responsavel pela edição dos dados da loja
+	 * @param seletor
+	 * @return dados editados no arraylist
+	 */
 	public void editarLoja(int seletor){
 		String cnpjedit;
 		switch (seletor) {
@@ -91,6 +105,12 @@ public class Loja {
 	}
 
 
+	
+	/** 
+	 * Metodo que imprime os dados da loja utilizando o toString
+	 * @return String
+	 */
+	
 	public String toString() {
 		return "Nome da Filial: " + nomefilial + "\n" 
 			 + "Endereço: " + endereco + "\n" 
