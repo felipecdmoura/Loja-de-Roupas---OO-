@@ -37,7 +37,7 @@ public class Cliente extends Pessoa{
 
 	/**
 	 * Metodo responsavel pelo cadastro de cliente
-	 * @return cadastro do cliente no seu arraylist
+	 * @deprecated
 	 */
 	public void cadatrarCliente(){
 		String cpf;
@@ -77,8 +77,8 @@ public class Cliente extends Pessoa{
 	
 	/** 
 	 * Metodo responsavel pela edição dos dados do cliente
-	 * @param seletor
-	 * @return dados editados na arraylist
+	 * @param seletor de qual cliente devera ser alterado.
+	 * @deprecated
 	 */
 	
 	public void editCliente(int seletor){
@@ -135,7 +135,7 @@ public class Cliente extends Pessoa{
 	
 	/** 
 	 * Metodo responsavel por mostrar os dados do cliente atraves do toString
-	 * @return String
+	 * @return toString com as infos de Cliente.
 	 */
 	
 	public String toString() {

@@ -48,7 +48,7 @@ public class Camisa extends Roupa {
 
     /**
      * Metodo responsavel pelo cadastro da camisa
-     * @return cadastro da camisa no arraylist
+     * @deprecated
      */
 
     public void cadastrarcamisa(){
@@ -85,8 +85,8 @@ public class Camisa extends Roupa {
     
     /** 
      * Metodo responsavel pela ediçao dos dados da camisa
-     * @param seletor
-     * @return dados editados na arraylist
+     * @param seletor de qual camisa devera ser alterada.
+     * @deprecated
      */
 
 	public void editarCamisa(int seletor){
@@ -142,7 +142,7 @@ public class Camisa extends Roupa {
     
     /** 
      * Metodo responsavel por mostrar os dados da camisa atraves do toString
-     * @return String
+     * @return toString com as infos de Camisa.
      */
 
     public String toString() {

@@ -43,8 +43,7 @@ public class TelaPrincipal extends JFrame implements ActionListener  {
     private JButton sair = new JButton("Sair");
 
     /**
-     * Metodo do MenuPrincipal da nossa aplicação.
-     *@return Tela principal da nossa aplicação 
+     * Metodo que inicializa a TelaInicial da aplicação.
      */
     public void telaPrincipal(){
         setTitle("Menu principal");
@@ -81,7 +80,6 @@ public class TelaPrincipal extends JFrame implements ActionListener  {
     
     /** 
      * @param args
-     * @return dados aleatorios e tela da aplicação
      * (1)Inicializa os Dados aleatorios como dados default da nossa aplicação
      * (2)Inicializa o metodo da nossa tela principal.
      */
@@ -94,9 +92,8 @@ public class TelaPrincipal extends JFrame implements ActionListener  {
 
     
     /** 
-     * Metodo que instancia os actions dos botões.
+     * Metodo que que gera as acoes dos botoes da telaPrincipal.
      * @param e
-     * @return os eventos que acontecerão ao acionarmos os botões.
      */
     @Override
     public void actionPerformed(ActionEvent e) {

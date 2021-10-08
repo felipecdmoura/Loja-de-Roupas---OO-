@@ -108,12 +108,11 @@ public class TelaCadastrar implements ActionListener {
     private ArrayList<Venda> vendaTelaCadastrar;
 
     /**
-     * metodo que gera a nossa tela de cadastro do cliente: (1) iguala a arraylist
+     * Metodo que gera a nossa tela de cadastro do cliente: (1) iguala a arraylist
      * recebida a instanciada no codigo. (2) instancia os componentes da tela e suas
-     * psoições.
+     * posições.
      * 
-     * @param clientes
-     * @return Tela de cadastro do Cliente
+     * @param Arraylist<Cliente> contendo os clientes cadastrados no sistema.
      */
 
     public void cadastroCliente(ArrayList<Cliente> clientes) {
@@ -219,13 +218,12 @@ public class TelaCadastrar implements ActionListener {
     }
 
     /**
-     * metodo que gera a nossa tela de cadastro do Funcionario: (1) iguala a
+     * Metodo que gera a nossa tela de cadastro do Funcionario: (1) iguala a
      * arraylist recebida a instanciada no codigo (2) instancia os componentes da
      * tela e suas psoições.
      * 
-     * @param funcionario
-     * @return Tela de cadastro do Funcionario
-     */
+     * @param Arraylist<Funcionario> contendo os funcionarios cadastrados no sistema.
+     * @return Tela de cadastro do Funcionario     */
     public void cadastrofuncionario(ArrayList<Funcionario> funcionario) {
         funcionarioTelaCadastrar = funcionario;
 
@@ -328,13 +326,12 @@ public class TelaCadastrar implements ActionListener {
     }
 
     /**
-     * metodo que gera a nossa tela de cadastro da Camisa: (1)iguala as arraylists
+     * Metodo que gera a nossa tela de cadastro da Camisa: (1)iguala as arraylists
      * recebidas as instanciadas no codigo (2) instancia os componentes da tela e
      * suas posições.
      * 
-     * @param camisas
-     * @param calcas
-     * @return Tela de cadastro da Camisa
+     * @param Arraylist<Camisa> contendo as camisas cadastrados no sistema.
+     * @param Arraylist<Calca> contendo as calcas cadastrados no sistema.
      */
 
     public void cadastroCamisa(ArrayList<Camisa> camisas, ArrayList<Calca> calcas) {
@@ -456,13 +453,12 @@ public class TelaCadastrar implements ActionListener {
     }
 
     /**
-     * metodo que gera a nossa tela de cadastro da Calça: (1)iguala as arraylists
+     * Metodo que gera a nossa tela de cadastro da Calça: (1)iguala as arraylists
      * recebidas as instanciadas no codigo (2)instancia os componentes da tela e
      * suas posições..
      * 
-     * @param camisas
-     * @param calcas
-     * @return retorna a tela de cadastro da Calça.
+     * @param Arraylist<Camisa> contendo as camisas cadastrados no sistema.
+     * @param Arraylist<Calca> contendo as calcas cadastrados no sistema.
      */
 
     public void cadastroCalca(ArrayList<Camisa> camisas, ArrayList<Calca> calcas) {
@@ -586,17 +582,16 @@ public class TelaCadastrar implements ActionListener {
     }
 
     /**
-     * metodo que gera a nossa tela de cadastro de venda com a Camisa: (1)iguala as
+     * Metodo que gera a nossa tela de cadastro de venda com a Camisa: (1)iguala as
      * arraylists recebidas as instanciadas no codigo. (2)Gera as caixas de
      * seleção utilizando o for each para percorrer os nomes cadastrados.
      * (3)instancia os componentes da tela e suas posições.
      * 
-     * @param clientes
-     * @param funcionarios
-     * @param camisas
-     * @param calcas
-     * @param vendas
-     * @return Tela de cadastro de venda da Camisa
+     * @param Arraylist<Cliente> contendo os clientes cadastrados no sistema.
+     * @param Arraylist<Funcionario> contendo os funcionarios cadastrados no sistema.
+     * @param Arraylist<Camisa> contendo as camisas cadastrados no sistema.
+     * @param Arraylist<Calca> contendo as calcas cadastrados no sistema.
+     * @param Arraylist<Venda> contendo as vendas cadastrados no sistema.
      */
     public void cadastrarVendaComCamisa(ArrayList<Cliente> clientes, ArrayList<Funcionario> funcionarios,
             ArrayList<Camisa> camisas, ArrayList<Calca> calcas, ArrayList<Venda> vendas) {
@@ -678,17 +673,16 @@ public class TelaCadastrar implements ActionListener {
     }
 
     /**
-     * metodo que gera a nossa tela de cadastro de venda com a Calça: (1)iguala as
+     * Metodo que gera a nossa tela de cadastro de venda com a Calça: (1)iguala as
      * arraylists recebidas as instanciadas no codigo (2)Gera as caixas de seleção
      * utilizando o for each para percorrer os nomes cadastrados. (3)instancia os
      * componentes da tela e suas posições.
      * 
-     * @param clientes
-     * @param funcionarios
-     * @param camisas
-     * @param calcas
-     * @param vendas
-     * @return Tela de cadastro de venda da Calça
+     * @param Arraylist<Cliente> contendo os clientes cadastrados no sistema.
+     * @param Arraylist<Funcionario> contendo os funcionarios cadastrados no sistema.
+     * @param Arraylist<Camisa> contendo as camisas cadastrados no sistema.
+     * @param Arraylist<Calca> contendo as calcas cadastrados no sistema.
+     * @param Arraylist<Venda> contendo as vendas cadastrados no sistema.
      */
 
     public void cadastrarVendaComCalca(ArrayList<Cliente> clientes, ArrayList<Funcionario> funcionarios,
@@ -770,20 +764,20 @@ public class TelaCadastrar implements ActionListener {
     }
 
     /**
-     * Metodo que instancia os actions dos botões. (cadastrarcam) cadastra uma
-     * camisa com os dados inseridos nos textfields (voltarcam) volta da tela
-     * cadastro camisa para a tela camisa. (cadastrarcalca) cadastra uma calça com
-     * os dados inseridos nos textfields (voltarcalca) olta da tela cadastro calça
-     * para a tela calça. (cadastrarc) cadastra um cliente com os dados inseridos
-     * nos textfields (voltarcliente) volta da tela cadastro cliente para a tela
-     * cliente. (cadastrarf)cadastra um funcionario com os dados inseridos nos
-     * textfields (voltarfuncionario) volta da tela cadastro funcionario para a tela
-     * funcionario. (cadastrarvendacamisa) recebe o item selecionado na caixa e os
-     * cadastra. (cadastrarvendacalca) recebe o item selecionado na caixa e os
-     * cadastra. (voltarvenda) volta para a tela do menu venda.
+     * Metodo que instancia os actions dos botões. 
+     * (cadastrarcam) cadastra umacamisa com os dados inseridos nos textfields 
+     * (voltarcam) volta da telacadastro camisa para a tela camisa. 
+     * (cadastrarcalca) cadastra uma calça com os dados inseridos nos textfields 
+     * (voltarcalca) olta da tela cadastro calça para a tela calça. 
+     * (cadastrarc) cadastra um cliente com os dados inseridos nos textfields 
+     * (voltarcliente) volta da tela cadastro cliente para a telacliente. 
+     * (cadastrarf)cadastra um funcionario com os dados inseridos nos textfields 
+     * (voltarfuncionario) volta da tela cadastro funcionario para a telafuncionario. 
+     * (cadastrarvendacamisa) recebe o item selecionado na caixa e os cadastra. 
+     * (cadastrarvendacalca) recebe o item selecionado na caixa e os cadastra. 
+     * (voltarvenda) volta para a tela do menu venda.
      * 
      * @param e
-     * @return os eventos que acontecerão ao acionarmos os botões.
      */
     @Override
     public void actionPerformed(ActionEvent e) {

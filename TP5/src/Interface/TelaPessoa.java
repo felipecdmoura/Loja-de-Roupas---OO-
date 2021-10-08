@@ -28,9 +28,8 @@ import Objetos.Cliente;
 import Objetos.Funcionario;
 /**
  * implementa as nossas telas que herdam do objeto pessoa como cliente e funcionario.
- * @author Felipe e João
- * 
- * @version TP5 (Outubro 2021)
+ * @author Felipe e João. 
+ * @version TP5 (Outubro 2021).
  */
 public class TelaPessoa implements ActionListener, ListSelectionListener, MouseListener {
     private JFrame janela;
@@ -58,8 +57,7 @@ public class TelaPessoa implements ActionListener, ListSelectionListener, MouseL
      * Gera a nossa tela do cliente:
      * (1)iguala a arraylist recebida a instanciada no codigo.
      * (2)instancia os componentes das telas e suas posições.
-     * @param clientes
-     * @return a nossa tela de cliente
+     * @param Arraylist<Cliente> contendo os clientes cadastrados no sistema.
      */
     public void telaCliente(ArrayList<Cliente> clientes) {
         
@@ -124,7 +122,7 @@ public class TelaPessoa implements ActionListener, ListSelectionListener, MouseL
      * Gera a nossa tela do funcionario:
      * (1)iguala a arraylist recebida a instanciada no codigo.
      * (2)instancia os componentes das telas e suas posições.
-     * @param funcionarios
+     * @param Arraylist<Funcionario> contendo os funcionarios cadastrados no sistema.
      */
     public void telaFuncionario(ArrayList<Funcionario> funcionarios) {
  
@@ -185,7 +183,10 @@ public class TelaPessoa implements ActionListener, ListSelectionListener, MouseL
         
     }
 
-        
+        /**
+         * Metodo que gerencia as acoes dos botoes da telaCliente e telaFuncionario
+         * @param e
+         */
         @Override
         public void actionPerformed(ActionEvent e) {
             Object src = e.getSource();
@@ -229,9 +230,8 @@ public class TelaPessoa implements ActionListener, ListSelectionListener, MouseL
 
         
         /** 
-         * evento que observa o clique do botão na lista e cria nossa tela editar/visualizar para clientes ou funcionarios.
+         * Evento que observa o clique do botão na lista e cria nossa tela editar/visualizar para clientes ou funcionarios.
          * @param e
-         * @return tela editar cliente e funcionario
          */
         @Override
         public void valueChanged(ListSelectionEvent e) {
@@ -263,9 +263,8 @@ public class TelaPessoa implements ActionListener, ListSelectionListener, MouseL
 
         
         /** 
-         * evento que recebe o  clique do mouse e limpa o textfield de pesquisar.
+         * Evento que recebe o  clique do mouse e limpa o textfield de pesquisar.
          * @param e
-         * @return textfield limpo
          */
         
         @Override

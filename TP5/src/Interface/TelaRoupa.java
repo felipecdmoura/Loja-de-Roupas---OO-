@@ -50,13 +50,12 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
 
     
     /** 
-     * nos mostra a tela de camisa.Este metodo recebe duas arraylists como parametros:
+     * Mostra a tela de camisa. Este metodo recebe duas arraylists como parametros:
      * (1)iguala as arraylists recebidas a instanciadas no codigo.
      * (2)Percorre o for each.
      * (3)instancia os componentes e suas posições.
-     * @param camisas
-     * @param calcas
-     * @return a tela da camisa 
+     * @param Arraylist<Camisa> contendo as camisas cadastrados no sistema.
+     * @param Arraylist<Calca> contendo as calcas cadastrados no sistema.
      */
     
     public void telacamisa(ArrayList<Camisa> camisas, ArrayList<Calca> calcas) {
@@ -127,13 +126,12 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
     
    
     /** 
-     * nos mostra a tela da calça.Este metodo recebe duas arraylists como parametros:
+     * Mostra a tela da calça. Este metodo recebe duas arraylists como parametros:
      * (1)iguala as arraylists recebidas a instanciadas no codigo.
      * (2)Percorre o for each.
      * (3)instancia os componentes e suas posições.
-     * @param camisas
-     * @param calcas
-     * @return a tela da calça 
+     * @param Arraylist<Camisa> contendo as camisas cadastrados no sistema.
+     * @param Arraylist<Calca> contendo as calcas cadastrados no sistema.
      */
     public void telaCalca(ArrayList<Camisa> camisas, ArrayList<Calca> calcas) {
        
@@ -204,9 +202,8 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
     
     
     /** 
-     * metodo que recebe o  clique do mouse e limpa o textfield de pesquisar.
+     * Metodo que recebe o clique do mouse e limpa o textfield de pesquisar.
      * @param e
-     * @return textfield limpo para pesquisa
      */
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -281,7 +278,7 @@ public class TelaRoupa implements ActionListener, ListSelectionListener, MouseLi
 
     
     /** 
-     * metodo que define os actions dos nossos botões:
+     * Metodo que define os actions dos nossos botões:
      * (calca) observa o clique do botão calça e gera a tela camisa
      * (camisa) observa o clique do botão camisa e gera uma tela camisa
      * (voltarcamisa) observa o clique do botão voltar e gera a tela  principal da nossa aplicação.

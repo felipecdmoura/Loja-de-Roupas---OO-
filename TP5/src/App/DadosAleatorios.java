@@ -12,13 +12,12 @@ import Objetos.*;
 
 public class DadosAleatorios{ 
     /**
-     * Metodo ultilizado para o cadastro de dados pré cadastrados na loja
-     * @param clientes
-     * @param funcionarios
-     * @param vendas
-     * @param calcas
-     * @param camisas
-     * @return dados pré cadastrados
+     * Metodo ultilizado para o pré cadastro de dados no programa.
+     * @param Arraylist dos clientes da main.
+     * @param Arraylist de funcionarios da main.
+     * @param Arraylist de vendas da main.
+     * @param Arraylist de calcas da main.
+     * @param Arraylist de camisas da main.
      */
     public static void setDefaultData(ArrayList<Cliente> clientes, ArrayList<Funcionario> funcionarios, ArrayList<Venda> vendas, ArrayList<Calca> calcas, ArrayList<Camisa> camisas) { //Método para definir os 10 clientes e produtos padrão
         Telefone telefone;

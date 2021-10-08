@@ -36,8 +36,7 @@ public class TelaLoja implements ActionListener {
      * Gera a tela com os dados de nossa loja
      * (1)iguala o objeto recebido ao instanciado no codigo.
      * (2)instancia os componentes da tela e suas posições
-     * @param loja
-     * @return retorna a tela da nossa loja
+     * @param loja contendo as informacoes da loja.
      */
     public void telaLoja(Loja loja) { 
         lojaTelaLoja = loja;
@@ -94,9 +93,8 @@ public class TelaLoja implements ActionListener {
 
     
     /** 
-     * este evento altera os dados de nossa loja quando alteramos seus textfields.
+     * Este evento altera os dados de nossa loja quando alteramos seus textfields.
      * @param e
-     * @return os dados da loja alterados
      */
     @Override
     public void actionPerformed(ActionEvent e) {

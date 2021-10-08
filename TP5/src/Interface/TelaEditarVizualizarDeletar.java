@@ -88,13 +88,12 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
     
     
     /** 
-     * Gera a tela de editar o cliente.Este metodo recebe uma arrayliste uma string como parametros:
+     * Gera a tela de editar o cliente. Este metodo recebe uma arrayliste uma string como parametros:
      *  (1)utiliza-se do for each para obter o nome
      *  (2)iguala a arraylist recebida a instanciada no codigo
      *  (3)instancia os componentes da tela e suas posições
-     * @param clientes
-     * @param nomecliente
-     * @return retorna a tela de editar cliente
+     * @param Arraylist<Cliente> contendo os clientes cadastrados no sistema.
+     * @param nome do cliente a ser editado, retirado da lista.
      */
     
     public void editarCliente(ArrayList<Cliente> clientes, String nomecliente) {
@@ -195,9 +194,8 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
      *  (1)utiliza-se do for each para obter o nome
      *  (2)iguala a arraylist recebida a instanciada no codigo
      *  (3)instancia os componentes da tela e suas posições
-     * @param funcionarios
-     * @param nomefunc
-     * @return retorna a tela de editar funcionario
+     * @param Arraylist<Funcionario> contendo os funcionarios cadastrados no sistema.
+     * @param nome do funcionario a ser editado, retirado da lista.
      */
 
     public void editarFuncionario(ArrayList<Funcionario> funcionarios, String nomefunc) {
@@ -296,10 +294,9 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
         * (1)utiliza-se do for each para obter o Id
         * (2)iguala as arraylisst recebidas a instanciadas no codigo
         * (3)instancia os componentes da tela e suas posições
-        * @param camisas
-        * @param calcas
-        * @param idcamisa
-        * @return a tela de editar camisa
+        * @param  Arraylist<Camisa> contendo as camisas cadastrados no sistema.
+        * @param  Arraylist<Calca> contendo as calcas cadastrados no sistema.
+        * @param id da camisa a ser editada, retirada da lista.
         */
 
     public void editarCamisa(ArrayList<Camisa> camisas, ArrayList<Calca> calcas, String idcamisa) {
@@ -435,10 +432,9 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
         * (1)utiliza-se do for each para obter o Id
         * (2)iguala as arraylisst recebidas a instanciadas no codigo
         * (3)instancia os componentes da tela e suas posições
-        * @param camisas
-        * @param calcas
-        * @param nomecalca
-        * @return retorna a tela de editar calça
+        * @param Arraylist<Camisa> contendo as camisas cadastrados no sistema.
+        * @param Arraylist<Calca> contendo as calcas cadastrados no sistema.
+        * @param id da calca a ser editada, retirada da lista.
         */
        //metodo que ira nos mostrar a tela de editar a Calça.Este metodo recebe duas arraylists como parametros.
     public void editarCalca(ArrayList<Camisa> camisas, ArrayList<Calca> calcas, String nomecalca) {
@@ -573,13 +569,11 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
     * (1)utiliza-se do for each para obter o Protocolo da venda.
     * (2)iguala as arraylissts recebidas a instanciadas no codigo
     * (3)instancia os componentes da tela e suas posições
-     * @param clientes
-     * @param funcionarios
-     * @param camisas
-     * @param calcas
-     * @param vendas
-     * @param protocvenda
-     * @return retorna a tela de visualizar a venda
+     * @param Arraylist<Cliente> contendo os clientes cadastrados no sistema.
+     * @param Arraylist<Funcionario> contendo os funcionarios cadastrados no sistema.
+     * @param Arraylist<Camisa> contendo as camisas cadastrados no sistema.
+     * @param Arraylist<Calca> contendo as calcas cadastrados no sistema.
+     * @param Arraylist<Venda> contendo as vendas cadastrados no sistema.
      */
 
     public void vizualizarVenda(ArrayList<Cliente> clientes, ArrayList<Funcionario> funcionarios, ArrayList<Camisa> camisas ,ArrayList<Calca> calcas, ArrayList<Venda> vendas, String protocvenda) {

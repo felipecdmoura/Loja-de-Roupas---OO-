@@ -98,7 +98,7 @@ public abstract class Roupa {
     
     /** 
      * Metodo que imprime os dados da roupa utilizando o toString
-     * @return String
+     * @return toString com as infos de Roupa.
      */
     
     public String toString() {

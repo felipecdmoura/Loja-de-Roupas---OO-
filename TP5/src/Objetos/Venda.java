@@ -71,7 +71,7 @@ public class Venda {
 	
 	/** 
 	 * Metodo que imprime os dados da Venda utilizando o toString
-	 * @return String
+	 * @return toString com as infos de Venda.
 	 */
 	
 	public String toString() {

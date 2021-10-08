@@ -51,16 +51,15 @@ public class TelaVenda implements ActionListener, ListSelectionListener, MouseLi
     private String[] todasvendas;
     
     /** 
-     * metodo que ira nos mostrar a nos tela venda principal .Este metodo recebe 5 arraylists como parametros.
+     * Metodo que ira nos mostrar a nos tela venda principal .Este metodo recebe 5 arraylists como parametros.
      * (1)iguala as arraylists recebidas a instanciadas no codigo.
      * (2)Percorre o for each
      * (3)instancia os componentes e suas posições
-     * @param clientes
-     * @param funcionarios
-     * @param camisas
-     * @param calcas
-     * @param vendas
-     * @return Tela de venda
+     * @param Arraylist<Cliente> contendo os clientes cadastrados no sistema.
+     * @param Arraylist<Funcionario> contendo os funcionarios cadastrados no sistema.
+     * @param Arraylist<Camisa> contendo as camisas cadastrados no sistema.
+     * @param Arraylist<Calca> contendo as calcas cadastrados no sistema.
+     * @param Arraylist<Venda> contendo as vendas cadastrados no sistema.
      */
     
     public void telaVenda(ArrayList<Cliente> clientes, ArrayList<Funcionario> funcionarios, ArrayList<Camisa> camisas ,ArrayList<Calca> calcas, ArrayList<Venda> vendas) {
@@ -131,12 +130,11 @@ public class TelaVenda implements ActionListener, ListSelectionListener, MouseLi
     /** 
      * Tela para escolha do tipo de produto vendido (aparece apos clicar em cadastrar venda).
      * (1)instancia os componentes e suas posições
-     * @param clientes
-     * @param funcionarios
-     * @param camisas
-     * @param calcas
-     * @param vendas
-     * @return tela de escolha do produto
+     * @param Arraylist<Cliente> contendo os clientes cadastrados no sistema.
+     * @param Arraylist<Funcionario> contendo os funcionarios cadastrados no sistema.
+     * @param Arraylist<Camisa> contendo as camisas cadastrados no sistema.
+     * @param Arraylist<Calca> contendo as calcas cadastrados no sistema.
+     * @param Arraylist<Venda> contendo as vendas cadastrados no sistema.
      */
     
     public void telaPreCadastro(ArrayList<Cliente> clientes, ArrayList<Funcionario> funcionarios, ArrayList<Camisa> camisas ,ArrayList<Calca> calcas, ArrayList<Venda> vendas) {
@@ -170,9 +168,8 @@ public class TelaVenda implements ActionListener, ListSelectionListener, MouseLi
 
     
     /** 
-     * vento que recebe o  clique do mouse e limpa o textfield de pesquisar a venda.
+     * Evento que recebe o  clique do mouse e limpa o textfield de pesquisar a venda.
      * @param e
-     * @return textfield limpo para pesquisa
      */
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -209,9 +206,8 @@ public class TelaVenda implements ActionListener, ListSelectionListener, MouseLi
 
     
     /** 
-     * observa o clique na lista da venda e monstra os dados
+     * Observa o clique na lista da venda e monstra os dados
      * @param e
-     * @return dados da venda
      */
     @Override
     public void valueChanged(ListSelectionEvent e) {
@@ -237,7 +233,6 @@ public class TelaVenda implements ActionListener, ListSelectionListener, MouseLi
      * (seleccamisa) seleciona a camisa e abre o cadastro de venda para camisa
      * (seleccalca) seleciona a calça e abre o cadastro de venda para calça
      * @param e
-     * @return eventos dos botões
      */
     @Override
     public void actionPerformed(ActionEvent e) {

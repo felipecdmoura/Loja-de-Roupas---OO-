@@ -37,7 +37,7 @@ public class Funcionario extends Pessoa {
 
 	/**
 	 * Metodo responsavel pelo cadastro do funcionario
-	 * @return cadastro do funcionario no seu arraylist
+	 * @deprecated
 	 */
 	public void cadatrarFuncionario(){
 		String cpf;
@@ -77,8 +77,8 @@ public class Funcionario extends Pessoa {
 	
 	/** 
 	 * Metodo responsavel pela edição dos dados do funcionario
-	 * @param seletor
-	 * @return dados editados na arraylist
+	 * @param seletor de qual funcionario devera ser alterado.
+	 * @deprecated
 	 */
 
 	public void editarFuncionario(int seletor){
@@ -134,7 +134,7 @@ public class Funcionario extends Pessoa {
 	
 	/** 
 	 * Metodo responsavel por mostrar os dados do funcionario atraves do toString
-	 * @return String
+	 * @return toString com as infos de Funcionario.
 	 */
 	
 	public String toString() {

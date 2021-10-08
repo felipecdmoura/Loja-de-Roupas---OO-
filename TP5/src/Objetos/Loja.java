@@ -49,7 +49,7 @@ public class Loja {
 	}
 	/**
 	 * Metodo responsavel pelo cadastro dos dados da loja
-	 * @return cadastro dos dados no seu arraylist
+	 * @deprecated
 	 */
 	public void cadastrarLoja(){
 		System.out.println("Digite o nome da filial: ");
@@ -66,8 +66,8 @@ public class Loja {
 	
 	/** 
 	 * Metodo responsavel pela edição dos dados da loja
-	 * @param seletor
-	 * @return dados editados no arraylist
+	 * @param seletor de qual loja devera ser alterada.
+	 * @deprecated
 	 */
 	public void editarLoja(int seletor){
 		String cnpjedit;
@@ -108,7 +108,7 @@ public class Loja {
 	
 	/** 
 	 * Metodo que imprime os dados da loja utilizando o toString
-	 * @return String
+	 * @return toString com as infos de Loja.
 	 */
 	
 	public String toString() {

@@ -46,8 +46,8 @@ public class Calca extends Roupa {
     }
 
     /**
-     * Metodo responsavel pelo cadastro dos dados da calça. 
-     * @return cadastro da calça na arraylist
+     * Metodo responsavel pelo cadastro dos dados da calça.
+     * @deprecated 
      */
 
     public void cadastrarcalca(){
@@ -82,9 +82,9 @@ public class Calca extends Roupa {
 
     
     /** 
-     * metodo responsavel pela edição dos dados da calça
-     * @param seletor
-     * @return edição da calça na arraylist
+     * Metodo responsavel pela edição dos dados da calça
+     * @param seletor de qual calca do arraylist devera ser alterada.
+     * @deprecated
      */
 
 	public void editarCalca(int seletor){
@@ -143,7 +143,7 @@ public class Calca extends Roupa {
     
     /** 
      * Metodo responsavel por mostrar os dados da calça atraves do toString
-     * @return String
+     * @return toString com as infos de Calca
      */
 
     public String toString() {

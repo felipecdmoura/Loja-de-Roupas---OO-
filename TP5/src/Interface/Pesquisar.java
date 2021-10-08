@@ -11,10 +11,10 @@ import Objetos.*;
 public class Pesquisar {
     
     /** 
-     * metodo que obtem uma String[] de todos os nomes dos clientes igual ao pesquisado.
-     * @param clientes
-     * @param clientepesquisado
-     * @return String[]
+     * Metodo que retorna uma String[] de todos os nomes dos clientes igual ao pesquisado.
+     * @param Arraylist<Cliente> contendo os clientes cadastrados no programa.
+     * @param nome a ser pesquisado.
+     * @return String array contendo os nomes clientes achados na pesquisa.
      */
     
     public static String[] pesquisarCliente(ArrayList<Cliente> clientes, String clientepesquisado) {
@@ -33,10 +33,10 @@ public class Pesquisar {
 
     
     /** 
-     * metodo que obtem uma String[] de todos os nomes dos funcionarios igual ao pesquisado.
-     * @param funcionarios
-     * @param funcionariopesquisado
-     * @return String[]
+     * Metodo que retorna uma String[] de todos os nomes dos funcionarios igual ao pesquisado.
+     * @param Arraylist<Funcionario> contendo os funcionarios cadastrados no programa.
+     * @param nome a ser pesquisado.
+     * @return String array contendo os nomes dos funcionarios achados na pesquisa.
      */
     
     public static String[] pesquisarFuncionario(ArrayList<Funcionario> funcionarios ,String funcionariopesquisado) {
@@ -55,10 +55,10 @@ public class Pesquisar {
 
     
     /** 
-     * metodo que obtem uma String[] de todos os nomes das camisas igual ao pesquisado.
-     * @param camisas
-     * @param id
-     * @return String[]
+     * Metodo que retorna uma String[] de todos os nomes das camisas igual a pesquisada.
+     * @param Arraylist<Camisa> contendo as camisas cadastrados no programa.
+     * @param id da camisa as ser pesquisada.
+     * @return String array contendo o id e nome das camisas achadas na pesquisa.
      */
     public static String[] pesquisarCamisa(ArrayList<Camisa> camisas , String id) {
         String [] camisapesq = new String[camisas.size()];
@@ -75,10 +75,10 @@ public class Pesquisar {
     }
     
     /** 
-     * metodo que obtem uma String[] de todos os nomes das calças igual ao pesquisado.
-     * @param calcas
-     * @param id
-     * @return String[]
+     * Metodo que retorna uma String[] de todos os nomes das calças igual a pesquisada.
+     * @param Arraylist<Calca> contendo as calcas cadastrados no programa.
+     * @param id da calca as ser pesquisada.
+     * @return String array contendo o id e nome das calcas achadas na pesquisa.
      */
 
     public static String[] pesquisarCalca(ArrayList<Calca> calcas ,String id) {
@@ -96,10 +96,10 @@ public class Pesquisar {
     }
     
     /** 
-     * metodo que obtem uma String[] da venda igual ao pesquisado.
-     * @param vendas
-     * @param protoc
-     * @return String[]
+     * Metodo que retorna uma String[] da venda igual a pesquisada.
+     * @param Arraylist<Venda> contendo as vendas cadastrados no programa.
+     * @param protocolo da venda as ser pesquisada.
+     * @return String array contendo o protocolo e nome das vendas achadas na pesquisa.
      */
     
     public static String[] pesquisarVenda(ArrayList<Venda> vendas, String protoc) {
