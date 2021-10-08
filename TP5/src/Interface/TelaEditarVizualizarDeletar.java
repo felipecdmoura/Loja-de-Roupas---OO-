@@ -597,7 +597,7 @@ public class TelaEditarVizualizarDeletar implements ActionListener {
         comprador = new JLabel("Cliente: " + vendas.get(posicao).getCliente().getNome());
         funcresponsavel = new JLabel("Funcionario Responsavel: " + vendas.get(posicao).getFuncionario().getNome());
         prodvendido = new JLabel("Produto: " + vendas.get(posicao).getProduto().getNome());
-        precototal = new JLabel("Preço Total: " + vendas.get(posicao).getPreçoTotal());
+        precototal = new JLabel("Preço Total: " + vendas.get(posicao).getPrecoTotal());
 
         voltarvenda = new JButton("Voltar");
 
